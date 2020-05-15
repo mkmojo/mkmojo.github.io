@@ -71,18 +71,4 @@
     <priority>0.5</priority>
   </url>
   
-  <url>
-    <loc>http://localhost:1313/tags/hexo/</loc>
-    <lastmod>2014-07-18T23:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/</loc>
-    <lastmod>2014-07-18T23:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
 </urlset>

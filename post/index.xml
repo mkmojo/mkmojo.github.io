@@ -45,16 +45,5 @@
 &lt;/div&gt;</description>
     </item>
     
-    <item>
-      <title>Hexo &#43; Dropbox on Ubuntu VPS</title>
-      <link>http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/</link>
-      <pubDate>Fri, 18 Jul 2014 23:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/</guid>
-      <description>&lt;p&gt;The major reference for this tutorial is &lt;a href=&#34;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&#34;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;.&lt;br&gt;
-Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.&lt;/p&gt;
-&lt;p&gt;After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>
