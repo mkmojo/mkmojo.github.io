@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Thinking Framework for Dynamic Programming - A-ha - Michael&#39;s Personal Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Michael" /><meta name="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
+The first one is the &amp;ldquo;all or nothing&amp;rdquo; property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance Minimum Cost to Merge Stones is difficult to solve because the state representation is hard to discover.
+Another reason is the lack of in depth discussion on the process of finding the correct state representation." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.70.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/dynamic-programming-thinking-framework/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Thinking Framework for Dynamic Programming" />
+<meta property="og:description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
+The first one is the &ldquo;all or nothing&rdquo; property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance Minimum Cost to Merge Stones is difficult to solve because the state representation is hard to discover.
+Another reason is the lack of in depth discussion on the process of finding the correct state representation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/dynamic-programming-thinking-framework/" />
+<meta property="article:published_time" content="2020-05-15T10:31:19-04:00" />
+<meta property="article:modified_time" content="2020-05-15T10:31:19-04:00" />
+<meta itemprop="name" content="Thinking Framework for Dynamic Programming">
+<meta itemprop="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
+The first one is the &ldquo;all or nothing&rdquo; property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance Minimum Cost to Merge Stones is difficult to solve because the state representation is hard to discover.
+Another reason is the lack of in depth discussion on the process of finding the correct state representation.">
+<meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
+<meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
+<meta itemprop="wordCount" content="2142">
+
+
+
+<meta itemprop="keywords" content="interview,DP,search,memo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Thinking Framework for Dynamic Programming"/>
+<meta name="twitter:description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
+The first one is the &ldquo;all or nothing&rdquo; property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance Minimum Cost to Merge Stones is difficult to solve because the state representation is hard to discover.
+Another reason is the lack of in depth discussion on the process of finding the correct state representation."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Michael</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Michael</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Thinking Framework for Dynamic Programming</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-15 </span>
+        
+          <span class="more-meta"> 2142 words </span>
+          <span class="more-meta"> 11 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#search-101">Search 101</a></li>
+    <li><a href="#recursion-with-overlapping-sub-problem">Recursion with overlapping sub-problem</a></li>
+    <li><a href="#dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</a></li>
+    <li><a href="#the-thinking-framework">The Thinking Framework</a></li>
+    <li><a href="#top-down-vs-bottom-up">Top-down vs Bottom-up</a></li>
+    <li><a href="#todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.</p>
+<p>The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is difficult to solve because the state representation is hard to discover.</p>
+<p>Another reason is the <strong>lack of in depth discussion on the process</strong> of finding the correct state representation.
+For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the problem but none of the explanation talks about the process of finding the state representation in the first place at all. Instead they focus on discussing implementation details after state representation is found.</p>
+<p>I have not found too much material online discussing the state representation finding process so here we are. The remainder of the post presents a <strong>thinking framework</strong> to help you tackle DP problems systematically. The same framework is also useful when evaluating other people&rsquo;s DP solutions.</p>
+<h2 id="search-101">Search 101</h2>
+<p>Let us solve a search problem together to demonstrate the thinking process.
+I will explaine later why we need to take this segway on search, it will become clear very soon.</p>
+<blockquote>
+<p>Given a list of pillars of different height, player can start at the 0th or 1st position. Everytime the player jump from a pillar, he needs to spend the cost amount equal to the height of the pillar.<br>
+What is the minimum cost for the player to jump past all the pillars?</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1:</strong><br>
+<strong>Input:</strong> [2, 3, 5, 7, 4]<br>
+<strong>Output:</strong> 10<br>
+<strong>Explanaiton:</strong> Player jupm from pos_1(i.e. 3) then to pos_3(i.e. 7) and finally jump over, total cost is arr[1] + arr[3] = 10.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2:</strong><br>
+<strong>Input:</strong> [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]<br>
+<strong>Output:</strong> 6</p>
+</blockquote>
+<p>First of all, this problem can be solved by examing all possible paths: enumerating all possible path one can take from starting position to eventulally land past the last pillar. The one with least cost is the answer we look for.</p>
+<p>To examine every possible solution, we need to have an annotation that we can recurse with because computer only knows how to work with mathmatical annotations (i.e. nubmers, and symbols).</p>
+<p>If we draw this process on paper:
+<img src="/img/DP_climbing_stairs.png" alt="DP image"></p>
+<p><strong>The main problem solving effort is drawing out the recursion tree, especially they part on how to break a node into disjoint sub-nodes.</strong>
+If you can draw the recursion tree all the way from root to leaf(base case) and the leaf node is a case that is very easy to solve(can be turned from problem space into answer space). Then you found a succesful recursion strategy. After you found this strategy, your work is already 80% finished. The remainder is just about how to turn this strategy into a representation a computer can understand. You can often do this in two fashions, either a top down fasion where implementation-wise is memorized search or a bottom up fashion where implementation-wise it is induction from base case to bigger and bigger in size.</p>
+<p>Issue with most of the commentary online is that they skip the answer discovery part(i.e. the drawing on board, the trials and errors of different state representation and recursion startegy). Too many of them start directly with a alredy correct state definition.</p>
+<p>After some drawing on board/notebook, you will realize(otherwise you fail to solve this problem) the <strong>key information</strong> you need at each level of recursion is the count of the pillar the player wants to jump over. To match this observation you obtained from drawing the recussion tree, we can educatively decide that if we create an annotation that captures count of pillar as part of the information in it, we can reduce the problem systematically and eventually reduce it to some easy to solve base case(that can be eye balled).</p>
+<p>For this very problem we can finally(with the help of drawing recursion tree out) define our state to be:</p>
+<blockquote>
+<p><code>notation(n)</code> = total cost player spent to land on pillar n.</p>
+</blockquote>
+<p>Notice that what information you want to capture in state is highly free, and mostly come from how you draw out he recursion tree. Therefore this step is the step that needs experience (hence varies dramatically from people to people). This is also why there can be more than one working solution to a same searching problem.</p>
+<p>Because we want to minimize the overally cost, we need to make such choice at each level. Global min is obtained by collecting all local mins.</p>
+<blockquote>
+<p>notation(n) = <strong>min(</strong> notation(n-1) + height_n-1, notation(n-2) + height_n-2 <strong>)</strong></p>
+</blockquote>
+<p>At this stage, we can write our core logic for the search strategy:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step1: Create main recursion logic.</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># ... base case</span>
+
+    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This part we just finished is the so called <code>state transition</code>. This is the typically the most logic heavy part of every DP problem. The key operation here is the <code>min</code>. Because our strategy makes a deliverate choice at every single recursion level, as the result our top level answer will be the overall minimized cost. <strong>This decision making at each recursion level is another key question you alwasy want to ask yourself when solving any DP problem.</strong></p>
+<p>Now with the <code>state transition</code> in place, we will be able to rewrite a bigger sized problem into a smaller sized problem.</p>
+<p>We can do this at each recursion level and the problem size will eventualy be so small that solving it becomes very trivial. For instance, of this very problem. We can reduce the problem into base case when we have only the 0th or 1st pillar to land on. For palyer to land on 0th position, <code>notation(0) = 0</code> because we can start at 0th position. For player to land on 1st position, <code>notation(1) = 0</code> because player can also start at 1st position. Such process is called <code>base case/initial state</code>. So the code then becomes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step2: Add base case handling.</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>At this point you have finished a recursive version of the solution.</p>
+<p>Notice that during the process of developing a working solution to this problem, we did not mention anything about DP.
+The core concepts are all from search. <code>state</code> is a search state, it is a collection of information we want to maintain at each recursion level. <code>state transition</code> is about how to express a big problem state in terms of smaller problem state. Finally <code>base case</code> is the leaf level of recursion tree.</p>
+<blockquote>
+<p>So why does this example have anything to do with DP?</p>
+</blockquote>
+<h2 id="recursion-with-overlapping-sub-problem">Recursion with overlapping sub-problem</h2>
+<p>As I mentioned before, we are going to discuss why understanding search is important to understanding DP. This is really because DP turns out to be a special kind of search problem. Not every search problem gets to be a DP problem, <strong>only those nice ones do</strong>.</p>
+<p>In order to qulify as a DP problem, there a search problem needs to have <strong>overlapping sub-problems</strong>. For our example, problem of size 7 depends on problem of size 6 and size 5. When we want to solve problem of size 6 which in term depends on size 4 and 5. The overlapping subproblem(for problem of size 6 and 7) here is the problem of size 5. Its answer can be reused to solve both problem of size 6 and 7.</p>
+<p>If we draw the diagram, it will look like the following:</p>
+<p><img src="/img/recursion_tree_sub_problem.jpg" alt="recursion tree for overlapping subsubproblems"></p>
+<p>Notice that a regular search problem does not have overlapping subsubproblem does not qualify a DP problem because it cannot benefit from applying DP technique to avoid unnecessary re-computation.</p>
+<h2 id="dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</h2>
+<p>Since DP is just a technique that can be applied to avoid duplicate work when solving problems recursively. The key concepts are from search: state is a search state; state transion is how big problem breaks into smaller ones; finally base case are leaf level of recursion tree.</p>
+<p>The very thing that is <strong>unique to DP is the table/memo</strong> we used in our algorithm to avoid duplicate computation. Overlapping subproblem only needs to be solved once and used many times to construct solution to bigger problems. The answer of each search state can be saved aside and looked up when needed. Such space and computation trade off is core to every DP problem.</p>
+<p>When someone fails to solve a DP problem, it is most often due to not being able to solve the underlying search problem, instead of not being able to use a memo to save answer to every search stage. Utilizing memo on top of an already working search strategy is typically the easy part.</p>
+<p>As result, when pracitcing, we should spend most of the time thinking about how to break problem down into disjoint subproblems.</p>
+<p>For our example search problem that is DP eligible(because of overlapping subproblem), wen can mechnically apply memorization like the following:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step 3: Add memo to avoid duplicate computation</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    
+    <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">cnt_level_total_cost</span>
+
+    <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">notation</span><span class="p">(</span><span class="n">arr</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>With the above, we have produced a dynamic programming solution to the problem.</p>
+<h2 id="the-thinking-framework">The Thinking Framework</h2>
+<p>Let&rsquo;s summarize what we have learned.</p>
+<ul>
+<li>Only those search problems with overlapping subproblems can benefit from DP techinque.</li>
+<li>How to define search state is highly up to each problem solver, this is also why same problem can have very different DP strategy due caused by different state representation.</li>
+</ul>
+<p>To systematically tackle this challenge, the following thinking framework will help:</p>
+<ol>
+<li>Define search state for the problem. Think about what is the information needed at each recursion level. Those information becomes your problem state. For example the final index of pillar a player needs to land on.</li>
+<li>Draw out the recursion tree base on your state representation at step 1. If you cannot draw out the recusion tree all the way from root to leaf level. Then either you found the wrong state representation (for instance, miss keeping the complete set of info needed at each recursion level) or you had the right state representation but could not quite make the right decision at each recursion level to successfully reduce the problem into smaller problems.</li>
+<li>Write down the state transition step into code as your main logic.</li>
+<li>Apply memorization to the code.</li>
+</ol>
+<p>Out of the four steps, step 2 is the most important step, which should take most of your effort. There may be back and forth between this and the 1st step until you are convinced you can draw out the whole recursion tree. (which would imply that you have both found a working node definition and the correct way to recurse(for instance by taking min operation) into deeper level of recursion tree)</p>
+<p>Some useful question you ask yourself for step 2:</p>
+<blockquote>
+<p>What <strong>information</strong> do I need to capture at each level so I can define the right state? &ndash;&gt; state</p>
+</blockquote>
+<blockquote>
+<p>What <strong>choice</strong> do I have at current level to make my overall answer globally optimimal? &ndash;&gt; state transition</p>
+</blockquote>
+<p>With the above thinking framework, we have successfully handled all three key aspects of every sinlge DP problem.</p>
+<h2 id="top-down-vs-bottom-up">Top-down vs Bottom-up</h2>
+<p>These are directions on recursion trees.
+Top is the start of recursion tree, bottom is the leaf level of recursion tree.</p>
+<p>Starting out from a big problem and break it down into smaller ones is called top down.
+Bottom up means starting out from the base case to build answer up to the original problem.</p>
+<p>We can convert the above top down approach to a bottom up one and vise-versa. The only trick here is to start from initial state and compose the answer using already solved sub problme.
+For this particular example, a bottom up version would be:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># bottom up approach</span>
+<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">notation</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">notation</span><span class="p">)):</span>
+        <span class="n">notation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">notation</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)]</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</h2>
+<p>Sure, see in depth discussion on:</p>
+<ul>
+<li>burst balloons</li>
+<li>coin change 1, 2</li>
+<li>backpack problems</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-05-15
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/interview/">interview</a>
+          <a href="/tags/dp/">DP</a>
+          <a href="/tags/search/">search</a>
+          <a href="/tags/memo/">memo</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/hugo_personal_blog/">
+            <span class="next-text nav-default">Hugo for Personal Website</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'goqqy';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/mkmojo" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Michael</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
