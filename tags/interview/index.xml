@@ -17,9 +17,7 @@
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
       
       <guid>http://localhost:1313/post/dynamic-programming-thinking-framework/</guid>
-      <description>Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
-The first one is the &amp;ldquo;all or nothing&amp;rdquo; property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance Minimum Cost to Merge Stones is difficult to solve because the state representation is hard to discover.
-Another reason is the lack of in depth discussion on the process of finding the correct state representation.</description>
+      <description>&lt;p&gt;Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.&lt;/p&gt;</description>
     </item>
     
   </channel>
