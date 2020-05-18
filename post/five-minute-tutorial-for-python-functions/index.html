@@ -18,14 +18,14 @@
 
 <meta name="author" content="Michael" /><meta name="description" content="This tutorial gives you a quick overview of how Python handles function calls.
 The Python program we are going to examine is:
-1 2 3 4  def add(x, y): return x &#43; y print add(1,2)   " /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+1 2 3 4  def add(x, y):return x &#43; yprint add(1,2)  " /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.70.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.0 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/five-minute-tutorial-for-python-functions/" />
@@ -202,7 +202,7 @@ print add(1,2)
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="k">print</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -267,8 +267,8 @@ print add(1,2)
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">dis</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
-  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">code</span> <span class="nb">object</span> <span class="n">add</span> <span class="n">at</span> <span class="mh">0x6ffffe2fa30</span><span class="p">,</span> <span class="nb">file</span> <span class="s2">&#34;test.py&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span>
-              <span class="mi">3</span> <span class="n">MAKE_FUNCTION</span>            <span class="mi">0</span>          <span class="o">//</span><span class="n">Elaborated</span> <span class="ow">in</span> <span class="n">later</span> <span class="n">section</span> <span class="n">MAKE_FUNCTION</span> <span class="n">Walkthrough</span>
+  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">code</span> <span class="nb">object</span> <span class="n">add</span> <span class="n">at</span> <span class="mh">0x6ffffe2fa30</span><span class="p">,</span> <span class="nb">file</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">test.py</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">)</span>
+              <span class="mi">3</span> <span class="n">MAKE_FUNCTION</span>            <span class="mi">0</span>          <span class="o">/</span><span class="o">/</span><span class="n">Elaborated</span> <span class="ow">in</span> <span class="n">later</span> <span class="n">section</span> <span class="n">MAKE_FUNCTION</span> <span class="n">Walkthrough</span>
               <span class="mi">6</span> <span class="n">STORE_NAME</span>               <span class="mi">0</span> <span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
@@ -292,7 +292,7 @@ the value stack.</p>
 <pre class="chroma"><code class="language-python" data-lang="python">  <span class="mi">4</span>           <span class="mi">9</span> <span class="n">LOAD_NAME</span>                <span class="mi">0</span> <span class="p">(</span><span class="n">add</span><span class="p">)</span>
              <span class="mi">12</span> <span class="n">LOAD_CONST</span>               <span class="mi">1</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
              <span class="mi">15</span> <span class="n">LOAD_CONST</span>               <span class="mi">2</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-             <span class="mi">18</span> <span class="n">CALL_FUNCTION</span>            <span class="mi">2</span>          <span class="o">//</span><span class="n">Elaborated</span> <span class="ow">in</span> <span class="n">later</span> <span class="n">section</span> <span class="n">CALL_FUNCTION</span> <span class="n">Walkthrough</span>
+             <span class="mi">18</span> <span class="n">CALL_FUNCTION</span>            <span class="mi">2</span>          <span class="o">/</span><span class="o">/</span><span class="n">Elaborated</span> <span class="ow">in</span> <span class="n">later</span> <span class="n">section</span> <span class="n">CALL_FUNCTION</span> <span class="n">Walkthrough</span>
              <span class="mi">21</span> <span class="n">PRINT_ITEM</span>
              <span class="mi">22</span> <span class="n">PRINT_NEWLINE</span>
              <span class="mi">23</span> <span class="n">LOAD_CONST</span>               <span class="mi">3</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
@@ -311,7 +311,7 @@ print its value to standard output and <code>PRINT_NEWLINE</code> prints out a n
 <p>At last, the <code>RETURN_VALUE</code> bytecode instructs the Python interpreter to return the top of the stack object
 (which in our case is the PyIntObject we loaded in from <code>LOAD_CONSTANT</code>) to the caller.</p>
 <p>The most interesting parts of the above bytecode are <code>MAKE_FUNCTION</code> and <code>CALL_FUNCTION</code>. We are going to elaborate on them individually below.</p>
-<h1 id="make_function-walkthrough"><code>MAKE_FUNCTION</code> Walkthrough</h1>
+<h1 id="make-function-walkthrough"><code>MAKE_FUNCTION</code> Walkthrough</h1>
 <p>The key to this entire process is the <code>MAKE_FUNCTION</code> opcode, whose logic is like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -324,16 +324,16 @@ print its value to standard output and <code>PRINT_NEWLINE</code> prints out a n
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-C" data-lang="C"><span class="k">case</span> <span class="nl">MAKE_FUNCTION</span><span class="p">:</span>
-     <span class="n">v</span> <span class="o">=</span> <span class="n">POP</span><span class="p">();</span>	                                <span class="c1">// PyCodeObject
-</span><span class="c1"></span>     <span class="n">x</span> <span class="o">=</span> <span class="n">PyFunction_New</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="o">-&gt;</span><span class="n">f_globals</span><span class="p">);</span>       <span class="c1">// Make a function out of code object and global variables
-</span><span class="c1"></span>     <span class="p">...</span>                                        
-     <span class="n">PUSH</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>                                   <span class="c1">// Put PyFunctionObject back to the value stack
+     <span class="n">v</span> <span class="o">=</span> <span class="n">POP</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>	                                <span class="c1">// PyCodeObject
+</span><span class="c1"></span>     <span class="n">x</span> <span class="o">=</span> <span class="n">PyFunction_New</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="o">-</span><span class="o">&gt;</span><span class="n">f_globals</span><span class="p">)</span><span class="p">;</span>       <span class="c1">// Make a function out of code object and global variables
+</span><span class="c1"></span>     <span class="p">.</span><span class="p">.</span><span class="p">.</span>                                        
+     <span class="n">PUSH</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="p">;</span>                                   <span class="c1">// Put PyFunctionObject back to the value stack
 </span><span class="c1"></span>     <span class="k">break</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>The line <code>x = PyFunction_New(v, f-&gt;f_globals);</code> is the most interesting one. Combined with the Load and Store opcodes you can see right away due to how pythons internals are written what&rsquo;s happening, we&rsquo;re creating a Function Object using the Code Object we just loaded as well as the globals from the frame we&rsquo;re currently executing. You can see this functions full code in <code>Objects\funcobject.c</code> to get a full view of implementation, but overall we&rsquo;re initializing a Function Object with a pointer to the Code Object so we can at a later point actually execute the bytecode when calling the function.</p>
-<h1 id="call_function-walkthrough"><code>CALL_FUNCTION</code> Walkthrough</h1>
-<p>So now we&rsquo;re left with our Function Object on top of the value stack, now it&rsquo;s time to actually execute the function passing in our parameters and do some work with it.</p>
+</div><p>The line <code>x = PyFunction_New(v, f-&gt;f_globals);</code> is the most interesting one. Combined with the Load and Store opcodes you can see right away due to how pythons internals are written what's happening, we're creating a Function Object using the Code Object we just loaded as well as the globals from the frame we're currently executing. You can see this functions full code in <code>Objects\funcobject.c</code> to get a full view of implementation, but overall we're initializing a Function Object with a pointer to the Code Object so we can at a later point actually execute the bytecode when calling the function.</p>
+<h1 id="call-function-walkthrough"><code>CALL_FUNCTION</code> Walkthrough</h1>
+<p>So now we're left with our Function Object on top of the value stack, now it's time to actually execute the function passing in our parameters and do some work with it.</p>
 <p>The main interesting bit of the above is in executing <code>CALL_FUNCTION</code> when the following call <code>x = call_function(&amp;sp, oparg);</code> is made. Notice that we pass in the current stack pointer from the executing frame by reference, this will come into play later on.</p>
 <p>The implementation of <code>call_function</code> is the following:</p>
 <div class="highlight"><div class="chroma">
@@ -366,33 +366,33 @@ print its value to standard output and <code>PRINT_NEWLINE</code> prints out a n
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-C" data-lang="C"><span class="k">static</span> <span class="n">PyObject</span> <span class="o">*</span>
-<span class="nf">call_function</span><span class="p">(</span><span class="n">PyObject</span> <span class="o">***</span><span class="n">pp_stack</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oparg</span><span class="p">)</span>
+<span class="nf">call_function</span><span class="p">(</span><span class="n">PyObject</span> <span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oparg</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">na</span> <span class="o">=</span> <span class="n">oparg</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span> 			            <span class="c1">//Get the number of arguments
-</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">nk</span> <span class="o">=</span> <span class="p">(</span><span class="n">oparg</span><span class="o">&gt;&gt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>			        <span class="c1">//Keyword number occupies higher order bits, 0 in our case
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">nk</span> <span class="o">=</span> <span class="p">(</span><span class="n">oparg</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>			        <span class="c1">//Keyword number occupies higher order bits, 0 in our case
 </span><span class="c1"></span>    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">na</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nk</span><span class="p">;</span>				        <span class="c1">//n is the &#39;space&#39; on the value stack that concerns this call
-</span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">**</span><span class="n">pfunc</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>	    <span class="c1">//Get a pointer to the function object
+</span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">*</span><span class="o">*</span><span class="n">pfunc</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>	    <span class="c1">//Get a pointer to the function object
 </span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">*</span><span class="n">func</span> <span class="o">=</span> <span class="o">*</span><span class="n">pfunc</span><span class="p">;</span>			        <span class="c1">//Retrieve the actual function object
 </span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">w</span><span class="p">;</span>
-    <span class="p">...</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">PyCFunction_Check</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">nk</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">...</span>
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">PyCFunction_Check</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="o">&amp;</span><span class="o">&amp;</span> <span class="n">nk</span> <span class="o">=</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span><span class="p">.</span><span class="p">.</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="p">...</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">PyFunction_Check</span><span class="p">(</span><span class="n">func</span><span class="p">))</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">fast_function</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">pp_stack</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">na</span><span class="p">,</span> <span class="n">nk</span><span class="p">);</span>       <span class="c1">// We end up calling this
+        <span class="p">.</span><span class="p">.</span><span class="p">.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">PyFunction_Check</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">fast_function</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">pp_stack</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">na</span><span class="p">,</span> <span class="n">nk</span><span class="p">)</span><span class="p">;</span>       <span class="c1">// We end up calling this
 </span><span class="c1"></span>        <span class="k">else</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">do_call</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">pp_stack</span><span class="p">,</span> <span class="n">na</span><span class="p">,</span> <span class="n">nk</span><span class="p">);</span>
-        <span class="n">READ_TIMESTAMP</span><span class="p">(</span><span class="o">*</span><span class="n">pintr1</span><span class="p">);</span>
-        <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">func</span><span class="p">);</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">do_call</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">pp_stack</span><span class="p">,</span> <span class="n">na</span><span class="p">,</span> <span class="n">nk</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">READ_TIMESTAMP</span><span class="p">(</span><span class="o">*</span><span class="n">pintr1</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="p">...</span>                                                         <span class="c1">// Some clean up
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>                                                         <span class="c1">// Some clean up
 </span><span class="c1"></span>    <span class="p">}</span>
     <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>First we&rsquo;re defining some values, these values are used to figure out the position the stack pointer should point to based on
+</div><p>First we're defining some values, these values are used to figure out the position the stack pointer should point to based on
 number of arguments for the function object as well as getting a handle to our <code>PyFunctionObject</code>.</p>
 <p>The interpreter does a couple of checks immediately in order to find out if the function is a Python wrapper for a c function or a Method object since these are the most common calls made, our function is just a straight forward <code>PyFunctionObject</code>, so we execute the branch of code that calls <code>x = fast_function(func, pp_stack, n, na, nk);</code> which is also in <code>ceval.c</code>.</p>
 <p>In the call to <code>fast_function</code>, the interpreter first sets things up, commented below.</p>
@@ -402,11 +402,11 @@ number of arguments for the function object as well as getting a handle to our <
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C">    <span class="n">PyCodeObject</span> <span class="o">*</span><span class="n">co</span> <span class="o">=</span> <span class="p">(</span><span class="n">PyCodeObject</span> <span class="o">*</span><span class="p">)</span><span class="n">PyFunction_GET_CODE</span><span class="p">(</span><span class="n">func</span><span class="p">);</span>	<span class="c1">//Get a pointer to the Code Object
-</span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">*</span><span class="n">globals</span> <span class="o">=</span> <span class="n">PyFunction_GET_GLOBALS</span><span class="p">(</span><span class="n">func</span><span class="p">);</span>			    <span class="c1">//Get a pointer to the functions globals
+<pre class="chroma"><code class="language-C" data-lang="C">    <span class="n">PyCodeObject</span> <span class="o">*</span><span class="n">co</span> <span class="o">=</span> <span class="p">(</span><span class="n">PyCodeObject</span> <span class="o">*</span><span class="p">)</span><span class="n">PyFunction_GET_CODE</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="p">;</span>	<span class="c1">//Get a pointer to the Code Object
+</span><span class="c1"></span>    <span class="n">PyObject</span> <span class="o">*</span><span class="n">globals</span> <span class="o">=</span> <span class="n">PyFunction_GET_GLOBALS</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="p">;</span>			    <span class="c1">//Get a pointer to the functions globals
 </span></code></pre></td></tr></table>
 </div>
-</div><p>Once the <code>fast_function</code> method is setup, the code takes the very first branch since <code>argdefs == NULL &amp;&amp; co-&gt;co_argcount == n &amp;&amp; nk==0 &amp;&amp; co-&gt;co_flags == (CO_OPTIMIZED | CO_NEWLOCALS | CO_NOFREE)</code> is a true statement. Notice we&rsquo;re checking to see how many arguments the Code Object has against how many arguments are on the stack; this is what makes this execution &lsquo;fast&rsquo; as everything that&rsquo;s needed to complete the call is actually already loaded up and ready to go and we can access it all by pointer arithmatic.</p>
+</div><p>Once the <code>fast_function</code> method is setup, the code takes the very first branch since <code>argdefs == NULL &amp;&amp; co-&gt;co_argcount == n &amp;&amp; nk==0 &amp;&amp; co-&gt;co_flags == (CO_OPTIMIZED | CO_NEWLOCALS | CO_NOFREE)</code> is a true statement. Notice we're checking to see how many arguments the Code Object has against how many arguments are on the stack; this is what makes this execution &lsquo;fast&rsquo; as everything that's needed to complete the call is actually already loaded up and ready to go and we can access it all by pointer arithmatic.</p>
 <p>Now we get to the bit of code that actually executes our function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -425,23 +425,23 @@ number of arguments for the function object as well as getting a handle to our <
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-C" data-lang="C">        <span class="n">PyFrameObject</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
-        <span class="p">...</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">PyFrame_New</span><span class="p">(</span><span class="n">tstate</span><span class="p">,</span> <span class="n">co</span><span class="p">,</span> <span class="n">globals</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+        <span class="p">.</span><span class="p">.</span><span class="p">.</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">PyFrame_New</span><span class="p">(</span><span class="n">tstate</span><span class="p">,</span> <span class="n">co</span><span class="p">,</span> <span class="n">globals</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span><span class="p">;</span>
 
-        <span class="n">fastlocals</span> <span class="o">=</span> <span class="n">f</span><span class="o">-&gt;</span><span class="n">f_localsplus</span><span class="p">;</span>
+        <span class="n">fastlocals</span> <span class="o">=</span> <span class="n">f</span><span class="o">-</span><span class="o">&gt;</span><span class="n">f_localsplus</span><span class="p">;</span>
         <span class="n">stack</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="p">;</span> 			<span class="c1">//Getting a direct pointer to the very first argument
 </span><span class="c1"></span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Py_INCREF</span><span class="p">(</span><span class="o">*</span><span class="n">stack</span><span class="p">);</span>
-            <span class="n">fastlocals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="n">stack</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Py_INCREF</span><span class="p">(</span><span class="o">*</span><span class="n">stack</span><span class="p">)</span><span class="p">;</span>
+            <span class="n">fastlocals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="n">stack</span><span class="o">+</span><span class="o">+</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="n">retval</span> <span class="o">=</span> <span class="n">PyEval_EvalFrameEx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">retval</span> <span class="o">=</span> <span class="n">PyEval_EvalFrameEx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The interpreter creates a brand new Frame Object using the Code Object and Globals. It then gets a pointer to the locals for the frame, and for each of the arguments on the stack (there are 2 in our case) places them into this locals array. This action is what allows for the <code>LOAD_FAST</code> opcodes in the Code Object to do their thing, instead of a dictionary lookup we can make an atomic array read operation to get our arguments.</p>
-<p>Then the Frame Object is evaluated through calling the <code>PyEval_EvalFrameEx</code> method (which is the same method that&rsquo;s been evaluating the initial main Frame Object). Both arguments are added and the remaining value is left on top of the value stack through a <code>BINARY_ADD</code>. Notice that since we&rsquo;ve passed in the address of the value stack from the initial frame all of this is done on the exact same value stack. What essentially is happening here is the main frame transfers control of the stack to the new frame, and once this second frame finishes it returns control of the stack with modifications from executing the function code to the initial frame.</p>
+<p>Then the Frame Object is evaluated through calling the <code>PyEval_EvalFrameEx</code> method (which is the same method that's been evaluating the initial main Frame Object). Both arguments are added and the remaining value is left on top of the value stack through a <code>BINARY_ADD</code>. Notice that since we've passed in the address of the value stack from the initial frame all of this is done on the exact same value stack. What essentially is happening here is the main frame transfers control of the stack to the new frame, and once this second frame finishes it returns control of the stack with modifications from executing the function code to the initial frame.</p>
 <p>The one opcode needing a bit of explanation here is the <code>RETURN_VALUE</code>, which grabs the top of the stack and executes a <code>fast_block_end</code> which kicks our result out to the caller. This is how the result of addition gets back out to our original frame.</p>
-<p>So now we find ourselves back in the <code>call_function</code> routine after returning the result from <code>fast_function</code>, the Interpreter executes this bit of code below to clean up the arguments and function still sitting on the value stack since they&rsquo;re no longer needed by simply running the stack pointer back to the pointer to the function we created earlier. This another reason why it was important to pass in the <code>stack_pointer</code> by reference, it gives the ability to do the cleanup work prior to returning to the <code>CALL_FUNCTION</code> opcode execution.</p>
+<p>So now we find ourselves back in the <code>call_function</code> routine after returning the result from <code>fast_function</code>, the Interpreter executes this bit of code below to clean up the arguments and function still sitting on the value stack since they're no longer needed by simply running the stack pointer back to the pointer to the function we created earlier. This another reason why it was important to pass in the <code>stack_pointer</code> by reference, it gives the ability to do the cleanup work prior to returning to the <code>CALL_FUNCTION</code> opcode execution.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -459,9 +459,9 @@ number of arguments for the function object as well as getting a handle to our <
 </span><span class="cm">       the arguments in case they weren&#39;t consumed already
 </span><span class="cm">       (fast_function() and err_args() leave them on the stack).
 </span><span class="cm">     */</span>
-    <span class="k">while</span> <span class="p">((</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">pfunc</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">EXT_POP</span><span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">);</span>
-        <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">w</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">pfunc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">EXT_POP</span><span class="p">(</span><span class="o">*</span><span class="n">pp_stack</span><span class="p">)</span><span class="p">;</span>
+        <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
 </code></pre></td></tr></table>
@@ -489,11 +489,11 @@ It looks like this:</p>
 <pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Bytecode object */</span>
 <span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
     <span class="n">PyObject_HEAD</span>
-    <span class="p">...</span>
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>
     <span class="n">PyObject</span> <span class="o">*</span><span class="n">co_code</span><span class="p">;</span>		<span class="cm">/* instruction opcodes */</span>
-    <span class="p">...</span>
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>
     <span class="n">PyObject</span> <span class="o">*</span><span class="n">co_varnames</span><span class="p">;</span>	<span class="cm">/* tuple of strings (local variable names) */</span>
-    <span class="p">...</span>                     <span class="c1">//Some other stuff
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>                     <span class="c1">//Some other stuff
 </span><span class="c1"></span><span class="p">}</span> <span class="n">PyCodeObject</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
@@ -526,18 +526,18 @@ will have its <code>fun.func_closure</code> set with tuple <code>(x, y, z)</code
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
-<span class="k">def</span> <span class="nf">f_factory</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">f_factory</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="p">:</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-    <span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="p">)</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span>
     <span class="k">return</span> <span class="n">fun</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">f_factory</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f_factory</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span><span class="p">(),</span> <span class="n">y</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">x</span><span class="p">(</span><span class="p">)</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>Therefore, please remember that:
@@ -559,9 +559,9 @@ will have its <code>fun.func_closure</code> set with tuple <code>(x, y, z)</code
     <span class="n">PyObject_HEAD</span>
     <span class="n">PyObject</span> <span class="o">*</span><span class="n">func_code</span><span class="p">;</span>	<span class="cm">/* A code object */</span>
     <span class="n">PyObject</span> <span class="o">*</span><span class="n">func_globals</span><span class="p">;</span>	<span class="cm">/* A dictionary (other mappings won&#39;t do) */</span>
-    <span class="p">...</span>
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>
     <span class="n">PyObject</span> <span class="o">*</span><span class="n">func_closure</span><span class="p">;</span>	<span class="cm">/* NULL or a tuple of cell objects */</span>
-    <span class="p">...</span>
+    <span class="p">.</span><span class="p">.</span><span class="p">.</span>
 <span class="p">}</span> <span class="n">PyFunctionObject</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
