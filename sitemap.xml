@@ -3,14 +3,56 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/interview/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/leetcode/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/leetcode/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/leetcode-contest-189/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2020-05-17T20:02:20-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,13 +66,6 @@
   
   <url>
     <loc>http://localhost:1313/tags/dp/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/categories/interview/</loc>
     <lastmod>2020-05-15T10:31:19-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -51,21 +86,7 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/tags/search/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2020-05-15T10:31:19-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
