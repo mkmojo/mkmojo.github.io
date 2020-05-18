@@ -50,7 +50,7 @@
 <meta itemprop="description" content="Solved three out of four problems. Did not have enough time for the last problem.">
 <meta itemprop="datePublished" content="2020-05-17T20:02:20-04:00" />
 <meta itemprop="dateModified" content="2020-05-17T20:02:20-04:00" />
-<meta itemprop="wordCount" content="1494">
+<meta itemprop="wordCount" content="1561">
 
 
 
@@ -131,7 +131,7 @@
             <a href="/categories/leetcode/"> leetcode </a>
             <a href="/categories/interview/"> interview </a>
             </div>
-          <span class="more-meta"> 1494 words </span>
+          <span class="more-meta"> 1561 words </span>
           <span class="more-meta"> 8 mins read </span>
         
       </div>
@@ -688,6 +688,10 @@ If I place one optimal circle's center point on top of the green arc, the optima
 </div><h3 id="angle-sweep-2">Angle Sweep 2</h3>
 <p>This is a simlar strategy, instead of drawing points on every dart and calculate overlapping arc.
 This approach pick a point, and put this point a the circumferance of the circle and measure the enter and exiting angle.</p>
+<p>The black angle is very easy to find by taking the <code>arctangen(dy, dx)</code> because P, Q are known points. 
+The red/blue angle is slightly harder to find. The trick is to realize that triangle PQF is a right angled trangle.
+As result will be able to find the angle of either blue or red by taking <code>arccos(|PQ|/2r)</code>.</p>
+<p><img src="/img/leetcode-contest-189/angle-sweep-2.png" alt="angle sweep 2"></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -727,7 +731,7 @@ This approach pick a point, and put this point a the circumferance of the circle
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    
+    <span class="c1"># black angle is `angle`, blue and red is `delta`.</span>
     <span class="k">def</span> <span class="nf">dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span><span class="p">:</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">dy</span> <span class="o">=</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
