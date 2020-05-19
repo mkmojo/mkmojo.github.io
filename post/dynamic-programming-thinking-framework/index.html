@@ -50,7 +50,7 @@
 <meta itemprop="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.">
 <meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="wordCount" content="2142">
+<meta itemprop="wordCount" content="2145">
 
 
 
@@ -131,7 +131,7 @@
             <a href="/categories/interview/"> Interview </a>
             <a href="/categories/dp/"> DP </a>
             </div>
-          <span class="more-meta"> 2142 words </span>
+          <span class="more-meta"> 2145 words </span>
           <span class="more-meta"> 11 mins read </span>
         
       </div>
@@ -144,7 +144,7 @@
   <ul>
     <li><a href="#search-101">Search 101</a></li>
     <li><a href="#recursion-with-overlapping-sub-problem">Recursion with overlapping sub-problem</a></li>
-    <li><a href="#dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</a></li>
+    <li><a href="#dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</a></li>
     <li><a href="#the-thinking-framework">The Thinking Framework</a></li>
     <li><a href="#top-down-vs-bottom-up">Top-down vs Bottom-up</a></li>
     <li><a href="#todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</a></li>
@@ -261,7 +261,7 @@ The core concepts are all from search. <code>state</code> is a search state, it 
 <p>If we draw the diagram, it will look like the following:</p>
 <p><img src="/img/recursion_tree_sub_problem.jpg" alt="recursion tree for overlapping subsubproblems"></p>
 <p>Notice that a regular search problem does not have overlapping subsubproblem does not qualify a DP problem because it cannot benefit from applying DP technique to avoid unnecessary re-computation.</p>
-<h2 id="dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</h2>
+<h2 id="dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</h2>
 <p>Since DP is just a technique that can be applied to avoid duplicate work when solving problems recursively. The key concepts are from search: state is a search state; state transion is how big problem breaks into smaller ones; finally base case are leaf level of recursion tree.</p>
 <p>The very thing that is <strong>unique to DP is the table/memo</strong> we used in our algorithm to avoid duplicate computation. Overlapping subproblem only needs to be solved once and used many times to construct solution to bigger problems. The answer of each search state can be saved aside and looked up when needed. Such space and computation trade off is core to every DP problem.</p>
 <p>When someone fails to solve a DP problem, it is most often due to not being able to solve the underlying search problem, instead of not being able to use a memo to save answer to every search stage. Utilizing memo on top of an already working search strategy is typically the easy part.</p>
