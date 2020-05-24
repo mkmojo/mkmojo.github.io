@@ -6,10 +6,22 @@
     <description>Recent content in Posts on A-ha - Michael&#39;s Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 May 2020 20:02:20 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 18:39:37 -0400</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode Contest 190</title>
+      <link>http://localhost:1313/post/leetcode-contest-190/</link>
+      <pubDate>Sun, 24 May 2020 18:39:37 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/leetcode-contest-190/</guid>
+      <description>What went well: I solved first three problems relatively quickly and have working intuition on the last problem.
+What did not go well:
+  problem 2 is a two pointer problem, I spent time implmenting the O(N^2) approach. This can be improlved by reason through the input size and do not settle for a inefficient solution.
+  problem 3 is a problem on trees. The algorithm I settled on computing all possible paths shows duplication paths.</description>
+    </item>
     
     <item>
       <title>Leetcode Contest 189</title>
