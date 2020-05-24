@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/leetcode/</loc>
+    <loc>http://localhost:1313/tags/leetcode/</loc>
     <lastmod>2020-05-17T20:02:20-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/leetcode/</loc>
+    <loc>http://localhost:1313/categories/leetcode/</loc>
     <lastmod>2020-05-17T20:02:20-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
