@@ -18,8 +18,8 @@
       
       <guid>http://localhost:1313/post/leetcode-weekly-contest-192/</guid>
       <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
-Problem Three: Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-Problem Four: Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
+3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
+4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
     </item>
     
     <item>
