@@ -1,0 +1,17 @@
+@startuml
+title Login with Google Design
+"Mobile App" -> "Google Auth Service": scope
+activate "Google Auth Service"
+"Google Auth Service" -> "Mobile App": auth_code, redirect_url
+deactivate "Google Auth Service"
+"Mobile App" -> "Flask Auth Service": auth_code
+
+activate "Flask Auth Service"
+"Flask Auth Service" -> "Google Auth Service": auth_code
+activate "Google Auth Service"
+"Google Auth Service" -> "Flask Auth Service": refresh_token, openId
+deactivate "Google Auth Service"
+"Flask Auth Service" -> "Mobile App": session_id 
+deactivate "Flask Auth Service"
+
+@enduml
