@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.0 with theme even" />
+<meta name="generator" content="Hugo 0.73.0 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/leetcode-weekly-contest-192/" />
@@ -149,8 +149,8 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#3-design-browser-historyhttpsleetcodecomproblemsdesign-browser-history">3. Design Browser History</a></li>
-    <li><a href="#4-paint-house-iiihttpsleetcodecomproblemspaint-house-iii">4. Paint House III</a></li>
+    <li><a href="#3-design-browser-historyhttpsleetcodecomproblemsdesign-browser-history"><a href="https://leetcode.com/problems/design-browser-history/">3. Design Browser History</a></a></li>
+    <li><a href="#4-paint-house-iiihttpsleetcodecomproblemspaint-house-iii"><a href="https://leetcode.com/problems/paint-house-iii/">4. Paint House III</a></a></li>
   </ul>
 </nav>
   </div>
@@ -197,35 +197,35 @@ on how to handle the house is already patined case. As result I was not able to 
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 6/7/2020</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 6/7/2020</span>
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">minCost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">houses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="p">,</span> <span class="n">cost</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="p">]</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">minCost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">houses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cost</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         
-        <span class="c1"># Paint ith house in color j, resulting in k groups.</span>
+        <span class="c1"># Paint ith house in color j, resulting in k groups.</span>
         <span class="nd">@functools.lru_cache</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
             
-            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;</span><span class="o">=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span>
             
             <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
         
-            <span class="k">if</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># color starts from 1</span>
+            <span class="k">if</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># color starts from 1</span>
                 <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
             
             <span class="n">prev_cost</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
-            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span>
-                    <span class="n">prev_cost</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">prev_cost</span><span class="p">,</span> <span class="n">search</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span><span class="p">)</span>
+                    <span class="n">prev_cost</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">prev_cost</span><span class="p">,</span> <span class="n">search</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">prev_cost</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">prev_cost</span><span class="p">,</span> <span class="n">search</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="p">)</span>
+                    <span class="n">prev_cost</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">prev_cost</span><span class="p">,</span> <span class="n">search</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
             
-            <span class="n">paint_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="ow">not</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">)</span>
+            <span class="n">paint_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="ow">not</span> <span class="n">houses</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
             
             <span class="k">return</span> <span class="n">paint_cost</span> <span class="o">+</span> <span class="n">prev_cost</span>
         
-        <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">&lt;</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 </code></pre></td></tr></table>
 </div>
@@ -253,7 +253,11 @@ on how to handle the house is already patined case. As result I was not able to 
           <a href="/tags/interview/">interview</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/sequence-diagram-test/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Sequence Diagram Test</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/leetcode-contest-190/">
             <span class="next-text nav-default">Leetcode Contest 190</span>
             <span class="next-text nav-mobile">Next</span>

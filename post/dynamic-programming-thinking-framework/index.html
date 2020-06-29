@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.0 with theme even" />
+<meta name="generator" content="Hugo 0.73.0 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/dynamic-programming-thinking-framework/" />
@@ -157,7 +157,7 @@
 <p>The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is difficult to solve because the state representation is hard to discover.</p>
 <p>Another reason is the <strong>lack of in depth discussion on the process</strong> of finding the correct state representation.
 For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the problem but none of the explanation talks about the process of finding the state representation in the first place at all. Instead they focus on discussing implementation details after state representation is found.</p>
-<p>I have not found too much material online discussing the state representation finding process so here we are. The remainder of the post presents a <strong>thinking framework</strong> to help you tackle DP problems systematically. The same framework is also useful when evaluating other people's DP solutions.</p>
+<p>I have not found too much material online discussing the state representation finding process so here we are. The remainder of the post presents a <strong>thinking framework</strong> to help you tackle DP problems systematically. The same framework is also useful when evaluating other people&rsquo;s DP solutions.</p>
 <h2 id="search-101">Search 101</h2>
 <p>Let us solve a search problem together to demonstrate the thinking process.
 I will explaine later why we need to take this segway on search, it will become clear very soon.</p>
@@ -206,13 +206,13 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step1: Create main recursion logic.</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="p">:</span>
-    <span class="c1"># ... base case</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step1: Create main recursion logic.</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># ... base case</span>
 
     <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="p">,</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
 </code></pre></td></tr></table>
 </div>
@@ -235,8 +235,8 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step2: Add base case handling.</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="p">:</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step2: Add base case handling.</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     
@@ -244,8 +244,8 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
         <span class="k">return</span> <span class="mi">0</span>
 
     <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="p">,</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
 </code></pre></td></tr></table>
 </div>
@@ -292,8 +292,8 @@ The core concepts are all from search. <code>state</code> is a search state, it 
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step 3: Add memo to avoid duplicate computation</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span><span class="p">:</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step 3: Add memo to avoid duplicate computation</span>
+<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
 
@@ -304,20 +304,20 @@ The core concepts are all from search. <code>state</code> is a search state, it 
         <span class="k">return</span> <span class="mi">0</span>
 
     <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="p">,</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
+            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
     
     <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">cnt_level_total_cost</span>
 
     <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">notation</span><span class="p">(</span><span class="n">arr</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">notation</span><span class="p">(</span><span class="n">arr</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>With the above, we have produced a dynamic programming solution to the problem.</p>
 <h2 id="the-thinking-framework">The Thinking Framework</h2>
-<p>Let's summarize what we have learned.</p>
+<p>Let&rsquo;s summarize what we have learned.</p>
 <ul>
 <li>Only those search problems with overlapping subproblems can benefit from DP techinque.</li>
 <li>How to define search state is highly up to each problem solver, this is also why same problem can have very different DP strategy due caused by different state representation.</li>
@@ -355,12 +355,12 @@ For this particular example, a bottom up version would be:</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># bottom up approach</span>
-<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="p">:</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># bottom up approach</span>
+<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
     <span class="n">notation</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">notation</span><span class="p">)</span><span class="p">)</span><span class="p">:</span>
-        <span class="n">notation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="p">,</span> <span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">notation</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">notation</span><span class="p">)):</span>
+        <span class="n">notation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">notation</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)]</span>
 </code></pre></td></tr></table>
 </div>
 </div><!-- raw HTML omitted -->
