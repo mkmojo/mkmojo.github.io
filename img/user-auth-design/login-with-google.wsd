@@ -1,17 +1,39 @@
 @startuml
 title Login with Google Design
-"Mobile App" -> "Google Auth Service": scope
-activate "Google Auth Service"
-"Google Auth Service" -> "Mobile App": auth_code, redirect_url
-deactivate "Google Auth Service"
-"Mobile App" -> "Flask Auth Service": auth_code
-
+"Mobile App Browser" -> "Flask Auth Service" : A.1 start auth process
 activate "Flask Auth Service"
-"Flask Auth Service" -> "Google Auth Service": auth_code
-activate "Google Auth Service"
-"Google Auth Service" -> "Flask Auth Service": refresh_token, openId
-deactivate "Google Auth Service"
-"Flask Auth Service" -> "Mobile App": session_id 
+note right
+create random(v)
+$ = sha256(v)
+end note
+"Mobile App Browser" <- "Flask Auth Service": A.2 redirect, redirect_url with $
+note left: store $
 deactivate "Flask Auth Service"
+
+
+"Mobile App Browser" -> "Google Auth Service": A.3 redirect to redirect_url with $
+activate "Google Auth Service"
+note right: store $
+"User" <- "Google Auth Service": A.4 present login page
+
+activate "User"
+"User" -> "Google Auth Service": A.5 grant permission
+deactivate "User"
+"Mobile App Browser" <- "Google Auth Service" : A.6 redirect to Flask with auth_code
+deactivate "Google Auth Service"
+"Mobile App Browser" -> "Flask Auth Service" : A.7 redirect to Flask with auth_code
+note right: verifiy $
+|||
+|||
+"Flask Auth Service" -> "Google Auth Service": B.1 exchange auth_code for (openid, refresh_token)
+note right
+    validate auth code
+end note
+"Google Auth Service" -> "Flask Auth Service": B.2 return (openid, refresh_token)
+note left
+    openid, refresh_token
+    register session_id
+end note
+"Flask Auth Service" -> "Mobile App Browser": session_id, close browser
 
 @enduml
