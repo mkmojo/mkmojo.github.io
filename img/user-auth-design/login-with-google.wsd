@@ -2,13 +2,13 @@
 skinparam SequenceMessageAlignment center
 
 title Sign-in with Google Design (Auth code with PKCE flow)
-"Mobile App Browser" -> "Mobile App Browser" : A.1 handler for Login with Google Button 
+"Mobile App Browser" -> "Mobile App Browser" : A.1 request authentication...
 note left
 create random(v)
 $ = sha256(v)
 end note
 
-"Mobile App Browser" -> "Google Auth Service": A.2 ...to Google Login with $
+"Mobile App Browser" -> "Google Auth Service": A.2 ...at Google Login with $
 activate "Google Auth Service"
 note right: store $
 "Mobile App Browser" <- "Google Auth Service": A.3 returns login page
@@ -16,12 +16,12 @@ note right: store $
 activate "Mobile App Browser"
 "Mobile App Browser" -> "Google Auth Service": A.4 submits credentials
 deactivate "Mobile App Browser"
-"Mobile App Browser" <- "Google Auth Service" : A.5 deep link to App with auth_code
+"Mobile App Browser" <- "Google Auth Service" : A.5 return deep link to App with auth_code
 deactivate "Google Auth Service"
 |||
 |||
-"Mobile App Browser" -> "Flask Auth Service" : B.1 request token with (auth_code, v)
-"Flask Auth Service" -> "Google Auth Service": B.2 exchange auth_code for (openid, refresh_token)
+"Mobile App Browser" -> "Flask Auth Service" : B.1 request token with (v, auth_code)
+"Flask Auth Service" -> "Google Auth Service": B.2 exchange for token with (client_id, v, auth_code)
 note left
     validate 
     - client id
@@ -33,6 +33,9 @@ note right
     openid, refresh_token
     register session_id
 end note
-"Flask Auth Service" -> "Mobile App Browser": B.4 session_id, close browser(via Deeplink handler)
+"Flask Auth Service" -> "Mobile App Browser": B.4 session_id
+note left
+close browser(via Deeplink handler)
+end note
 
 @enduml
