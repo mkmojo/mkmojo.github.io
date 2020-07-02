@@ -33,6 +33,6 @@ note right
     openid, refresh_token
     register session_id
 end note
-"Flask Auth Service" -> "Mobile App Browser": session_id, close browser(via Deeplink handler)
+"Flask Auth Service" -> "Mobile App Browser": B.4 session_id, close browser(via Deeplink handler)
 
 @enduml
