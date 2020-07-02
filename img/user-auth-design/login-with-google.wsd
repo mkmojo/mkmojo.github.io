@@ -18,17 +18,17 @@ activate "Mobile App Browser"
 deactivate "Mobile App Browser"
 "Mobile App Browser" <- "Google Auth Service" : A.5 deep link to App with auth_code
 deactivate "Google Auth Service"
-"Mobile App Browser" -> "Flask Auth Service" : A.6 request token with (auth_code, v)
 |||
 |||
-"Flask Auth Service" -> "Google Auth Service": B.1 exchange auth_code for (openid, refresh_token)
+"Mobile App Browser" -> "Flask Auth Service" : B.1 request token with (auth_code, v)
+"Flask Auth Service" -> "Google Auth Service": B.2 exchange auth_code for (openid, refresh_token)
 note left
     validate 
     - client id
     - client secret: $ = sha256(v)
     - auth_code
 end note
-"Google Auth Service" -> "Flask Auth Service": B.2 return (openid, refresh_token)
+"Google Auth Service" -> "Flask Auth Service": B.3 return (openid, refresh_token)
 note right
     openid, refresh_token
     register session_id
