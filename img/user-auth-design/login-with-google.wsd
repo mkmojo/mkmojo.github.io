@@ -1,39 +1,44 @@
 @startuml
-title Login with Google Design
-"Mobile App Browser" -> "Flask Auth Service" : A.1 start auth process
+skinparam SequenceMessageAlignment center
+
+title Sign-in with Google Design (Auto code with PKCE flow)
+"Mobile App Browser" -> "Flask Auth Service" : A.1 handler for Login with Google Button 
 activate "Flask Auth Service"
 note right
 create random(v)
 $ = sha256(v)
 end note
-"Mobile App Browser" <- "Flask Auth Service": A.2 redirect, redirect_url with $
+"Mobile App Browser" <- "Flask Auth Service": A.2 redirect...
 note left: store $
 deactivate "Flask Auth Service"
 
 
-"Mobile App Browser" -> "Google Auth Service": A.3 redirect to redirect_url with $
+"Mobile App Browser" -> "Google Auth Service": A.3 ...to Google Login with $
 activate "Google Auth Service"
 note right: store $
-"User" <- "Google Auth Service": A.4 present login page
+"User" <- "Google Auth Service": A.4 returns login page
 
 activate "User"
-"User" -> "Google Auth Service": A.5 grant permission
+"User" -> "Google Auth Service": A.5 submits credentials
 deactivate "User"
-"Mobile App Browser" <- "Google Auth Service" : A.6 redirect to Flask with auth_code
+"Mobile App Browser" <- "Google Auth Service" : A.6 redirect ...
 deactivate "Google Auth Service"
-"Mobile App Browser" -> "Flask Auth Service" : A.7 redirect to Flask with auth_code
+"Mobile App Browser" -> "Flask Auth Service" : A.7 ... to App with auth_code
 note right: verifiy $
 |||
 |||
 "Flask Auth Service" -> "Google Auth Service": B.1 exchange auth_code for (openid, refresh_token)
 note right
-    validate auth code
+    validate 
+    - client id
+    - client secret
+    - auth_code
 end note
 "Google Auth Service" -> "Flask Auth Service": B.2 return (openid, refresh_token)
 note left
     openid, refresh_token
     register session_id
 end note
-"Flask Auth Service" -> "Mobile App Browser": session_id, close browser
+"Flask Auth Service" -> "Mobile App Browser": session_id, close browser(via Deeplink handler)
 
 @enduml
