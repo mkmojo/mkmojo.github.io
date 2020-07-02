@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on A-ha - Michael&#39;s Personal Blog</title>
+    <link>http://localhost:1313/tags/rust/</link>
+    <description>Recent content in Rust on A-ha - Michael&#39;s Personal Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 18 Jan 2019 23:34:52 -0500</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why is Rust Interesting</title>
+      <link>http://localhost:1313/post/why_is_rust_interesting/</link>
+      <pubDate>Fri, 18 Jan 2019 23:34:52 -0500</pubDate>
+      
+      <guid>http://localhost:1313/post/why_is_rust_interesting/</guid>
+      <description>Why is Rust Interesting?
+ Ownership statically figure out Who owns what and when you (the tread of control) own the memory that you are dealing with and when you don&amp;rsquo;t.  And when you are done with this, the compiler will take care of freeing this piece of memory for you.
+There is no need for free in Rust.
+Memory is allocated for you and it is freed when you are done using it.</description>
+    </item>
+    
+  </channel>
+</rss>

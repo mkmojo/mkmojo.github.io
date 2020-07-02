@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authorization on A-ha - Michael&#39;s Personal Blog</title>
+    <link>http://localhost:1313/categories/authorization/</link>
+    <description>Recent content in Authorization on A-ha - Michael&#39;s Personal Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 07 Jun 2020 13:39:38 -0400</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/authorization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mobile App Oauth and OpenID Connect</title>
+      <link>http://localhost:1313/post/mobile-app-oauth-and-oidc/</link>
+      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/mobile-app-oauth-and-oidc/</guid>
+      <description>Design goal: This SO question is almost all I need, only that I am doing this for a mobile app Web and Mobile client Flask API(middle tier) Session management use two tokens short lived and long lived. After user has logged each subseuqnce api call should use JWT Mobile app use native view to perform third party login(Google/Facebook). User only needs to log in on third party once, and no</description>
+    </item>
+    
+  </channel>
+</rss>

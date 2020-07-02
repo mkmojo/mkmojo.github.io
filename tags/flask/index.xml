@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flask on A-ha - Michael&#39;s Personal Blog</title>
+    <link>http://localhost:1313/tags/flask/</link>
+    <description>Recent content in flask on A-ha - Michael&#39;s Personal Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 May 2020 09:06:22 -0400</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>React Nginx Flask Docker</title>
+      <link>http://localhost:1313/post/react-nginx-flask-docker/</link>
+      <pubDate>Fri, 15 May 2020 09:06:22 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/react-nginx-flask-docker/</guid>
+      <description>Building a BBS with modern tech stack I want to create project. Decided to use react as front end and flask as backend. Made some mistake before getting my desired requirements:
+ Hot reload when developing Deployment to Azure/GCP/AWS CD/CI set up  Docker as description on Kernel Dockerfile is a description on how to creat a process. Logically the process has only one software and the kernel itself.
+Human Develops vs.</description>
+    </item>
+    
+  </channel>
+</rss>
