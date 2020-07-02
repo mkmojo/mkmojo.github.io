@@ -1,7 +1,7 @@
 @startuml
 skinparam SequenceMessageAlignment center
 
-title Sign-in with Google Design (Auto code with PKCE flow)
+title Sign-in with Google Design (Auth code with PKCE flow)
 "Mobile App Browser" -> "Mobile App Browser" : A.1 handler for Login with Google Button 
 note left
 create random(v)
