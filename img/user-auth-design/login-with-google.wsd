@@ -9,13 +9,12 @@ $ = sha256(v)
 end note
 
 "Mobile App Browser" -> "Google Auth Service": A.2 ...at Google Login with $
-activate "Google Auth Service"
 note right: store $
-"Mobile App Browser" <- "Google Auth Service": A.3 returns login page
-
-activate "Mobile App Browser"
-"Mobile App Browser" -> "Google Auth Service": A.4 submits credentials
-deactivate "Mobile App Browser"
+activate "Google Auth Service"
+"User" <- "Google Auth Service": A.3 returns login page
+activate "User"
+"User" -> "Google Auth Service": A.4 submits credentials
+deactivate "User"
 "Mobile App Browser" <- "Google Auth Service" : A.5 return deep link to App with auth_code
 deactivate "Google Auth Service"
 |||
