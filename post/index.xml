@@ -6,19 +6,10 @@
     <description>Recent content in Posts on A-ha - Michael&#39;s Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2020 13:11:35 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 12:57:49 -0400</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Sequence Diagram Test</title>
-      <link>http://localhost:1313/post/sequence-diagram-test/</link>
-      <pubDate>Mon, 29 Jun 2020 13:11:35 -0400</pubDate>
-      
-      <guid>http://localhost:1313/post/sequence-diagram-test/</guid>
-      <description>Diagram 1 2 3 4  Andrew-&amp;gt;China: Says Hello Note right of China: China thinks\nabout it China--&amp;gt;Andrew: How are you? Andrew-&amp;gt;&amp;gt;China: I am good thanks!   1  print(&amp;#39;hello_world&amp;#39;)   1  //The bug is in hugo code gen   </description>
-    </item>
     
     <item>
       <title>Leetcode Weekly Contest 192</title>
