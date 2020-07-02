@@ -83,7 +83,7 @@ print add(1,2)
 ">
 <meta itemprop="datePublished" content="2014-11-02T12:08:20-05:00" />
 <meta itemprop="dateModified" content="2014-11-02T12:08:20-05:00" />
-<meta itemprop="wordCount" content="2042">
+<meta itemprop="wordCount" content="2029">
 
 
 
@@ -179,7 +179,7 @@ print add(1,2)
         <div class="post-category">
             <a href="/categories/tutorial/"> Tutorial </a>
             </div>
-          <span class="more-meta"> 2042 words </span>
+          <span class="more-meta"> 2029 words </span>
           <span class="more-meta"> 10 mins read </span>
         
       </div>
@@ -209,25 +209,8 @@ print add(1,2)
 </code></pre></td></tr></table>
 </div>
 </div><p>Corresponding bytecode for the above source is:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">python -m dis test.py
-  1           0 LOAD_CONST               0 (&lt;code object add at 0x6ffffe2fa30, file &#34;test.py&#34;, line 1&gt;)
+<pre><code>python -m dis test.py
+  1           0 LOAD_CONST               0 (&lt;code object add at 0x6ffffe2fa30, file &quot;test.py&quot;, line 1&gt;)
               3 MAKE_FUNCTION            0
               6 STORE_NAME               0 (add)
 
@@ -239,9 +222,7 @@ print add(1,2)
              22 PRINT_NEWLINE
              23 LOAD_CONST               3 (None)
              26 RETURN_VALUE
-</code></pre></td></tr></table>
-</div>
-</div><p>The disassembled bytecode of the code object on line 1 above is:</p>
+</code></pre><p>The disassembled bytecode of the code object on line 1 above is:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

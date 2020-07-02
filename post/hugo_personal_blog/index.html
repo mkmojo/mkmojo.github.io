@@ -50,7 +50,7 @@
 <meta itemprop="description" content="I plan to write more in 2019. As the result I have resurrected my personal site.">
 <meta itemprop="datePublished" content="2019-01-09T16:50:46-05:00" />
 <meta itemprop="dateModified" content="2019-01-09T16:50:46-05:00" />
-<meta itemprop="wordCount" content="581">
+<meta itemprop="wordCount" content="576">
 
 
 
@@ -128,7 +128,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-01-09 </span>
         
-          <span class="more-meta"> 581 words </span>
+          <span class="more-meta"> 576 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -192,21 +192,11 @@ Instead, I would mention things that I did differently during set-up.</p>
 <h2 id="workflow">Workflow</h2>
 <p>Once went through the references, we are ready to create contents.
 The workflow is</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo new post/&lt;post_name&gt;.md
+<pre><code>hugo new post/&lt;post_name&gt;.md
 hugo server -D --watch
 # maybe update sources in blog folder
 ./deploy.sh
-</code></pre></td></tr></table>
-</div>
-</div><ol>
+</code></pre><ol>
 <li>Spin up local server</li>
 <li>Write post</li>
 <li>Deploy to Github with script</li>
@@ -214,15 +204,8 @@ hugo server -D --watch
 <h2 id="error">Error</h2>
 <p>Run into a problem when themes <code>even</code> is not cloned locally into the themes/themesname.
 The solution is to clonet the theme locally</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone https://github.com/olOwOlo/hugo-theme-even themes/even
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="todo">TODO</h2>
+<pre><code>git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+</code></pre><h2 id="todo">TODO</h2>
 <p>There are some smaller things I would like to tune:</p>
 <ol>
 <li>Create a more accurate about page.</li>
