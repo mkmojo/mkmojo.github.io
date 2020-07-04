@@ -6,10 +6,19 @@
     <description>Recent content on A-ha - Michael&#39;s Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jun 2020 12:57:49 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 13:39:38 -0400</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mobile App OAuth and OpenID Connect</title>
+      <link>http://localhost:1313/post/mobile-app-oauth-and-oidc/</link>
+      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/mobile-app-oauth-and-oidc/</guid>
+      <description>Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates</description>
+    </item>
     
     <item>
       <title>Leetcode Weekly Contest 192</title>
