@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates">
 <meta itemprop="datePublished" content="2020-06-07T13:39:38-04:00" />
 <meta itemprop="dateModified" content="2020-06-07T13:39:38-04:00" />
-<meta itemprop="wordCount" content="1120">
+<meta itemprop="wordCount" content="1135">
 
 
 
@@ -131,7 +131,7 @@
             <a href="/categories/authentication/"> Authentication </a>
             <a href="/categories/authorization/"> Authorization </a>
             </div>
-          <span class="more-meta"> 1120 words </span>
+          <span class="more-meta"> 1135 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -191,6 +191,7 @@ This is a shared service and because session is so commonly used, in memory db (
 When user logged out the session objected is removed. Session management is essentially user state management.</p>
 <h3 id="stateful-or-stateless-sessions">Stateful or stateless sessions</h3>
 <p>Worth noting JWT token does not mean it cannot use a stateful session. JWT and stateful session can co-exist. Just that stateful session with JWT means the JWT token will have a field called <code>session_id</code> vs saving everything in the JWT token. See more here: <a href="http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/">Stop using JWT for sessions management</a></p>
+<p>If product needs to support login from multiple device, token based solution cannot support this.</p>
 <h3 id="scaling-stateful-sessions">Scaling stateful sessions</h3>
 <p>Depending on the total number of users, scaling stateful sessions(<a href="http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/">from joepie91</a>):</p>
 <ul>
@@ -247,7 +248,7 @@ The high level idea is having Google act as a third party trusted by both the us
 <img src="/img/user-auth-design/pkce_sequence_diagram.svg" alt="image"></p>
 <p>The <code>client.com</code> here is equivalent to my backend service. The <code>as.com</code> here is equivalent to Google&rsquo;s auth service.</p>
 <h3 id="sequence-diagram-for-my-application">Sequence Diagram For My Application</h3>
-<p>This is the second diagram for my <a href="https://developers.google.com/identity/protocols/oauth2/native-app">Google&rsquo;s OCID process</a>:
+<p>This is the second diagram for my <a href="https://developers.google.com/identity/protocols/oauth2/native-app">Google&rsquo;s OIDC process</a>:
 <img src="/img/user-auth-design/login-with-google/login-with-google-v5.svg" alt="image"></p>
 <p>A.1 &amp; A.2 is specific to <a href="https://oauth.net/2/pkce/">PKCE</a>. This part generates a <code>verifier</code> at the backend side. And sendback <code>code challange = sha256(verifier)</code> to mobile devices&rsquo; browser.</p>
 <p>Then(A.3 to A.6) the control is redirected from mobile browser to make a GET request to Google&rsquo;s auth service. 
