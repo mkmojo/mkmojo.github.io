@@ -1,0 +1,42 @@
+@startuml
+skinparam SequenceMessageAlignment center
+
+title Sign-in with Google Design (Auth code with PKCE flow)
+"Mobile App Browser" -> "Flask Auth Service" : A.1 request authentication...
+note right
+create random(v)
+$ = sha256(v)
+end note
+"Mobile App Browser" <- "Flask Auth Service" : A.2 redirect ...
+note left: forward $
+
+"Mobile App Browser" -> "Google Auth Service": A.3 ...at Google Login with $
+note right: store $
+activate "Google Auth Service"
+"User" <- "Google Auth Service": A.4 returns login page
+activate "User"
+"User" -> "Google Auth Service": A.5 submits credentials
+deactivate "User"
+"Mobile App Browser" <- "Google Auth Service" : A.6 return deep link to App with auth_code
+deactivate "Google Auth Service"
+|||
+|||
+"Mobile App Browser" -> "Flask Auth Service" : B.1 redirect with auth_code
+"Flask Auth Service" -> "Google Auth Service": B.2 exchange for token with (client_id, v, auth_code)
+note right
+    validate 
+    - client id
+    - $ == sha256(v)
+    - auth_code
+end note
+"Google Auth Service" -> "Flask Auth Service": B.3 return (openid, access_token, refresh_token)
+note left
+    openid, refresh_token
+    register session_id
+end note
+"Flask Auth Service" -> "Mobile App Browser": B.4 session_id
+note left
+close browser(via Deeplink handler)
+end note
+
+@enduml

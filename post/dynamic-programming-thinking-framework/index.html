@@ -50,7 +50,7 @@
 <meta itemprop="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.">
 <meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="wordCount" content="2142">
+<meta itemprop="wordCount" content="2098">
 
 
 
@@ -131,8 +131,8 @@
             <a href="/categories/interview/"> Interview </a>
             <a href="/categories/dp/"> DP </a>
             </div>
-          <span class="more-meta"> 2142 words </span>
-          <span class="more-meta"> 11 mins read </span>
+          <span class="more-meta"> 2098 words </span>
+          <span class="more-meta"> 10 mins read </span>
         
       </div>
     </header>
@@ -144,7 +144,7 @@
   <ul>
     <li><a href="#search-101">Search 101</a></li>
     <li><a href="#recursion-with-overlapping-sub-problem">Recursion with overlapping sub-problem</a></li>
-    <li><a href="#dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</a></li>
+    <li><a href="#dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</a></li>
     <li><a href="#the-thinking-framework">The Thinking Framework</a></li>
     <li><a href="#top-down-vs-bottom-up">Top-down vs Bottom-up</a></li>
     <li><a href="#todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</a></li>
@@ -194,62 +194,30 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
 <p>notation(n) = <strong>min(</strong> notation(n-1) + height_n-1, notation(n-2) + height_n-2 <strong>)</strong></p>
 </blockquote>
 <p>At this stage, we can write our core logic for the search strategy:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step1: Create main recursion logic.</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="c1"># ... base case</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Step1: Create main recursion logic.</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">notation</span>(arr, n):
+    <span style="color:#75715e"># ... base case</span>
 
-    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>This part we just finished is the so called <code>state transition</code>. This is the typically the most logic heavy part of every DP problem. The key operation here is the <code>min</code>. Because our strategy makes a deliverate choice at every single recursion level, as the result our top level answer will be the overall minimized cost. <strong>This decision making at each recursion level is another key question you alwasy want to ask yourself when solving any DP problem.</strong></p>
+    cnt_level_total_cost <span style="color:#f92672">=</span> \
+        min(notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>], \
+            notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
+    <span style="color:#66d9ef">return</span> cnt_level_total_cost
+</code></pre></div><p>This part we just finished is the so called <code>state transition</code>. This is the typically the most logic heavy part of every DP problem. The key operation here is the <code>min</code>. Because our strategy makes a deliverate choice at every single recursion level, as the result our top level answer will be the overall minimized cost. <strong>This decision making at each recursion level is another key question you alwasy want to ask yourself when solving any DP problem.</strong></p>
 <p>Now with the <code>state transition</code> in place, we will be able to rewrite a bigger sized problem into a smaller sized problem.</p>
 <p>We can do this at each recursion level and the problem size will eventualy be so small that solving it becomes very trivial. For instance, of this very problem. We can reduce the problem into base case when we have only the 0th or 1st pillar to land on. For palyer to land on 0th position, <code>notation(0) = 0</code> because we can start at 0th position. For player to land on 1st position, <code>notation(1) = 0</code> because player can also start at 1st position. Such process is called <code>base case/initial state</code>. So the code then becomes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step2: Add base case handling.</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Step2: Add base case handling.</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">notation</span>(arr, n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
     
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
-    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">cnt_level_total_cost</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>At this point you have finished a recursive version of the solution.</p>
+    cnt_level_total_cost <span style="color:#f92672">=</span> \
+        min(notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>], \
+            notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
+    <span style="color:#66d9ef">return</span> cnt_level_total_cost
+</code></pre></div><p>At this point you have finished a recursive version of the solution.</p>
 <p>Notice that during the process of developing a working solution to this problem, we did not mention anything about DP.
 The core concepts are all from search. <code>state</code> is a search state, it is a collection of information we want to maintain at each recursion level. <code>state transition</code> is about how to express a big problem state in terms of smaller problem state. Finally <code>base case</code> is the leaf level of recursion tree.</p>
 <blockquote>
@@ -261,61 +229,34 @@ The core concepts are all from search. <code>state</code> is a search state, it 
 <p>If we draw the diagram, it will look like the following:</p>
 <p><img src="/img/recursion_tree_sub_problem.jpg" alt="recursion tree for overlapping subsubproblems"></p>
 <p>Notice that a regular search problem does not have overlapping subsubproblem does not qualify a DP problem because it cannot benefit from applying DP technique to avoid unnecessary re-computation.</p>
-<h2 id="dp--leverage-table-to-reuse-work">DP = leverage table to reuse work</h2>
+<h2 id="dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</h2>
 <p>Since DP is just a technique that can be applied to avoid duplicate work when solving problems recursively. The key concepts are from search: state is a search state; state transion is how big problem breaks into smaller ones; finally base case are leaf level of recursion tree.</p>
 <p>The very thing that is <strong>unique to DP is the table/memo</strong> we used in our algorithm to avoid duplicate computation. Overlapping subproblem only needs to be solved once and used many times to construct solution to bigger problems. The answer of each search state can be saved aside and looked up when needed. Such space and computation trade off is core to every DP problem.</p>
 <p>When someone fails to solve a DP problem, it is most often due to not being able to solve the underlying search problem, instead of not being able to use a memo to save answer to every search stage. Utilizing memo on top of an already working search strategy is typically the easy part.</p>
 <p>As result, when pracitcing, we should spend most of the time thinking about how to break problem down into disjoint subproblems.</p>
 <p>For our example search problem that is DP eligible(because of overlapping subproblem), wen can mechnically apply memorization like the following:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Step 3: Add memo to avoid duplicate computation</span>
-<span class="k">def</span> <span class="nf">notation</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Step 3: Add memo to avoid duplicate computation</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">notation</span>(arr, n, memo):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">in</span> memo:
+        <span style="color:#66d9ef">return</span> memo[n]
 
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
     
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
-    <span class="n">cnt_level_total_cost</span> <span class="o">=</span> \
-        <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> \
-            <span class="n">notation</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    cnt_level_total_cost <span style="color:#f92672">=</span> \
+        min(notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>], \
+            notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
     
-    <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">cnt_level_total_cost</span>
+    memo[n] <span style="color:#f92672">=</span> cnt_level_total_cost
 
-    <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span style="color:#66d9ef">return</span> memo[n]
 
-<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">notation</span><span class="p">(</span><span class="n">arr</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>With the above, we have produced a dynamic programming solution to the problem.</p>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jump_cost</span>(arr):
+    <span style="color:#66d9ef">return</span> notation(arr <span style="color:#f92672">+</span> [<span style="color:#ae81ff">0</span>], len(arr))
+</code></pre></div><p>With the above, we have produced a dynamic programming solution to the problem.</p>
 <h2 id="the-thinking-framework">The Thinking Framework</h2>
 <p>Let&rsquo;s summarize what we have learned.</p>
 <ul>
@@ -345,25 +286,13 @@ Top is the start of recursion tree, bottom is the leaf level of recursion tree.<
 Bottom up means starting out from the base case to build answer up to the original problem.</p>
 <p>We can convert the above top down approach to a bottom up one and vise-versa. The only trick here is to start from initial state and compose the answer using already solved sub problme.
 For this particular example, a bottom up version would be:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># bottom up approach</span>
-<span class="k">def</span> <span class="nf">jump_cost</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-    <span class="n">notation</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">notation</span><span class="p">)):</span>
-        <span class="n">notation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">notation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">notation</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)]</span>
-</code></pre></td></tr></table>
-</div>
-</div><!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># bottom up approach</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jump_cost</span>(arr):
+    notation <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (len(arr) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, len(notation)):
+        notation[i] <span style="color:#f92672">=</span> min(notation[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> arr[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], notation[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> arr[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>])
+    <span style="color:#66d9ef">return</span> notation[len(arr)]
+</code></pre></div><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -404,7 +333,11 @@ For this particular example, a bottom up version would be:</p>
           <a href="/tags/memo/">memo</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/leetcode-contest-189/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Leetcode Contest 189</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/hugo_personal_blog/">
             <span class="next-text nav-default">Hugo for Personal Website</span>
             <span class="next-text nav-mobile">Next</span>
@@ -470,10 +403,11 @@ For this particular example, a bottom up version would be:</p>
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
 
 
 

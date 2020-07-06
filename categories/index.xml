@@ -6,10 +6,55 @@
     <description>Recent content in Categories on A-ha - Michael&#39;s Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 15 May 2020 10:31:19 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 13:39:38 -0400</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Authentication</title>
+      <link>http://localhost:1313/categories/authentication/</link>
+      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
+      
+      <guid>http://localhost:1313/categories/authentication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authorization</title>
+      <link>http://localhost:1313/categories/authorization/</link>
+      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
+      
+      <guid>http://localhost:1313/categories/authorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>User</title>
+      <link>http://localhost:1313/categories/user/</link>
+      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
+      
+      <guid>http://localhost:1313/categories/user/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interview</title>
+      <link>http://localhost:1313/categories/interview/</link>
+      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
+      
+      <guid>http://localhost:1313/categories/interview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>http://localhost:1313/categories/leetcode/</link>
+      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
+      
+      <guid>http://localhost:1313/categories/leetcode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>DP</title>
@@ -17,15 +62,6 @@
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
       
       <guid>http://localhost:1313/categories/dp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Interview</title>
-      <link>http://localhost:1313/categories/interview/</link>
-      <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
-      <guid>http://localhost:1313/categories/interview/</guid>
       <description></description>
     </item>
     
