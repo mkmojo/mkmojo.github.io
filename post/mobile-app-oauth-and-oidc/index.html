@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.70.0 with theme even" />
+<meta name="generator" content="Hugo 0.73.0 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/mobile-app-oauth-and-oidc/" />
@@ -172,22 +172,22 @@ I did not find exactly what I need so I am writing this down for my future self.
 </ol>
 <!-- raw HTML omitted -->
 <h2 id="application-architecture">Application Architecture</h2>
-<p>We organize backend services by their responsibilitys.
+<p>We organize backend services by their responsibilitys. 
 Services communicates with each other via RPC(either HTTP, Thrift, or flatbuffer).</p>
 <p>For all requests coming from front end, load balancer will redirect it to designated host machine.
 When there is too much load, need to enable sticky session at load balancer level.</p>
-<p><code>Auth Service</code> will be responsible for authentication(authN) and authorization(authZ).
+<p><code>Auth Service</code> will be responsible for authentication(authN) and authorization(authZ). 
 We are going to have a db to save all our user related data. Since we need reliablity SQL db(Postgres) is used.</p>
 <p><code>Post Service</code> will be responsible for other post related CRUD operation. We can use NOSQL or SQL whichever is more convenient.</p>
 <p><code>Logging Service</code> is responsible for monitoring the whole application. Since this is a write heavy service, we may endup using NOSQL.</p>
-<p><code>Session Service</code> will be responsible for managing all user sessions(Create, Read, Update, Delete).
+<p><code>Session Service</code> will be responsible for managing all user sessions(Create, Read, Update, Delete). 
 This is a shared service and because session is so commonly used, in memory db (like Redis) is used.</p>
 <p>I plan to add <code>Newsfeed Service</code> to be responsible for ranking user posts.</p>
 <p><img src="/img/user-auth-design/service-architecture.png" alt="image"></p>
 <h2 id="login-and-sessions">Login and sessions?</h2>
 <p>Login is inherently a user state. Session is the data structure that embodies this state.</p>
 <p>In order to offer stateful experience(e.g. serve personalized content) on top of a stateless protocol(HTTP), our backend needs to persist user state. Such state is called session and is persisted in either backend&rsquo;s memory or database across requests.</p>
-<p>In this context, when we say user is logged in, we really mean there is a session object in our system.
+<p>In this context, when we say user is logged in, we really mean there is a session object in our system. 
 When user logged out the session objected is removed. Session management is essentially user state management.</p>
 <h3 id="stateful-or-stateless-sessions">Stateful or stateless sessions</h3>
 <p>Worth noting JWT token does not mean it cannot use a stateful session. JWT and stateful session can co-exist. Just that stateful session with JWT means the JWT token will have a field called <code>session_id</code> vs saving everything in the JWT token. See more here: <a href="http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/">Stop using JWT for sessions management</a></p>
@@ -205,7 +205,7 @@ When user logged out the session objected is removed. Session management is esse
 </blockquote>
 <h2 id="sign-in-with-google">Sign in with Google</h2>
 <p>To support sign in with Google means to create a session and assign a <code>session_id</code> for a user that owns a Google account.</p>
-<p>To achieve, I need to rely on OpenID Connect protocol.
+<p>To achieve, I need to rely on OpenID Connect protocol. 
 The high level idea is having Google act as a third party trusted by both the user and my application.</p>
 <h3 id="oidc-protocol">OIDC protocol</h3>
 <!-- raw HTML omitted -->
@@ -251,19 +251,19 @@ The high level idea is having Google act as a third party trusted by both the us
 <p>This is the second diagram for my <a href="https://developers.google.com/identity/protocols/oauth2/native-app">Google&rsquo;s OIDC process</a>:
 <img src="/img/user-auth-design/login-with-google/login-with-google-v5.svg" alt="image"></p>
 <p>A.1 &amp; A.2 is specific to <a href="https://oauth.net/2/pkce/">PKCE</a>. This part generates a <code>verifier</code> at the backend side. And sendback <code>code challange = sha256(verifier)</code> to mobile devices&rsquo; browser.</p>
-<p>Then(A.3 to A.6) the control is redirected from mobile browser to make a GET request to Google&rsquo;s auth service.
+<p>Then(A.3 to A.6) the control is redirected from mobile browser to make a GET request to Google&rsquo;s auth service. 
 Google will present user with login prompt and user can examine the correct <code>scope</code>(profile name, email, etc). Finally control is back with a redirect url and <code>auth_code</code> to mobile browser.</p>
 <p>All <code>A.*</code> is user interacting with trusted third party(Google in our case).
 Starting from <code>B.*</code>, the process is how my backend interacts with Google to acquire user information.</p>
 <p>Starting from B.1, the control is redirected from mobile browser to my backend.<br>
 Together with the control passback is <code>auth_code</code> being sent to my backend.
-At this point backend has <code>auth_code</code> and <code>verifier</code>(due to the <code>PKCE</code> process during A.1 and A.2).
+At this point backend has <code>auth_code</code> and <code>verifier</code>(due to the <code>PKCE</code> process during A.1 and A.2). 
 It has enough information to make a POST request to Google&rsquo;s auth service to exchange for user info.</p>
 <p>Google server validates both the <code>access_code</code> and <code>code challenge = sha256(verifier)</code> returns <code>access_token</code>, <code>open_id</code>, and <code>request_token</code>. (B.3)</p>
 <p>The control goes back to my backend. My backend should set up session for this user.
 If open_id tells me that this user exists, I should create session object, other wise I should auto-register this user or render a new user registration flow at my mobile app.</p>
 <h2 id="summary">Summary</h2>
-<p>This article discuss the high level design to support sign-in wigh Google.
+<p>This article discuss the high level design to support sign-in wigh Google. 
 The key is to treat Google as trusted third party by both user and my website.</p>
 <p>Once OIDC verifies and returns validation sucess from Google auth service, I should create session for either my mobile or web frontend.</p>
 <!-- raw HTML omitted -->
