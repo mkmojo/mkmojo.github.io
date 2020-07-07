@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Synology Home Assistant - A-ha - Michael&#39;s Personal Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Michael" /><meta name="description" content="Synology si a really goood home server that manages all home devices.
+Youtube Channel This is the Youtube Video List on how to setup Synology NAS as the home assistant server using docker. Some important episodes:
+ Home Assistant on Synology inside Docker - #001  setting up the home assistant itself   Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002  portainer help manage docker containers watchtower updates to latest image influxdb collects data   Grafana Docker for Home Assistant on Synology - #003  grafana is a dashboard." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.73.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/synology-home-assistant/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Synology Home Assistant" />
+<meta property="og:description" content="Synology si a really goood home server that manages all home devices.
+Youtube Channel This is the Youtube Video List on how to setup Synology NAS as the home assistant server using docker. Some important episodes:
+ Home Assistant on Synology inside Docker - #001  setting up the home assistant itself   Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002  portainer help manage docker containers watchtower updates to latest image influxdb collects data   Grafana Docker for Home Assistant on Synology - #003  grafana is a dashboard." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/synology-home-assistant/" />
+<meta property="article:published_time" content="2020-07-07T16:49:23-04:00" />
+<meta property="article:modified_time" content="2020-07-07T16:49:23-04:00" />
+<meta itemprop="name" content="Synology Home Assistant">
+<meta itemprop="description" content="Synology si a really goood home server that manages all home devices.
+Youtube Channel This is the Youtube Video List on how to setup Synology NAS as the home assistant server using docker. Some important episodes:
+ Home Assistant on Synology inside Docker - #001  setting up the home assistant itself   Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002  portainer help manage docker containers watchtower updates to latest image influxdb collects data   Grafana Docker for Home Assistant on Synology - #003  grafana is a dashboard.">
+<meta itemprop="datePublished" content="2020-07-07T16:49:23-04:00" />
+<meta itemprop="dateModified" content="2020-07-07T16:49:23-04:00" />
+<meta itemprop="wordCount" content="229">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Synology Home Assistant"/>
+<meta name="twitter:description" content="Synology si a really goood home server that manages all home devices.
+Youtube Channel This is the Youtube Video List on how to setup Synology NAS as the home assistant server using docker. Some important episodes:
+ Home Assistant on Synology inside Docker - #001  setting up the home assistant itself   Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002  portainer help manage docker containers watchtower updates to latest image influxdb collects data   Grafana Docker for Home Assistant on Synology - #003  grafana is a dashboard."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Michael</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Michael</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Synology Home Assistant</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-07 </span>
+        
+          <span class="more-meta"> 229 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#youtube-channel">Youtube Channel</a></li>
+    <li><a href="#plan">Plan</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Synology si a really goood home server that manages all home devices.</p>
+<h2 id="youtube-channel">Youtube Channel</h2>
+<p>This is the <a href="https://www.youtube.com/watch?v=pcnvmAOah_Y&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=1">Youtube Video List</a> on how to setup Synology NAS as the home assistant server using docker.
+Some important episodes:</p>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=pcnvmAOah_Y&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=1">Home Assistant on Synology inside Docker - #001</a>
+<ul>
+<li>setting up the home assistant itself</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=jtVelxopKTM&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=2">Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002</a>
+<ul>
+<li>portainer help manage docker containers</li>
+<li>watchtower updates to latest image</li>
+<li>influxdb collects data</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=Q5t7ld2be3k&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=3">Grafana Docker for Home Assistant on Synology - #003</a>
+<ul>
+<li>grafana is a dashboard. can work with influxDB</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=sarfQVmWlr0&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=20">VSCode in Docker for Home Assistant on Synology - #019</a>
+<ul>
+<li>vscode integration to edit config files</li>
+</ul>
+</li>
+<li>Expose Synology to Public Web (DANGEROUS)
+<ul>
+<li><a href="https://www.youtube.com/watch?v=T1_BM2Jr95Q&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=24">DuckDNS and Let&rsquo;s Encrypt for Home Assistant on Synology - #023</a></li>
+<li><a href="https://www.youtube.com/watch?v=yHN8XN14xHg&amp;list=PLWlpiQXaMerS9IkaN9Off6RxoYCiP5edb&amp;index=26">SSL certificate in Hass.io &amp; Home Assistant Core on Synology - #024</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="plan">Plan</h2>
+<p>Item 1 to 4 is on how to setup the Synology itself. The item 5 is on how to bind Synology to a domain name you own and expose it to the public web.</p>
+<p>With the setup, Synology becomes a machine hosts many containers that works as the brain for smart home.
+The last item help public web access to home assist so the owner has full control even he/she is not physically present.
+Because home server monitors and saves data continously, this setup can be used to optimize lifestyle as well.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-07-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/mobile-app-oauth-and-oidc/">
+            <span class="next-text nav-default">Mobile App OAuth and OpenID Connect</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'goqqy';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/mkmojo" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Michael</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
