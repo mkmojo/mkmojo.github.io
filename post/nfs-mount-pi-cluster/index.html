@@ -58,7 +58,7 @@ The high level strategy is to use Synology as NFS server and have my pi cluster 
 Set up NFS server Synology NAS">
 <meta itemprop="datePublished" content="2020-07-09T16:58:07-04:00" />
 <meta itemprop="dateModified" content="2020-07-09T16:58:07-04:00" />
-<meta itemprop="wordCount" content="482">
+<meta itemprop="wordCount" content="541">
 
 
 
@@ -139,7 +139,7 @@ Set up NFS server Synology NAS"/>
       <div class="post-meta">
         <span class="post-time"> 2020-07-09 </span>
         
-          <span class="more-meta"> 482 words </span>
+          <span class="more-meta"> 541 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -222,7 +222,19 @@ TEST SUITE: None
 </code></pre></div><p>I installed this deployment to a <code>storage</code> namespace.<br>
 Because we are on an <code>ARM</code> based cluster, we need to set the <code>-arm</code> suffix to <code>image.repository</code> to include arm based docker image.<br>
 Since my Synology based NAS is at <code>mqiu-nas:/volume1/nfs</code>, I will set the <code>nfs.server=mqiu-nas</code> and <code>nfs.path=/vluem1/nfs</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check role based access control is created</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kc get all -n storage
+NAME                                         READY   STATUS    RESTARTS   AGE
+pod/nfs-client-provisioner-f4d9d5cdf-xxfzc   1/1     Running   <span style="color:#ae81ff">0</span>          117m
+
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nfs-client-provisioner   1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           117m
+
+NAME                                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/nfs-client-provisioner-f4d9d5cdf   <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>       117m
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm list -n storage
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                                      APP VERSION
+nfs-client-provisioner  storage         <span style="color:#ae81ff">1</span>               2020-07-10 22:20:31.6635529 -0400 EDT   deployed        nfs-client-provisioner-1.2.8                               3.1.0
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check role based access control is created</span>
 $ kc get clusterrole,clusterrolebinding | grep nfs
 clusterrole.rbac.authorization.k8s.io/my-nfs-client-provisioner-runner          28m
 clusterrolebinding.rbac.authorization.k8s.io/run-my-nfs-client-provisioner      28m
