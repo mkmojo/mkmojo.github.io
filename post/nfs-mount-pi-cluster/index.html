@@ -232,8 +232,8 @@ deployment.apps/nfs-client-provisioner   1/1     <span style="color:#ae81ff">1</
 NAME                                               DESIRED   CURRENT   READY   AGE
 replicaset.apps/nfs-client-provisioner-f4d9d5cdf   <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>       117m
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm list -n storage
-NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                                      APP VERSION
-nfs-client-provisioner  storage         <span style="color:#ae81ff">1</span>               2020-07-10 22:20:31.6635529 -0400 EDT   deployed        nfs-client-provisioner-1.2.8                               3.1.0
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                            APP VERSION
+nfs-client-provisioner  storage         <span style="color:#ae81ff">1</span>               2020-07-10 22:20:31.6635529 -0400 EDT   deployed        nfs-client-provisioner-1.2.8     3.1.0
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check role based access control is created</span>
 $ kc get clusterrole,clusterrolebinding | grep nfs
 clusterrole.rbac.authorization.k8s.io/my-nfs-client-provisioner-runner          28m
