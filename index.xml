@@ -6,10 +6,20 @@
     <description>Recent content on A-ha - Michael&#39;s Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Jul 2020 16:58:07 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 03:38:39 -0400</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apisix Test Setup</title>
+      <link>http://localhost:1313/post/apisix-test-setup/</link>
+      <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/apisix-test-setup/</guid>
+      <description>The APISIX setup is not easy. Took me some effort to get right.
+ The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?</description>
+    </item>
     
     <item>
       <title>K3S Pi Cluster Dynamic Provision with NFS Server</title>

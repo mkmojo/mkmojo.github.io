@@ -180,7 +180,7 @@ What is the minimum cost for the player to jump past all the pillars?</p>
 <p>To examine every possible solution, we need to have an annotation that we can recurse with because computer only knows how to work with mathmatical annotations (i.e. nubmers, and symbols).</p>
 <p>If we draw this process on paper:
 <img src="/img/DP_climbing_stairs.png" alt="DP image"></p>
-<p><strong>The main problem solving effort is drawing out the recursion tree, especially they part on how to break a node into disjoint sub-nodes.</strong> 
+<p><strong>The main problem solving effort is drawing out the recursion tree, especially they part on how to break a node into disjoint sub-nodes.</strong>
 If you can draw the recursion tree all the way from root to leaf(base case) and the leaf node is a case that is very easy to solve(can be turned from problem space into answer space). Then you found a succesful recursion strategy. After you found this strategy, your work is already 80% finished. The remainder is just about how to turn this strategy into a representation a computer can understand. You can often do this in two fashions, either a top down fasion where implementation-wise is memorized search or a bottom up fashion where implementation-wise it is induction from base case to bigger and bigger in size.</p>
 <p>Issue with most of the commentary online is that they skip the answer discovery part(i.e. the drawing on board, the trials and errors of different state representation and recursion startegy). Too many of them start directly with a alredy correct state definition.</p>
 <p>After some drawing on board/notebook, you will realize(otherwise you fail to solve this problem) the <strong>key information</strong> you need at each level of recursion is the count of the pillar the player wants to jump over. To match this observation you obtained from drawing the recussion tree, we can educatively decide that if we create an annotation that captures count of pillar as part of the information in it, we can reduce the problem systematically and eventually reduce it to some easy to solve base case(that can be eye balled).</p>
@@ -282,9 +282,9 @@ The core concepts are all from search. <code>state</code> is a search state, it 
 <h2 id="top-down-vs-bottom-up">Top-down vs Bottom-up</h2>
 <p>These are directions on recursion trees.
 Top is the start of recursion tree, bottom is the leaf level of recursion tree.</p>
-<p>Starting out from a big problem and break it down into smaller ones is called top down. 
+<p>Starting out from a big problem and break it down into smaller ones is called top down.
 Bottom up means starting out from the base case to build answer up to the original problem.</p>
-<p>We can convert the above top down approach to a bottom up one and vise-versa. The only trick here is to start from initial state and compose the answer using already solved sub problme. 
+<p>We can convert the above top down approach to a bottom up one and vise-versa. The only trick here is to start from initial state and compose the answer using already solved sub problme.
 For this particular example, a bottom up version would be:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># bottom up approach</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jump_cost</span>(arr):

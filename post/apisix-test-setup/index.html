@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>A-ha - Michael&#39;s Personal Blog</title>
+  <title>Apisix Test Setup - A-ha - Michael&#39;s Personal Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="Michael&#39;s blog." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+<meta name="author" content="Michael" /><meta name="description" content="The APISIX setup is not easy. Took me some effort to get right.
+ The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?" /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
 
@@ -26,9 +27,7 @@
 <meta name="generator" content="Hugo 0.73.0 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/" />
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="A-ha - Michael&#39;s Personal Blog" />
-  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="A-ha - Michael&#39;s Personal Blog" />
+<link rel="canonical" href="http://localhost:1313/post/apisix-test-setup/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,15 +40,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="A-ha - Michael&#39;s Personal Blog" />
-<meta property="og:description" content="Michael&#39;s blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:updated_time" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="name" content="A-ha - Michael&#39;s Personal Blog">
-<meta itemprop="description" content="Michael&#39;s blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="A-ha - Michael&#39;s Personal Blog"/>
-<meta name="twitter:description" content="Michael&#39;s blog."/>
+<meta property="og:title" content="Apisix Test Setup" />
+<meta property="og:description" content="The APISIX setup is not easy. Took me some effort to get right.
+ The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/apisix-test-setup/" />
+<meta property="article:published_time" content="2020-07-14T03:38:39-04:00" />
+<meta property="article:modified_time" content="2020-07-14T03:38:39-04:00" />
+<meta itemprop="name" content="Apisix Test Setup">
+<meta itemprop="description" content="The APISIX setup is not easy. Took me some effort to get right.
+ The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?">
+<meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
+<meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
+<meta itemprop="wordCount" content="97">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Apisix Test Setup"/>
+<meta name="twitter:description" content="The APISIX setup is not easy. Took me some effort to get right.
+ The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -113,140 +123,98 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-contest-190/">Leetcode Contest 190</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-24 </span>
-      
-        <span class="more-meta"> 654 words </span>
-        <span class="more-meta"> 4 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      What went well: I solved first three problems relatively quickly and have working intuition on the last problem.
-What did not go well:
-  problem 2 is a two pointer problem, I spent time implmenting the O(N^2) approach. This can be improlved by reason through the input size and do not settle for a inefficient solution.
-  problem 3 is a problem on trees. The algorithm I settled on computing all possible paths shows duplication paths.
-    </div>
-    <div class="read-more">
-      <a href="/post/leetcode-contest-190/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-contest-189/">Leetcode Contest 189</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-17 </span>
-      <div class="post-category">
-          <a href="/categories/leetcode/"> leetcode </a>
-          <a href="/categories/interview/"> interview </a>
-          </div>
-        <span class="more-meta"> 1309 words </span>
-        <span class="more-meta"> 7 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>Solved three out of four problems. Did not have enough time for the last problem.</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/leetcode-contest-189/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/dynamic-programming-thinking-framework/">Thinking Framework for Dynamic Programming</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-15 </span>
-      <div class="post-category">
-          <a href="/categories/interview/"> Interview </a>
-          <a href="/categories/dp/"> DP </a>
-          </div>
-        <span class="more-meta"> 2098 words </span>
-        <span class="more-meta"> 10 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/dynamic-programming-thinking-framework/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/hugo_personal_blog/">Hugo for Personal Website</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-09 </span>
-      
-        <span class="more-meta"> 576 words </span>
-        <span class="more-meta"> 2 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>I plan to write more in 2019. As the result I have resurrected my personal site.</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/hugo_personal_blog/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/five-minute-tutorial-for-python-functions/">A Tutorial on Python Function Calls</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2014-11-02 </span>
-      <div class="post-category">
-          <a href="/categories/tutorial/"> Tutorial </a>
-          </div>
-        <span class="more-meta"> 1926 words </span>
-        <span class="more-meta"> 10 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>This tutorial gives you a quick overview of how Python handles function calls.</p>
-<p>The Python program we are going to examine is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(x, y):
-    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
-
-<span style="color:#66d9ef">print</span> add(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)
-</code></pre></div>
-    </div>
-    <div class="read-more">
-      <a href="/post/five-minute-tutorial-for-python-functions/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
-      </a>
+          <article class="post">
     
-  </nav>
-        </div>
+    <header class="post-header">
+      <h1 class="post-title">Apisix Test Setup</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-14 </span>
         
+          <span class="more-meta"> 97 words </span>
+          <span class="more-meta"> 1 min read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-the-correct-include-syntax">What is the correct include syntax?</a></li>
+    <li><a href="#where-should-i-download-the-additional-test-nginx-to">Where should I download the additional <code>test-nginx</code> to?</a></li>
+    <li><a href="#where-should-i-invoke-the-make-test-command">Where should I invoke the <code>make test</code> command?</a></li>
+    <li><a href="#why-is-the-make-test-missing-necessary-include">Why is the <code>make test</code> missing necessary include?</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>The APISIX setup is not easy. Took me some effort to get right.</p>
+<ul>
+<li>The document is not clear on which dir the command is being executed</li>
+<li>The document itself is hard to find</li>
+<li>The document did not explain how perl toolchain is supposed to be used
+<ul>
+<li>what is <code>prove</code></li>
+<li>how to install new packages; what is the syntax; hot to know needed packages has been installed aready</li>
+</ul>
+</li>
+</ul>
+<h2 id="what-is-the-correct-include-syntax">What is the correct include syntax?</h2>
+<h2 id="where-should-i-download-the-additional-test-nginx-to">Where should I download the additional <code>test-nginx</code> to?</h2>
+<h2 id="where-should-i-invoke-the-make-test-command">Where should I invoke the <code>make test</code> command?</h2>
+<h2 id="why-is-the-make-test-missing-necessary-include">Why is the <code>make test</code> missing necessary include?</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-07-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/nfs-mount-pi-cluster/">
+            <span class="next-text nav-default">K3S Pi Cluster Dynamic Provision with NFS Server</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'goqqy';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
 
       </div>
     </main>

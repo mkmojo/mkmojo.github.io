@@ -407,7 +407,7 @@ If I place one optimal circle&rsquo;s center point on top of the green arc, the 
 </code></pre></div><h3 id="angle-sweep-2">Angle Sweep 2</h3>
 <p>This is a simlar strategy, instead of drawing points on every dart and calculate overlapping arc.
 This approach pick a point, and put this point a the circumferance of the circle and measure the enter and exiting angle.</p>
-<p>The black angle is very easy to find by taking the <code>arctangen(dy, dx)</code> because P, Q are known points. 
+<p>The black angle is very easy to find by taking the <code>arctangen(dy, dx)</code> because P, Q are known points.
 The red/blue angle is slightly harder to find. The trick is to realize that triangle PQF is a right angled trangle.
 As result will be able to find the angle of either blue or red by taking <code>arccos(|PQ|/2r)</code>.</p>
 <p><img src="/img/leetcode-contest-189/angle-sweep-2.png" alt="angle sweep 2"></p>
@@ -451,7 +451,7 @@ As result will be able to find the angle of either blue or red by taking <code>a
 <li><a href="https://www.geogebra.org/geometry/cknwbpr4">Graph drawing tool Geogebra</a></li>
 </ul>
 <h2 id="what-to-keep">What to Keep?</h2>
-<p>Think of edge case before submitting. All three problems are ACed the first trial. 
+<p>Think of edge case before submitting. All three problems are ACed the first trial.
 Should keep doing this for future interview sessions.</p>
 <h2 id="what-not-to-do-anymore">What not to Do Anymore?</h2>
 <p>For problem two, I jumped to coding up a custom sorting solution right away. Which turns out to be time wasted because the implementation requires the order of orginal elements keep the same if no need to switch.</p>
