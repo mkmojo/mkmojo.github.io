@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>APISIX on A-ha - Michael&#39;s Personal Blog</title>
+    <link>http://localhost:1313/tags/apisix/</link>
+    <description>Recent content in APISIX on A-ha - Michael&#39;s Personal Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Jul 2020 03:38:39 -0400</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/apisix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apisix Test Setup</title>
+      <link>http://localhost:1313/post/apisix-test-setup/</link>
+      <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
+      
+      <guid>http://localhost:1313/post/apisix-test-setup/</guid>
+      <description>I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
+The overall step looks like this,
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I.</description>
+    </item>
+    
+  </channel>
+</rss>

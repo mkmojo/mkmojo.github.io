@@ -17,8 +17,9 @@
       <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
       
       <guid>http://localhost:1313/post/apisix-test-setup/</guid>
-      <description>The APISIX setup is not easy. Took me some effort to get right.
- The document is not clear on which dir the command is being executed The document itself is hard to find The document did not explain how perl toolchain is supposed to be used  what is prove how to install new packages; what is the syntax; hot to know needed packages has been installed aready    What is the correct include syntax?</description>
+      <description>I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
+The overall step looks like this,
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I.</description>
     </item>
     
     <item>
