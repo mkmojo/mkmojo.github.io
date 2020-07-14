@@ -18,7 +18,7 @@
 
 <meta name="author" content="Michael" /><meta name="description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp;amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
 
@@ -44,7 +44,7 @@ The overall step looks like this,
 <meta property="og:title" content="Apisix Test Setup" />
 <meta property="og:description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I." />
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/apisix-test-setup/" />
 <meta property="article:published_time" content="2020-07-14T03:38:39-04:00" />
@@ -52,10 +52,10 @@ The overall step looks like this,
 <meta itemprop="name" content="Apisix Test Setup">
 <meta itemprop="description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I.">
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
 <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="621">
+<meta itemprop="wordCount" content="625">
 
 
 
@@ -63,7 +63,7 @@ The overall step looks like this,
 <meta name="twitter:title" content="Apisix Test Setup"/>
 <meta name="twitter:description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I."/>
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -135,7 +135,7 @@ The overall step looks like this,
       <div class="post-meta">
         <span class="post-time"> 2020-07-14 </span>
         
-          <span class="more-meta"> 621 words </span>
+          <span class="more-meta"> 625 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -147,19 +147,8 @@ The overall step looks like this,
     <nav id="TableOfContents">
   <ul>
     <li><a href="#software-versions">Software Versions</a></li>
-    <li><a href="#prelude-start-the-subject-being-tested">Prelude: start the subject being tested</a>
-      <ul>
-        <li><a href="#i-know-there-is-a-dashboard-but-how-can-i-access-it">I know there is a dashboard, but how can I access it?</a></li>
-      </ul>
-    </li>
-    <li><a href="#run-test">Run Test</a>
-      <ul>
-        <li><a href="#what-is-the-correct-include-syntax-for-prove">What is the correct include syntax for prove?</a></li>
-        <li><a href="#which-path-should-i-git-clone-the-additional-test-nginx-to">Which path should I <code>git clone</code> the additional <code>test-nginx</code> to?</a></li>
-        <li><a href="#which-path-should-i-invoke-the-make-test-command-from">Which path should I invoke the <code>make test</code> command from?</a></li>
-        <li><a href="#why-is-the-make-test-command-missing-necessary-include">Why is the <code>make test</code> command missing necessary include?</a></li>
-      </ul>
-    </li>
+    <li><a href="#prelude-start-the-subject-being-tested">Prelude: start the subject being tested</a></li>
+    <li><a href="#run-test">Run Test</a></li>
   </ul>
 </nav>
   </div>
@@ -173,6 +162,7 @@ $ git clone git@github.com:apache/incubator-apisix.git
 $ cd incubator-apisix
 
 <span style="color:#75715e"># prepare runtime and start apisix process</span>
+$ etcd --enable-v2<span style="color:#f92672">=</span>true &amp;
 $ make init <span style="color:#75715e"># create config files</span>
 $ make deps
 $ make run
@@ -227,7 +217,7 @@ Perl Version, this is the binary that will run the test framwork prove.
 <div class="code-copy-content nt3" id="{map[lang:bash] 
 ~/workspace/incubator-apisix &gt; perl --version
 This is perl 5, version 32, subversion 0 (v5.32.0) built for x86_64-linux-thread-multi
- 0xc000524840 0xc00035c5a0 code true 0 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc000e96080 0xc0008283c0 code true 0 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 ~/workspace/incubator-apisix &gt; perl --version
 This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span> built <span style="color:#66d9ef">for</span> x86_64-linux-thread-multi
@@ -245,7 +235,7 @@ OS version, this offers the syscalls and other software packages.
 <div class="code-copy-content nt3" id="{map[lang:bash] 
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic #56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
- 0xc000525880 0xc00035c5a0 code true 1 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc0007154c0 0xc0008283c0 code true 1 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span>
@@ -264,7 +254,7 @@ Perl package manager version, this is important because later we will use this t
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended for better logging
 &gt;(info): /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
- 0xc000525a80 0xc00035c5a0 code true 2 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc000715800 0xc0008283c0 code true 2 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">for</span> better logging
@@ -289,7 +279,6 @@ $ etcd --enable-v2<span style="color:#f92672">=</span>true &amp; <span style="co
 $ make init
 <span style="color:#75715e"># start apisix process</span>
 $ make run 
-$ make test
 </code></pre></div><blockquote>
 <p>NOTE1: Using v2(not v3) is documented at <a href="https://github.com/apache/incubator-apisix/blob/master/doc/install-dependencies.md#note">install deps</a>. Which is very easy to overlook.
 Also remember to always start this first because init needs to talk to etcd!</p>
@@ -300,12 +289,19 @@ Also remember to always start this first because init needs to talk to etcd!</p>
 </code></pre><p>We will get this as the response:
 <img src="/apisix-test-setup/test-apisix-is-running.png" alt="apisix-running"></p>
 <p>TODO: access dashboard UI needs to clone <code>incubator-apisix-dashboard</code> repo and will need additional setup.</p>
-<h3 id="i-know-there-is-a-dashboard-but-how-can-i-access-it">I know there is a dashboard, but how can I access it?</h3>
 <h2 id="run-test">Run Test</h2>
-<h3 id="what-is-the-correct-include-syntax-for-prove">What is the correct include syntax for prove?</h3>
-<h3 id="which-path-should-i-git-clone-the-additional-test-nginx-to">Which path should I <code>git clone</code> the additional <code>test-nginx</code> to?</h3>
-<h3 id="which-path-should-i-invoke-the-make-test-command-from">Which path should I invoke the <code>make test</code> command from?</h3>
-<h3 id="why-is-the-make-test-command-missing-necessary-include">Why is the <code>make test</code> command missing necessary include?</h3>
+<p>Since we have verified that the apisix process is running, we can run test against it by</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make test <span style="color:#75715e">#!NOTE2</span>
+
+TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> prove -I../test-nginx/lib -I../test-nginx/inc -I./ -r -s t/
+
+... very long tesxt output ...
+
+</code></pre></div><blockquote>
+<p>NOTE2: need to add -I../test-nginx/inc to the make script otherwise would run into missing Test::Base error.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
     </div>
 

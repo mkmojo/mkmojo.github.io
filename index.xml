@@ -19,7 +19,7 @@
       <guid>http://localhost:1313/post/apisix-test-setup/</guid>
       <description>I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ../ # invoke the test in incurbator-apisix using `prove` $ TEST_NGINX_BINARY=`which openresty` \ prove -I.</description>
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp;amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .</description>
     </item>
     
     <item>
