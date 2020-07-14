@@ -168,7 +168,7 @@ $ make deps
 $ make run
 
 <span style="color:#75715e"># install required test-nginx repo to sibling file path</span>
-$ git clone https://github.com/openresty/test-nginx.git ../
+$ git clone https://github.com/openresty/test-nginx.git ../test-nginx
 <span style="color:#75715e"># invoke the test in incurbator-apisix using `prove`</span>
 $ TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>prove  -I./ -I../test-nginx/lib -I../test-nginx/inc -r ./t 
@@ -217,7 +217,7 @@ Perl Version, this is the binary that will run the test framwork prove.
 <div class="code-copy-content nt3" id="{map[lang:bash] 
 ~/workspace/incubator-apisix &gt; perl --version
 This is perl 5, version 32, subversion 0 (v5.32.0) built for x86_64-linux-thread-multi
- 0xc000e96080 0xc0008283c0 code true 0 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc0007dcd00 0xc0000ebc20 code true 0 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 ~/workspace/incubator-apisix &gt; perl --version
 This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span> built <span style="color:#66d9ef">for</span> x86_64-linux-thread-multi
@@ -235,7 +235,7 @@ OS version, this offers the syscalls and other software packages.
 <div class="code-copy-content nt3" id="{map[lang:bash] 
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic #56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
- 0xc0007154c0 0xc0008283c0 code true 1 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc0007ddd40 0xc0000ebc20 code true 1 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span>
@@ -254,7 +254,7 @@ Perl package manager version, this is important because later we will use this t
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended for better logging
 &gt;(info): /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
- 0xc000715800 0xc0008283c0 code true 2 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+ 0xc0007ddf40 0xc0000ebc20 code true 2 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">for</span> better logging
