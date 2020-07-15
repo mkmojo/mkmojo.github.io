@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates">
 <meta itemprop="datePublished" content="2020-06-07T13:39:38-04:00" />
 <meta itemprop="dateModified" content="2020-06-07T13:39:38-04:00" />
-<meta itemprop="wordCount" content="1135">
+<meta itemprop="wordCount" content="1169">
 
 
 
@@ -131,7 +131,7 @@
             <a href="/categories/authentication/"> Authentication </a>
             <a href="/categories/authorization/"> Authorization </a>
             </div>
-          <span class="more-meta"> 1135 words </span>
+          <span class="more-meta"> 1169 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -154,6 +154,7 @@
         <li><a href="#oidc-protocol">OIDC protocol</a></li>
         <li><a href="#pkce-sequence-diagram">PKCE Sequence Diagram</a></li>
         <li><a href="#sequence-diagram-for-my-application">Sequence Diagram For My Application</a></li>
+        <li><a href="#the-youtube-video-slidesimguser-auth-designintro-to-oauth2-and-ocidpdf">The Youtube Video <a href="/img/user-auth-design/intro-to-oauth2-and-ocid.pdf">(slides)</a></a></li>
       </ul>
     </li>
     <li><a href="#summary">Summary</a></li>
@@ -248,20 +249,26 @@ The high level idea is having Google act as a third party trusted by both the us
 <img src="/img/user-auth-design/pkce_sequence_diagram.svg" alt="image"></p>
 <p>The <code>client.com</code> here is equivalent to my backend service. The <code>as.com</code> here is equivalent to Google&rsquo;s auth service.</p>
 <h3 id="sequence-diagram-for-my-application">Sequence Diagram For My Application</h3>
-<p>This is the second diagram for my <a href="https://developers.google.com/identity/protocols/oauth2/native-app">Google&rsquo;s OIDC process</a>:
+<p>This is the second diagram for my <a href="https://developers.google.com/identity/protocols/oauth2/native-app">Google&rsquo;s OIDC process of the Auth Code Grant Flow</a>:
 <img src="/img/user-auth-design/login-with-google/login-with-google-v5.svg" alt="image"></p>
 <p>A.1 &amp; A.2 is specific to <a href="https://oauth.net/2/pkce/">PKCE</a>. This part generates a <code>verifier</code> at the backend side. And sendback <code>code challange = sha256(verifier)</code> to mobile devices&rsquo; browser.</p>
 <p>Then(A.3 to A.6) the control is redirected from mobile browser to make a GET request to Google&rsquo;s auth service.
 Google will present user with login prompt and user can examine the correct <code>scope</code>(profile name, email, etc). Finally control is back with a redirect url and <code>auth_code</code> to mobile browser.</p>
 <p>All <code>A.*</code> is user interacting with trusted third party(Google in our case).
 Starting from <code>B.*</code>, the process is how my backend interacts with Google to acquire user information.</p>
-<p>Starting from B.1, the control is redirected from mobile browser to my backend.<br>
+<p>Starting from B.1, the control is redirected from mobile browser to my backend(<strong>because this is the url I set at Google as the redirect url after Google auth services issued access code to my Mobile web browser</strong>).<br>
 Together with the control passback is <code>auth_code</code> being sent to my backend.
 At this point backend has <code>auth_code</code> and <code>verifier</code>(due to the <code>PKCE</code> process during A.1 and A.2).
 It has enough information to make a POST request to Google&rsquo;s auth service to exchange for user info.</p>
 <p>Google server validates both the <code>access_code</code> and <code>code challenge = sha256(verifier)</code> returns <code>access_token</code>, <code>open_id</code>, and <code>request_token</code>. (B.3)</p>
 <p>The control goes back to my backend. My backend should set up session for this user.
 If open_id tells me that this user exists, I should create session object, other wise I should auto-register this user or render a new user registration flow at my mobile app.</p>
+<h3 id="the-youtube-video-slidesimguser-auth-designintro-to-oauth2-and-ocidpdf">The Youtube Video <a href="/img/user-auth-design/intro-to-oauth2-and-ocid.pdf">(slides)</a></h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/GyCL8AJUhww" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 <h2 id="summary">Summary</h2>
 <p>This article discuss the high level design to support sign-in wigh Google.
 The key is to treat Google as trusted third party by both user and my website.</p>
