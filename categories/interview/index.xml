@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Interview on A-ha - Michael&#39;s Personal Blog</title>
-    <link>http://localhost:1313/categories/interview/</link>
-    <description>Recent content in Interview on A-ha - Michael&#39;s Personal Blog</description>
+    <title>Interview on Note</title>
+    <link>https://mqiu.me/categories/interview/</link>
+    <description>Recent content in Interview on Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Jun 2020 12:57:49 -0400</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/interview/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mqiu.me/categories/interview/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Leetcode Weekly Contest 192</title>
-      <link>http://localhost:1313/post/leetcode-weekly-contest-192/</link>
+      <link>https://mqiu.me/post/leetcode-weekly-contest-192/</link>
       <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
       
-      <guid>http://localhost:1313/post/leetcode-weekly-contest-192/</guid>
+      <guid>https://mqiu.me/post/leetcode-weekly-contest-192/</guid>
       <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
 3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
 4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
@@ -24,19 +24,19 @@
     
     <item>
       <title>Leetcode Contest 189</title>
-      <link>http://localhost:1313/post/leetcode-contest-189/</link>
+      <link>https://mqiu.me/post/leetcode-contest-189/</link>
       <pubDate>Sun, 17 May 2020 20:02:20 -0400</pubDate>
       
-      <guid>http://localhost:1313/post/leetcode-contest-189/</guid>
+      <guid>https://mqiu.me/post/leetcode-contest-189/</guid>
       <description>&lt;p&gt;Solved three out of four problems. Did not have enough time for the last problem.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Thinking Framework for Dynamic Programming</title>
-      <link>http://localhost:1313/post/dynamic-programming-thinking-framework/</link>
+      <link>https://mqiu.me/post/dynamic-programming-thinking-framework/</link>
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
       
-      <guid>http://localhost:1313/post/dynamic-programming-thinking-framework/</guid>
+      <guid>https://mqiu.me/post/dynamic-programming-thinking-framework/</guid>
       <description>&lt;p&gt;Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.&lt;/p&gt;</description>
     </item>
     

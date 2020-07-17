@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>search on A-ha - Michael&#39;s Personal Blog</title>
-    <link>http://localhost:1313/tags/search/</link>
-    <description>Recent content in search on A-ha - Michael&#39;s Personal Blog</description>
+    <title>search on Note</title>
+    <link>https://mqiu.me/tags/search/</link>
+    <description>Recent content in search on Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 15 May 2020 10:31:19 -0400</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/search/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mqiu.me/tags/search/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thinking Framework for Dynamic Programming</title>
-      <link>http://localhost:1313/post/dynamic-programming-thinking-framework/</link>
+      <link>https://mqiu.me/post/dynamic-programming-thinking-framework/</link>
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
       
-      <guid>http://localhost:1313/post/dynamic-programming-thinking-framework/</guid>
+      <guid>https://mqiu.me/post/dynamic-programming-thinking-framework/</guid>
       <description>&lt;p&gt;Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.&lt;/p&gt;</description>
     </item>
     
