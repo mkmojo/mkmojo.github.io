@@ -55,7 +55,7 @@ The overall step looks like this,
 # get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
 <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="584">
+<meta itemprop="wordCount" content="569">
 
 
 
@@ -135,7 +135,7 @@ The overall step looks like this,
       <div class="post-meta">
         <span class="post-time"> 2020-07-14 </span>
         
-          <span class="more-meta"> 584 words </span>
+          <span class="more-meta"> 569 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -146,7 +146,7 @@ The overall step looks like this,
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#software-versions">Software Versions</a></li>
+    <li><a href="#plan">Plan</a></li>
     <li><a href="#prelude-start-the-subject-being-tested">Prelude: start the subject being tested</a></li>
     <li><a href="#run-test">Run Test</a></li>
   </ul>
@@ -186,9 +186,13 @@ For projects from other programmng language(Python, C++), test framwork is part 
 To run the test, user only needs to invoke a command, no need to break out of the context and download a test driver.</p>
 <p>Nontheless, with some effort I was able to run the test, after solving the following puzzles.
 My workflow is to run <code>make test</code> and read through both <a href="https://github.com/apache/incubator-apisix/issues/862">issue 862</a> and error output to make progress.</p>
-<h2 id="software-versions">Software Versions</h2>
-<p>This is some verison information of the tools I used.
-<details class="admonition note"><summary class="admonition-title">Details</summary>
+<h2 id="plan">Plan</h2>
+<ol>
+<li>Start the process to be tested</li>
+<li>Run the test framework against the subject</li>
+<li>Check the result</li>
+</ol>
+<details class="admonition note"><summary class="admonition-title">Software Versions</summary>
   
 
 Perl Version, 
@@ -224,13 +228,7 @@ Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">f
 </div>
 
 
-</details></p>
-<p>Overall step to test locally:</p>
-<ol>
-<li>Start the process to be tested</li>
-<li>Run the test framework against the subject</li>
-<li>Check the result</li>
-</ol>
+</details>
 <h2 id="prelude-start-the-subject-being-tested">Prelude: start the subject being tested</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># start the etcd db in compatible mode</span>
 $ etcd --enable-v2<span style="color:#f92672">=</span>true &amp; <span style="color:#75715e"># !NOTE1</span>
