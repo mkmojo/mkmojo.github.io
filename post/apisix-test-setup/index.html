@@ -55,7 +55,7 @@ The overall step looks like this,
 # get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
 <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="624">
+<meta itemprop="wordCount" content="628">
 
 
 
@@ -135,7 +135,7 @@ The overall step looks like this,
       <div class="post-meta">
         <span class="post-time"> 2020-07-14 </span>
         
-          <span class="more-meta"> 624 words </span>
+          <span class="more-meta"> 628 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -197,10 +197,7 @@ Perl Version, this is the binary that will run the test framwork prove.
 
  
 
-<div class="codeblock" id="{map[lang:bash] 
-~/workspace/incubator-apisix &gt; perl --version
-This is perl 5, version 32, subversion 0 (v5.32.0) built for x86_64-linux-thread-multi
- 0xc000e9cc80 0xc00092adc0 code true 0 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+<div class="codeblock-shortcode" id="codeblock-id">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 ~/workspace/incubator-apisix &gt; perl --version
 This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span> built <span style="color:#66d9ef">for</span> x86_64-linux-thread-multi
@@ -210,10 +207,7 @@ This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <spa
 OS version, this offers the syscalls and other software packages.
  
 
-<div class="codeblock" id="{map[lang:bash] 
-$ uname -a
-Linux 2d-pc 5.3.0-62-generic #56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
- 0xc000883000 0xc00092adc0 code true 1 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+<div class="codeblock-shortcode" id="codeblock-id">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span>
@@ -223,11 +217,7 @@ Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP 
 Perl package manager version, this is important because later we will use this to insall missing perl packages needed by the prove test framwork.
  
 
-<div class="codeblock" id="{map[lang:bash] 
-$ cpan -v
-Loading internal logger. Log::Log4perl recommended for better logging
-&gt;(info): /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
- 0xc000883200 0xc00092adc0 code true 2 {0 {0 0}} 0 { 0 0 0} &lt;nil&gt;}">
+<div class="codeblock-shortcode" id="codeblock-id">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">for</span> better logging
@@ -257,7 +247,8 @@ Also remember to always start this first because init needs to talk to etcd!</p>
 </blockquote>
 <p>Up to this point, we should have the subject up and running. Let us check that this is indeed the case.</p>
 <p>First, curl a request to the process,</p>
-<pre><code>curl &quot;http://127.0.0.1:9080/apisix/admin/services/&quot; -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' | jq
+<pre><code>curl &quot;http://127.0.0.1:9080/apisix/admin/services/&quot; \
+    -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' | jq
 </code></pre><p>We will get this as the response:
 <img src="/apisix-test-setup/test-apisix-is-running.png" alt="apisix-running"></p>
 <p>TODO: access dashboard UI needs to clone <code>incubator-apisix-dashboard</code> repo and will need additional setup.</p>
@@ -265,9 +256,10 @@ Also remember to always start this first because init needs to talk to etcd!</p>
 <p>Since we have verified that the apisix process is running, we can run test against it by</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make test <span style="color:#75715e">#!NOTE2</span>
 
-TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> prove -I../test-nginx/lib -I../test-nginx/inc -I./ -r -s t/
+TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    prove -I../test-nginx/lib -I../test-nginx/inc -I./ -r -s t/
 
-... very long tesxt output ...
+... very long text output on test results...
 
 </code></pre></div><blockquote>
 <p>NOTE2: need to add -I../test-nginx/inc to the make script otherwise would run into missing Test::Base error.</p>
