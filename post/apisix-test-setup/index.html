@@ -55,7 +55,7 @@ The overall step looks like this,
 # get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
 <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="626">
+<meta itemprop="wordCount" content="584">
 
 
 
@@ -135,7 +135,7 @@ The overall step looks like this,
       <div class="post-meta">
         <span class="post-time"> 2020-07-14 </span>
         
-          <span class="more-meta"> 626 words </span>
+          <span class="more-meta"> 584 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -187,32 +187,32 @@ To run the test, user only needs to invoke a command, no need to break out of th
 <p>Nontheless, with some effort I was able to run the test, after solving the following puzzles.
 My workflow is to run <code>make test</code> and read through both <a href="https://github.com/apache/incubator-apisix/issues/862">issue 862</a> and error output to make progress.</p>
 <h2 id="software-versions">Software Versions</h2>
-<p>This some verison information of the tools I used.</p>
-<details class="admonition note"><summary class="admonition-title">Detailed Versions</summary>
+<p>This is some verison information of the tools I used.
+<details class="admonition note"><summary class="admonition-title">Details</summary>
   
 
-Perl Version, this is the binary that will run the test framwork prove.
-
+Perl Version, 
  
 
 <div class="codeblock-shortcode" id="codeblock-id">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-~/workspace/incubator-apisix &gt; perl --version
-This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span> built <span style="color:#66d9ef">for</span> x86_64-linux-thread-multi
+$ perl --version  
+This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span>
 </code></pre></div>
 </div>
 
-OS version, this offers the syscalls and other software packages.
+OS version,
  
 
 <div class="codeblock-shortcode" id="codeblock-id">
     <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 $ uname -a
-Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span>
+Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP \</span>
+Wed Jun <span style="color:#ae81ff">24</span> 16:17:03 UTC <span style="color:#ae81ff">2020</span> x86_64 x86_64 x86_64 GNU/Linux
 </code></pre></div>
 </div>
 
-Perl package manager version, this is important because later we will use this to insall missing perl packages needed by the prove test framwork.
+Perl package manager version,
  
 
 <div class="codeblock-shortcode" id="codeblock-id">
@@ -224,7 +224,7 @@ Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">f
 </div>
 
 
-</details>
+</details></p>
 <p>Overall step to test locally:</p>
 <ol>
 <li>Start the process to be tested</li>
