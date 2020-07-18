@@ -55,7 +55,7 @@ The overall step looks like this,
 # get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
 <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="569">
+<meta itemprop="wordCount" content="572">
 
 
 
@@ -131,7 +131,7 @@ The overall step looks like this,
       <div class="post-meta">
         <span class="post-time"> 2020-07-14 </span>
         
-          <span class="more-meta"> 569 words </span>
+          <span class="more-meta"> 572 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -191,38 +191,20 @@ My workflow is to run <code>make test</code> and read through both <a href="http
 <details class="admonition note"><summary class="admonition-title">Software Versions</summary>
   
 
-Perl Version, 
- 
-
-<div class="codeblock-shortcode" id="codeblock-id">
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<div class="admonition example">
+  <pre><code># Perl version
 $ perl --version  
-This is perl 5, version 32, subversion <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>v5.32.0<span style="color:#f92672">)</span>
-</code></pre></div>
-</div>
-
-OS version,
- 
-
-<div class="codeblock-shortcode" id="codeblock-id">
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+This is perl 5, version 32, subversion 0 (v5.32.0)
+</code></pre><pre><code># OS version
 $ uname -a
-Linux 2d-pc 5.3.0-62-generic <span style="color:#75715e">#56~18.04.1-Ubuntu SMP \</span>
-Wed Jun <span style="color:#ae81ff">24</span> 16:17:03 UTC <span style="color:#ae81ff">2020</span> x86_64 x86_64 x86_64 GNU/Linux
-</code></pre></div>
-</div>
-
-Perl package manager version,
- 
-
-<div class="codeblock-shortcode" id="codeblock-id">
-    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+Linux 2d-pc 5.3.0-62-generic #56~18.04.1-Ubuntu SMP \
+Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre><pre><code># Perl package manager version
 $ cpan -v
-Loading internal logger. Log::Log4perl recommended <span style="color:#66d9ef">for</span> better logging
-&gt;<span style="color:#f92672">(</span>info<span style="color:#f92672">)</span>: /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
-</code></pre></div>
+Loading internal logger. Log::Log4perl recommended for better logging
+&gt;(info): /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
+</code></pre>
 </div>
-
 
 </details>
 <h2 id="prelude-start-the-subject-being-tested">Prelude: start the subject being tested</h2>
