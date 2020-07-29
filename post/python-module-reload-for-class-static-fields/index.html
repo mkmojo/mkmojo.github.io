@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+<meta name="author" content="Michael" /><meta name="description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
@@ -42,7 +42,7 @@ The challange was realted to how Python handles class static variables. Python C
 
 
 <meta property="og:title" content="Python Module Reload for Class Static Fields" />
-<meta property="og:description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+<meta property="og:description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached." />
 <meta property="og:type" content="article" />
@@ -50,18 +50,18 @@ The challange was realted to how Python handles class static variables. Python C
 <meta property="article:published_time" content="2020-07-29T17:03:27-04:00" />
 <meta property="article:modified_time" content="2020-07-29T17:03:27-04:00" />
 <meta itemprop="name" content="Python Module Reload for Class Static Fields">
-<meta itemprop="description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+<meta itemprop="description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
 <meta itemprop="datePublished" content="2020-07-29T17:03:27-04:00" />
 <meta itemprop="dateModified" content="2020-07-29T17:03:27-04:00" />
-<meta itemprop="wordCount" content="235">
+<meta itemprop="wordCount" content="273">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Module Reload for Class Static Fields"/>
-<meta name="twitter:description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+<meta name="twitter:description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached."/>
 
@@ -131,7 +131,7 @@ The challange was realted to how Python handles class static variables. Python C
       <div class="post-meta">
         <span class="post-time"> 2020-07-29 </span>
         
-          <span class="more-meta"> 235 words </span>
+          <span class="more-meta"> 273 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -140,7 +140,12 @@ The challange was realted to how Python handles class static variables. Python C
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge">Challenge</a></li>
+    <li><a href="#solution">Solution</a></li>
+  </ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
@@ -149,6 +154,7 @@ The challange was realted to how Python handles class static variables. Python C
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
+<h2 id="challenge">Challenge</h2>
 <p>I was doing a little refactor for a codebase I worked in.
 The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.</p>
 <p>It was a simple task on the surface, but I ran into problems when structuring my unittest.<br>
@@ -160,6 +166,7 @@ Class MyDemoClass:
     NAMESPACE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;NAMESPACE)</span>
     DEV_ENV <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;DEV_ENV&#34;</span>)
 </code></pre></div><p>The <code>MyDemoClass.NAMESPACE</code> and <code>MyDemoClass.DEV_ENV</code> are class static fields that all instances of MyDemoClass shares.</p>
+<h2 id="solution">Solution</h2>
 <p>To write proper unittest, I need to have the power to <strong>force reload static fields for a class</strong>.
 Before my test run, I supplied mocked <code>os.environ</code>. However because Python runtime handles when the <code>MyDemoClass</code> is loaded, by the time I supplied the mock in my unittest, the class may have already be loaded and invoked all the <code>os.getenv</code> too early.
 So the workaround I found is to force reload the <code>MyDemoClass</code> module <strong>after</strong> I have mocked out the <code>os.environ</code> sys varaible.</p>
@@ -178,7 +185,8 @@ Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
         reload(config)
         <span style="color:#f92672">from</span> config <span style="color:#f92672">import</span> MyDemoClass
         self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#34;my_test_namespace&#34;</span>, MyDemoClass<span style="color:#f92672">.</span>NAMESPACE)
-</code></pre></div>
+</code></pre></div><p>Note that <code>reload</code> is the tool I used to force reload a module (so that the <code>os.getenv</code> uses the mock value), and the <code>from config import MyDemoClass</code> allows me to use the just freshly reloaded <code>MyDemoClass</code>.</p>
+
     </div>
 
     <div class="post-copyright">
