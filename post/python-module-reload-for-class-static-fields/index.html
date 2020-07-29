@@ -55,7 +55,7 @@ It was a simple task on the surface, but I ran into problems when structuring my
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
 <meta itemprop="datePublished" content="2020-07-29T17:03:27-04:00" />
 <meta itemprop="dateModified" content="2020-07-29T17:03:27-04:00" />
-<meta itemprop="wordCount" content="273">
+<meta itemprop="wordCount" content="275">
 
 
 
@@ -131,7 +131,7 @@ The challange was realted to how Python handles class static variables. Python C
       <div class="post-meta">
         <span class="post-time"> 2020-07-29 </span>
         
-          <span class="more-meta"> 273 words </span>
+          <span class="more-meta"> 275 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -178,7 +178,7 @@ So the workaround I found is to force reload the <code>MyDemoClass</code> module
 <span style="color:#f92672">from</span> importlib <span style="color:#f92672">import</span> reload 
 
 Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
-
+    <span style="color:#75715e"># https://stackoverflow.com/questions/437589/how-do-i-unload-reload-a-python-module</span>
 
     <span style="color:#a6e22e">@pathc.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;NAMESPACE&#39;</span> : <span style="color:#e6db74">&#39;my_test_namespace&#39;</span>, <span style="color:#e6db74">&#39;DEV_ENV&#39;</span> : <span style="color:#e6db74">&#39;my_test_dev_env&#39;</span>})
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_load_env</span>(self):
