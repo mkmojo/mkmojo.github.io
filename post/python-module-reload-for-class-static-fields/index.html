@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Hugo for Personal Website - Note</title>
+  <title>Python Module Reload for Class Static Fields - Note</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="I plan to write more in 2019. As the result I have resurrected my personal site.
-" /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+<meta name="author" content="Michael" /><meta name="description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+It was a simple task on the surface, but I ran into problems when structuring my unittest.
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
 
@@ -27,7 +28,7 @@
 <meta name="generator" content="Hugo 0.74.1 with theme even" />
 
 
-<link rel="canonical" href="https://mqiu.me/post/hugo_personal_blog/" />
+<link rel="canonical" href="https://mqiu.me/post/python-module-reload-for-class-static-fields/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,23 +41,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Hugo for Personal Website" />
-<meta property="og:description" content="I plan to write more in 2019. As the result I have resurrected my personal site." />
+<meta property="og:title" content="Python Module Reload for Class Static Fields" />
+<meta property="og:description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+It was a simple task on the surface, but I ran into problems when structuring my unittest.
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/hugo_personal_blog/" />
-<meta property="article:published_time" content="2019-01-09T16:50:46-05:00" />
-<meta property="article:modified_time" content="2019-01-09T16:50:46-05:00" />
-<meta itemprop="name" content="Hugo for Personal Website">
-<meta itemprop="description" content="I plan to write more in 2019. As the result I have resurrected my personal site.">
-<meta itemprop="datePublished" content="2019-01-09T16:50:46-05:00" />
-<meta itemprop="dateModified" content="2019-01-09T16:50:46-05:00" />
-<meta itemprop="wordCount" content="576">
+<meta property="og:url" content="https://mqiu.me/post/python-module-reload-for-class-static-fields/" />
+<meta property="article:published_time" content="2020-07-29T17:03:27-04:00" />
+<meta property="article:modified_time" content="2020-07-29T17:03:27-04:00" />
+<meta itemprop="name" content="Python Module Reload for Class Static Fields">
+<meta itemprop="description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+It was a simple task on the surface, but I ran into problems when structuring my unittest.
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
+<meta itemprop="datePublished" content="2020-07-29T17:03:27-04:00" />
+<meta itemprop="dateModified" content="2020-07-29T17:03:27-04:00" />
+<meta itemprop="wordCount" content="235">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugo for Personal Website"/>
-<meta name="twitter:description" content="I plan to write more in 2019. As the result I have resurrected my personal site."/>
+<meta name="twitter:title" content="Python Module Reload for Class Static Fields"/>
+<meta name="twitter:description" content="I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+It was a simple task on the surface, but I ran into problems when structuring my unittest.
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -119,12 +126,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Hugo for Personal Website</h1>
+      <h1 class="post-title">Python Module Reload for Class Static Fields</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-01-09 </span>
+        <span class="post-time"> 2020-07-29 </span>
         
-          <span class="more-meta"> 576 words </span>
+          <span class="more-meta"> 235 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -133,81 +140,45 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#why-hugo">Why Hugo?</a></li>
-    <li><a href="#why-github-pages">Why Github Pages?</a></li>
-    <li><a href="#reference">Reference</a></li>
-    <li><a href="#workflow">Workflow</a></li>
-    <li><a href="#error">Error</a></li>
-    <li><a href="#todo">TODO</a></li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
-      <p>I plan to write more in 2019. As the result I have resurrected my personal site.</p>
-<p>Previously I used Hexo + DigitOcean VPS to serve my personal site.
-The solution went out of date because Dropbox decided to drop support for some Linux distro. Mine unfortunately is part of the deprecated list otherwise I have been happy of the set-up before.</p>
-<p>At first I wanted to reuse Hexo + DigitOcean VPS solution. This old solution depends on Dropbox to monitor file changes and force nginx to serve generated static site. The key to reuse is to bring its Dropbox dependency up to date. This approach was proven to be too hard.</p>
-<p>Another approach, which is also a successful approach, is Hugo + GitHub Pages. We will focus on this.</p>
-<h2 id="why-hugo">Why Hugo?</h2>
-<p>I plan to create content includes which is a mixture of text, code, image, LaTex, chart, http links, and maybe even some JavaScript to offer interactivity.</p>
-<p>Static site generator fit my needs perfectly. On the market there are many popular ones like Hexo, Jekyll, and Hugo. Functionality wise all three works fine because they all support composing rich format in MarkDown.</p>
-<p>I picked Hugo because it is fast and have a simple mental model.
-Among these two, the latter characteristic close the deal for me.
-I would like something I can reason about two years from now. Hugo is simply a binary. It does not have endless dependencies and crazily dynamic host language (it is written in golang). Hexo and Jekyll in contrast are written in very dynamic languages like JavaScript and Ruby.</p>
-<blockquote>
-<p>I like simple things</p>
-</blockquote>
-<h2 id="why-github-pages">Why Github Pages?</h2>
-<p>Before the change, my personal site lives on DigitOcean.
-What I found out today is that bring back a machine to latest OS/software versions is really painful. I would like to avoid maintaining my own machine as much as possible.</p>
-<p>Github Pages offers such advantages.</p>
-<ul>
-<li>I don&rsquo;t need to maintain my own machine, Github takes care of it.</li>
-<li>It comes with version control by default. I get to travel between versions. I also get to see how my work evolves.</li>
-</ul>
-<h2 id="reference">Reference</h2>
-<p>I don&rsquo;t want to waste time repeating what has been said else where.
-Instead, I would mention things that I did differently during set-up.</p>
-<ol>
-<li><a href="http://nanshu.wang/post/2015-01-31/">Hugo静态网站生成器中文教程</a></li>
-<li><a href="https://blog.olowolo.com/post/hugo-quick-start/">Hugo 从入门到会用</a></li>
-<li><a href="https://hgt312.github.io/post/other_note2/">Hugo建站踩坑记</a></li>
-<li><a href="https://www.jianshu.com/p/bdba60260f4d">使用 Hugo 搭建个人静态博客</a> &lt;&ndash; Talks about CI</li>
-<li><a href="http://www.curtismlarson.com/blog/2015/04/12/github-pages-google-domains/">How to point a domain on Google Domains to GitHub pages</a></li>
-</ol>
-<p>Overall procedure should be:</p>
-<ol>
-<li>Create Github repos for both Hugo and Hugo/public.</li>
-<li>Configure Hugo to generate content in Hugo/public.</li>
-<li>Set up Github Pages to treat project repo as website.</li>
-<li>Set up Google Domains DNS, like in reference item 5.</li>
-</ol>
-<h2 id="workflow">Workflow</h2>
-<p>Once went through the references, we are ready to create contents.
-The workflow is</p>
-<pre><code>hugo new post/&lt;post_name&gt;.md
-hugo server -D --watch
-# maybe update sources in blog folder
-./deploy.sh
-</code></pre><ol>
-<li>Spin up local server</li>
-<li>Write post</li>
-<li>Deploy to Github with script</li>
-</ol>
-<h2 id="error">Error</h2>
-<p>Run into a problem when themes <code>even</code> is not cloned locally into the themes/themesname.
-The solution is to clonet the theme locally</p>
-<pre><code>git clone https://github.com/olOwOlo/hugo-theme-even themes/even
-</code></pre><h2 id="todo">TODO</h2>
-<p>There are some smaller things I would like to tune:</p>
-<ol>
-<li>Create a more accurate about page.</li>
-<li>Learn how to change font for the top left logo.</li>
-<li>Learn how to add feature to the even theme.</li>
-</ol>
+      <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>I was doing a little refactor for a codebase I worked in.
+The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.</p>
+<p>It was a simple task on the surface, but I ran into problems when structuring my unittest.<br>
+The challange was realted to how Python handles class static variables.
+Python Class executes once when it is first loaded and then cached. Consecutive calls uses the cashed value to avoid duplicate work.</p>
+<p>For example if we have the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project_root/config.py</span>
+Class MyDemoClass:
+    NAMESPACE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;NAMESPACE)</span>
+    DEV_ENV <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;DEV_ENV&#34;</span>)
+</code></pre></div><p>The <code>MyDemoClass.NAMESPACE</code> and <code>MyDemoClass.DEV_ENV</code> are class static fields that all instances of MyDemoClass shares.</p>
+<p>To write proper unittest, I need to have the power to <strong>force reload static fields for a class</strong>.
+Before my test run, I supplied mocked <code>os.environ</code>. However because Python runtime handles when the <code>MyDemoClass</code> is loaded, by the time I supplied the mock in my unittest, the class may have already be loaded and invoked all the <code>os.getenv</code> too early.
+So the workaround I found is to force reload the <code>MyDemoClass</code> module <strong>after</strong> I have mocked out the <code>os.environ</code> sys varaible.</p>
+<p>Like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project_root/tests/test_mydemoclass.py</span>
+<span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
+<span style="color:#f92672">import</span> config
+<span style="color:#f92672">from</span> importlib <span style="color:#f92672">import</span> reload 
+
+Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
+
+
+    <span style="color:#a6e22e">@pathc.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;NAMESPACE&#39;</span> : <span style="color:#e6db74">&#39;my_test_namespace&#39;</span>, <span style="color:#e6db74">&#39;DEV_ENV&#39;</span> : <span style="color:#e6db74">&#39;my_test_dev_env&#39;</span>})
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_load_env</span>(self):
+        reload(config)
+        <span style="color:#f92672">from</span> config <span style="color:#f92672">import</span> MyDemoClass
+        self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#34;my_test_namespace&#34;</span>, MyDemoClass<span style="color:#f92672">.</span>NAMESPACE)
+</code></pre></div>
     </div>
 
     <div class="post-copyright">
@@ -218,7 +189,7 @@ The solution is to clonet the theme locally</p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2019-01-09
+        2020-07-29
         
     </span>
   </p>
@@ -228,13 +199,9 @@ The solution is to clonet the theme locally</p>
 <footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/post/dynamic-programming-thinking-framework/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Thinking Framework for Dynamic Programming</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/five-minute-tutorial-for-python-functions/">
-            <span class="next-text nav-default">A Tutorial on Python Function Calls</span>
+        
+        <a class="next" href="/post/apisix-test-setup/">
+            <span class="next-text nav-default">Apisix Test Setup</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
