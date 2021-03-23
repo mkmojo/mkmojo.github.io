@@ -60,9 +60,8 @@ Set up NFS server Synology NAS</description>
       <pubDate>Tue, 07 Jul 2020 16:49:23 -0400</pubDate>
       
       <guid>https://mqiu.me/post/synology-home-assistant/</guid>
-      <description>Synology si a really goood home server that manages all home devices.
-Youtube Channel This is the Youtube Video List on how to setup Synology NAS as the home assistant server using docker. Some important episodes:
- Home Assistant on Synology inside Docker - #001  setting up the home assistant itself   Portainer, Watchtower and InfluxDB for Home Assistant on Synology - #002  portainer help manage docker containers watchtower updates to latest image influxdb collects data   Grafana Docker for Home Assistant on Synology - #003  grafana is a dashboard.</description>
+      <description>&lt;p&gt;I recently bought the Synology home server to manage my personal data.
+This is the tutorial I followed to set it up.&lt;/p&gt;</description>
     </item>
     
     <item>
