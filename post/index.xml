@@ -17,9 +17,7 @@
       <pubDate>Mon, 22 Mar 2021 19:53:10 -0400</pubDate>
       
       <guid>https://mqiu.me/post/setup-github-actions-for-mit-class/</guid>
-      <description>I am working on the MIT Distributed System class Spring 2020 6.824.
-Building a distributed system is hard, CI can help to prevent the regression which allows me to mange complexity. I have decided to use github actions to achieve this.
-The Script # https://github.com/mvdan/github-actions-golang name: Unittest on: [push, pull_request] jobs: test: strategy: matrix: go-version: [&amp;quot;1.13.8&amp;quot;] os: [ubuntu-latest, macos-latest, windows-latest] runs-on: ${{matrix.os}} steps: - name: Install Go uses: actions/setup-go@v2 with: go-version: ${{matrix.</description>
+      <description>&lt;p&gt;I am working on the MIT Distributed System class &lt;a href=&#34;https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB&#34;&gt;Spring 2020 6.824&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
