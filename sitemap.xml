@@ -3,14 +3,21 @@
   
   <url>
     <loc>https://mqiu.me/</loc>
-    <lastmod>2020-07-29T17:03:27-04:00</lastmod>
+    <lastmod>2021-03-22T19:53:10-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://mqiu.me/post/</loc>
-    <lastmod>2020-07-29T17:03:27-04:00</lastmod>
+    <lastmod>2021-03-22T19:53:10-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://mqiu.me/post/setup-github-actions-for-mit-class/</loc>
+    <lastmod>2021-03-22T19:53:10-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

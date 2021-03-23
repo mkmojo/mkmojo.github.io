@@ -6,10 +6,21 @@
     <description>Recent content on Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jul 2020 17:03:27 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 22 Mar 2021 19:53:10 -0400</lastBuildDate>
     
 	<atom:link href="https://mqiu.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Setup Github Actions for MIT 6.824</title>
+      <link>https://mqiu.me/post/setup-github-actions-for-mit-class/</link>
+      <pubDate>Mon, 22 Mar 2021 19:53:10 -0400</pubDate>
+      
+      <guid>https://mqiu.me/post/setup-github-actions-for-mit-class/</guid>
+      <description>I am working on the MIT Distributed System class Spring 2020 6.824.
+Building a distributed system is hard, CI can help to prevent the regression which allows me to mange complexity. I have decided to use github actions to achieve this.
+The Script # https://github.com/mvdan/github-actions-golang name: Unittest on: [push, pull_request] jobs: test: strategy: matrix: go-version: [&amp;quot;1.13.8&amp;quot;] os: [ubuntu-latest, macos-latest, windows-latest] runs-on: ${{matrix.os}} steps: - name: Install Go uses: actions/setup-go@v2 with: go-version: ${{matrix.</description>
+    </item>
     
     <item>
       <title>Python Module Reload for Class Static Fields</title>

@@ -45,7 +45,7 @@
 <meta property="og:description" content="Michael&#39;s blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mqiu.me/" />
-<meta property="og:updated_time" content="2020-07-29T17:03:27-04:00" />
+<meta property="og:updated_time" content="2021-03-22T19:53:10-04:00" />
 <meta itemprop="name" content="Note">
 <meta itemprop="description" content="Michael&#39;s blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Note"/>
@@ -110,6 +110,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/setup-github-actions-for-mit-class/">Setup Github Actions for MIT 6.824</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-03-22 </span>
+      
+        <span class="more-meta"> 124 words </span>
+        <span class="more-meta"> 1 min read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      I am working on the MIT Distributed System class Spring 2020 6.824.
+Building a distributed system is hard, CI can help to prevent the regression which allows me to mange complexity. I have decided to use github actions to achieve this.
+The Script # https://github.com/mvdan/github-actions-golang name: Unittest on: [push, pull_request] jobs: test: strategy: matrix: go-version: [&quot;1.13.8&quot;] os: [ubuntu-latest, macos-latest, windows-latest] runs-on: ${{matrix.os}} steps: - name: Install Go uses: actions/setup-go@v2 with: go-version: ${{matrix.
+    </div>
+    <div class="read-more">
+      <a href="/post/setup-github-actions-for-mit-class/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/python-module-reload-for-class-static-fields/">Python Module Reload for Class Static Fields</a></h1>
@@ -199,31 +222,6 @@ Youtube Channel This is the Youtube Video List on how to setup Synology NAS as t
     </div>
     <div class="read-more">
       <a href="/post/synology-home-assistant/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mobile-app-oauth-and-oidc/">Mobile App OAuth and OpenID Connect</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-07 </span>
-      <div class="post-category">
-          <a href="/categories/user/"> User </a>
-          <a href="/categories/authentication/"> Authentication </a>
-          <a href="/categories/authorization/"> Authorization </a>
-          </div>
-        <span class="more-meta"> 1169 words </span>
-        <span class="more-meta"> 3 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates
-    </div>
-    <div class="read-more">
-      <a href="/post/mobile-app-oauth-and-oidc/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
