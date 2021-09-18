@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Thinking Framework for Dynamic Programming - Note</title>
+  <title>Dynamic Programming is Search with Memo - Note</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.
+<meta name="author" content="Michael" /><meta name="description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.
 " /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
@@ -40,23 +40,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Thinking Framework for Dynamic Programming" />
-<meta property="og:description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons." />
+<meta property="og:title" content="Dynamic Programming is Search with Memo" />
+<meta property="og:description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mqiu.me/post/dynamic-programming-thinking-framework/" />
 <meta property="article:published_time" content="2020-05-15T10:31:19-04:00" />
 <meta property="article:modified_time" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="name" content="Thinking Framework for Dynamic Programming">
-<meta itemprop="description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.">
+<meta itemprop="name" content="Dynamic Programming is Search with Memo">
+<meta itemprop="description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.">
 <meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="wordCount" content="2098">
+<meta itemprop="wordCount" content="2339">
 
 
 
 <meta itemprop="keywords" content="interview,DP,search,memo," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Thinking Framework for Dynamic Programming"/>
-<meta name="twitter:description" content="Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons."/>
+<meta name="twitter:title" content="Dynamic Programming is Search with Memo"/>
+<meta name="twitter:description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -119,7 +119,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Thinking Framework for Dynamic Programming</h1>
+      <h1 class="post-title">Dynamic Programming is Search with Memo</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2020-05-15 </span>
@@ -127,8 +127,8 @@
             <a href="/categories/interview/"> Interview </a>
             <a href="/categories/dp/"> DP </a>
             </div>
-          <span class="more-meta"> 2098 words </span>
-          <span class="more-meta"> 10 mins read </span>
+          <span class="more-meta"> 2339 words </span>
+          <span class="more-meta"> 11 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -144,48 +144,52 @@
     <li><a href="#the-thinking-framework">The Thinking Framework</a></li>
     <li><a href="#top-down-vs-bottom-up">Top-down vs Bottom-up</a></li>
     <li><a href="#todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</a></li>
+    <li><a href="#types-of-dynamic-programming-problems">Types of Dynamic Programming Problems</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>Dynamic Programming(DP) problems are of the most challenging type to prepare for for two major reasons.</p>
+      <p>When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.</p>
 <p>The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is difficult to solve because the state representation is hard to discover.</p>
 <p>Another reason is the <strong>lack of in depth discussion on the process</strong> of finding the correct state representation.
 For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the problem but none of the explanation talks about the process of finding the state representation in the first place at all. Instead they focus on discussing implementation details after state representation is found.</p>
 <p>I have not found too much material online discussing the state representation finding process so here we are. The remainder of the post presents a <strong>thinking framework</strong> to help you tackle DP problems systematically. The same framework is also useful when evaluating other people&rsquo;s DP solutions.</p>
 <h2 id="search-101">Search 101</h2>
-<p>Let us solve a search problem together to demonstrate the thinking process.
-I will explaine later why we need to take this segway on search, it will become clear very soon.</p>
+<p>Let us solve a search problem together to demonstrate the <strong>thinking process</strong>.</p>
 <blockquote>
-<p>Given a list of pillars of different height, player can start at the 0th or 1st position. Everytime the player jump from a pillar, he needs to spend the cost amount equal to the height of the pillar.<br>
-What is the minimum cost for the player to jump past all the pillars?</p>
-</blockquote>
-<blockquote>
-<p><strong>Example 1:</strong><br>
+<p><strong>Minimum Cost Jummping Pillars</strong><br>
+Given a list of pillars of different height, player can start at the 0th or 1st position. Everytime the player jump from a pillar, he needs to spend the cost amount equal to the height of the pillar.<br>
+What is the minimum cost for the player to jump past all the pillars?<br>
+<strong>Example 1:</strong><br>
 <strong>Input:</strong> [2, 3, 5, 7, 4]<br>
 <strong>Output:</strong> 10<br>
-<strong>Explanaiton:</strong> Player jupm from pos_1(i.e. 3) then to pos_3(i.e. 7) and finally jump over, total cost is arr[1] + arr[3] = 10.</p>
-</blockquote>
-<blockquote>
-<p><strong>Example 2:</strong><br>
+<strong>Explanaiton:</strong> Player jupm from pos_1(i.e. 3) then to pos_3(i.e. 7) and finally jump over, total cost is arr[1] + arr[3] = 10.<br>
+<strong>Example 2:</strong><br>
 <strong>Input:</strong> [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]<br>
 <strong>Output:</strong> 6</p>
 </blockquote>
-<p>First of all, this problem can be solved by examing all possible paths: enumerating all possible path one can take from starting position to eventulally land past the last pillar. The one with least cost is the answer we look for.</p>
+<p>We want to find out the overall cost, depending on how we jump within limits, the overall cost to arrive at the destination is determined by the pillars we have landed on. If we can examine every single possible path to from one side to the other while keeping track of the minimum cost seen so far duing the enumeration, we will have the answer at the end.</p>
+<p>In other words, if we can develop a search strategy to enumerate all the possible paths, we can solve this problem.
+Of course because we are enumerating all the possbile ways, the time complexity can be large. Another very important thing to notice is that the search strategy you choose is greatly influencing the overal search complexity. (TODO: add concrete example to show one problem can have differnet search strategy with different time complexity) &ndash;&gt; Search strategy affects the shape of the search tree.</p>
 <p>To examine every possible solution, we need to have an annotation that we can recurse with because computer only knows how to work with mathmatical annotations (i.e. nubmers, and symbols).</p>
-<p>If we draw this process on paper:
+<p>If we draw this search process on paper(needs to be animated):
 <img src="/img/DP_climbing_stairs.png" alt="DP image"></p>
-<p><strong>The main problem solving effort is drawing out the recursion tree, especially they part on how to break a node into disjoint sub-nodes.</strong>
-If you can draw the recursion tree all the way from root to leaf(base case) and the leaf node is a case that is very easy to solve(can be turned from problem space into answer space). Then you found a succesful recursion strategy. After you found this strategy, your work is already 80% finished. The remainder is just about how to turn this strategy into a representation a computer can understand. You can often do this in two fashions, either a top down fasion where implementation-wise is memorized search or a bottom up fashion where implementation-wise it is induction from base case to bigger and bigger in size.</p>
-<p>Issue with most of the commentary online is that they skip the answer discovery part(i.e. the drawing on board, the trials and errors of different state representation and recursion startegy). Too many of them start directly with a alredy correct state definition.</p>
-<p>After some drawing on board/notebook, you will realize(otherwise you fail to solve this problem) the <strong>key information</strong> you need at each level of recursion is the count of the pillar the player wants to jump over. To match this observation you obtained from drawing the recussion tree, we can educatively decide that if we create an annotation that captures count of pillar as part of the information in it, we can reduce the problem systematically and eventually reduce it to some easy to solve base case(that can be eye balled).</p>
+
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSwB-oTKHz8dwGzA4TwiZZCrTY_s1mtDgJgraqaoqXyO_OC5BZup_lwzyKIieTl5gP4zIEvWJSOUxnr/embed?start=false&loop=false&delayms=5000" frameborder="0" width="100%" height="496" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<p>The main <strong>problem solving effort</strong> is drawing out the recursion tree, especially the part on how to <strong>break a node into disjoint sub-nodes</strong>. The brach in the search tree represents the <strong>choice</strong> your search strategy makes at the step.</p>
+<p>If you can <strong>both</strong> draw the recursion tree all the way from root to leaf(base case) <strong>and</strong> the leaf node is a case that is very easy to solve(can be turned from problem space into answer space). Then you found a succesful recursion strategy. If either you cannot recude the problem into a smaller one or the base case you have arrived cannot be solved directly(turned from problem space into answer space), you will have to try a different search strategy(by searching with more dimension, or make different choices).</p>
+<p>After you found a strategy(that is recuding the size, and have easy to solve base cases), your work is already 80% finished. The remainder is just about how to turn this strategy into a representation a computer can understand. You can often do this in two fashions, either a top down fasion where implementation-wise is memorized search or a bottom up fashion where implementation-wise it is induction from base case to bigger and bigger in size.</p>
+<p>Issue with most of the problem discussion online is that they skip the answer discovery part(i.e. the drawing on board, the trials and errors of different state representation and recursion startegy). Too many of them start directly with a alredy correct state definition.</p>
+<p>After some drawing on board/notebook, you will realize(otherwise you fail to solve this problem) the <strong>key information</strong> you need to retain at each level of recursion is the position of the pillar the player wants to jump over. To match this observation you obtained from drawing the recussion tree, we can educatively decide that if we create an annotation that captures count of pillar as part of the information in it, we can reduce the problem systematically and eventually reduce it to some easy to solve base case(that can be eye balled).</p>
 <p>For this very problem we can finally(with the help of drawing recursion tree out) define our state to be:</p>
 <blockquote>
 <p><code>notation(n)</code> = total cost player spent to land on pillar n.</p>
 </blockquote>
-<p>Notice that what information you want to capture in state is highly free, and mostly come from how you draw out he recursion tree. Therefore this step is the step that needs experience (hence varies dramatically from people to people). This is also why there can be more than one working solution to a same searching problem.</p>
-<p>Because we want to minimize the overally cost, we need to make such choice at each level. Global min is obtained by collecting all local mins.</p>
+<p>Notice that what information you want to capture in state is entirely up to you the problem solver, and mostly come from how you draw out he recursion tree. Therefore this is the step that needs experience (hence varies dramatically from people to people). This is also why there can be more than one working solution to a same searching problem.</p>
+<p>Because we want to minimize the overall cost, we need to make such choice at each level. Global min is obtained by collecting all local mins.</p>
 <blockquote>
 <p>notation(n) = <strong>min(</strong> notation(n-1) + height_n-1, notation(n-2) + height_n-2 <strong>)</strong></p>
 </blockquote>
@@ -198,7 +202,7 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
         min(notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>], \
             notation(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> arr[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])
     <span style="color:#66d9ef">return</span> cnt_level_total_cost
-</code></pre></div><p>This part we just finished is the so called <code>state transition</code>. This is the typically the most logic heavy part of every DP problem. The key operation here is the <code>min</code>. Because our strategy makes a deliverate choice at every single recursion level, as the result our top level answer will be the overall minimized cost. <strong>This decision making at each recursion level is another key question you alwasy want to ask yourself when solving any DP problem.</strong></p>
+</code></pre></div><p>This part we just finished is the so called <code>state transition</code>. This is the typically the most logic heavy part of every DP problem. The key operation here is the <code>min</code>. Because our strategy makes a deliverate choice to pick the smaller one at every single recursion level, as the result our top level answer will be the overall minimized cost.</p>
 <p>Now with the <code>state transition</code> in place, we will be able to rewrite a bigger sized problem into a smaller sized problem.</p>
 <p>We can do this at each recursion level and the problem size will eventualy be so small that solving it becomes very trivial. For instance, of this very problem. We can reduce the problem into base case when we have only the 0th or 1st pillar to land on. For palyer to land on 0th position, <code>notation(0) = 0</code> because we can start at 0th position. For player to land on 1st position, <code>notation(1) = 0</code> because player can also start at 1st position. Such process is called <code>base case/initial state</code>. So the code then becomes:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Step2: Add base case handling.</span>
@@ -215,16 +219,20 @@ If you can draw the recursion tree all the way from root to leaf(base case) and 
     <span style="color:#66d9ef">return</span> cnt_level_total_cost
 </code></pre></div><p>At this point you have finished a recursive version of the solution.</p>
 <p>Notice that during the process of developing a working solution to this problem, we did not mention anything about DP.
-The core concepts are all from search. <code>state</code> is a search state, it is a collection of information we want to maintain at each recursion level. <code>state transition</code> is about how to express a big problem state in terms of smaller problem state. Finally <code>base case</code> is the leaf level of recursion tree.</p>
+The core concepts are all from search. <code>state</code> is a search state, it is a collection of information we want to maintain at each recursion level. <code>state transition</code> is about how to express a big problem state in terms of smaller problem state. Finally <code>base case</code> is the leaf level of recursion tree with witch the recursion can terminate.</p>
 <blockquote>
 <p>So why does this example have anything to do with DP?</p>
 </blockquote>
 <h2 id="recursion-with-overlapping-sub-problem">Recursion with overlapping sub-problem</h2>
-<p>As I mentioned before, we are going to discuss why understanding search is important to understanding DP. This is really because DP turns out to be a special kind of search problem. Not every search problem gets to be a DP problem, <strong>only those nice ones do</strong>.</p>
+<p>As I mentioned before, we are going to discuss why understanding search is important to understanding DP. This is really because DP turns out to be a special kind of search problem. Not every search problem gets to be a DP problem, <strong>only those with nice properties do</strong>.</p>
 <p>In order to qulify as a DP problem, there a search problem needs to have <strong>overlapping sub-problems</strong>. For our example, problem of size 7 depends on problem of size 6 and size 5. When we want to solve problem of size 6 which in term depends on size 4 and 5. The overlapping subproblem(for problem of size 6 and 7) here is the problem of size 5. Its answer can be reused to solve both problem of size 6 and 7.</p>
 <p>If we draw the diagram, it will look like the following:</p>
-<p><img src="/img/recursion_tree_sub_problem.jpg" alt="recursion tree for overlapping subsubproblems"></p>
-<p>Notice that a regular search problem does not have overlapping subsubproblem does not qualify a DP problem because it cannot benefit from applying DP technique to avoid unnecessary re-computation.</p>
+<!-- raw HTML omitted -->
+
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTz5RfDS-X55Au78yK14oEIm5jbC2-iBYLYQOwIH6mleeBNZy3x5jbLLWWiFewB4PnYKNLZ03o07emD/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<p>Notice that a regular search problem does not have overlapping subsubproblem therefore does not qualify as a DP problem because there is no overlapping subproblems to reuse results from, every state needs to be searched, there is no work to be reused.</p>
 <h2 id="dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</h2>
 <p>Since DP is just a technique that can be applied to avoid duplicate work when solving problems recursively. The key concepts are from search: state is a search state; state transion is how big problem breaks into smaller ones; finally base case are leaf level of recursion tree.</p>
 <p>The very thing that is <strong>unique to DP is the table/memo</strong> we used in our algorithm to avoid duplicate computation. Overlapping subproblem only needs to be solved once and used many times to construct solution to bigger problems. The answer of each search state can be saved aside and looked up when needed. Such space and computation trade off is core to every DP problem.</p>
@@ -302,8 +310,24 @@ For this particular example, a bottom up version would be:</p>
 <li>coin change 1, 2</li>
 <li>backpack problems</li>
 </ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h2 id="types-of-dynamic-programming-problems">Types of Dynamic Programming Problems</h2>
+<p>The state traversal strategy determines the Dynamic Progamming strategy.
+Based on how to traverse the search state, we can categorize the DP problem into the following categories.</p>
+<ul>
+<li>case study for categories of DP problems
+<ul>
+<li>1D</li>
+<li>2D</li>
+<li>DP state not directly the answer
+<ul>
+<li>longest fib_like sub-sequence</li>
+<li>longest increasing sub-sequence</li>
+<li>matrix multiplication</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
     </div>
 
     <div class="post-copyright">

@@ -212,6 +212,13 @@
   </url>
   
   <url>
+    <loc>https://mqiu.me/post/dynamic-programming-thinking-framework/</loc>
+    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://mqiu.me/tags/memo/</loc>
     <lastmod>2020-05-15T10:31:19-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -220,13 +227,6 @@
   
   <url>
     <loc>https://mqiu.me/tags/search/</loc>
-    <lastmod>2020-05-15T10:31:19-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://mqiu.me/post/dynamic-programming-thinking-framework/</loc>
     <lastmod>2020-05-15T10:31:19-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
