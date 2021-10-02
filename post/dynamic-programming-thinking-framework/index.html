@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.
+<meta name="author" content="Michael" /><meta name="description" content="When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a thinking framework to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this thiking framework in real scenarios.
 " /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
@@ -41,22 +41,22 @@
 
 
 <meta property="og:title" content="Dynamic Programming is Search with Memo" />
-<meta property="og:description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons." />
+<meta property="og:description" content="When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a thinking framework to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this thiking framework in real scenarios." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mqiu.me/post/dynamic-programming-thinking-framework/" />
 <meta property="article:published_time" content="2020-05-15T10:31:19-04:00" />
 <meta property="article:modified_time" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="name" content="Dynamic Programming is Search with Memo">
-<meta itemprop="description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.">
+<meta itemprop="description" content="When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a thinking framework to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this thiking framework in real scenarios.">
 <meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="wordCount" content="2339">
+<meta itemprop="wordCount" content="2369">
 
 
 
 <meta itemprop="keywords" content="interview,DP,search,memo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dynamic Programming is Search with Memo"/>
-<meta name="twitter:description" content="When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons."/>
+<meta name="twitter:description" content="When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a thinking framework to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this thiking framework in real scenarios."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -127,8 +127,8 @@
             <a href="/categories/interview/"> Interview </a>
             <a href="/categories/dp/"> DP </a>
             </div>
-          <span class="more-meta"> 2339 words </span>
-          <span class="more-meta"> 11 mins read </span>
+          <span class="more-meta"> 2369 words </span>
+          <span class="more-meta"> 12 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -150,11 +150,11 @@
   </div>
 </div>
     <div class="post-content">
-      <p>When preparing for the tech interview, Dynamic Programming(DP) problems are of the most challenging type for two major reasons.</p>
-<p>The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is difficult to solve because the state representation is hard to discover.</p>
-<p>Another reason is the <strong>lack of in depth discussion on the process</strong> of finding the correct state representation.
-For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the problem but none of the explanation talks about the process of finding the state representation in the first place at all. Instead they focus on discussing implementation details after state representation is found.</p>
-<p>I have not found too much material online discussing the state representation finding process so here we are. The remainder of the post presents a <strong>thinking framework</strong> to help you tackle DP problems systematically. The same framework is also useful when evaluating other people&rsquo;s DP solutions.</p>
+      <p>When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a <strong>thinking framework</strong> to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this <strong>thiking framework</strong> in real scenarios.</p>
+<p>DP problems are considered hard mainly because of two reasons.<br>
+The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is a difficult problem because its state representation is hard to discover.</p>
+<p>Another reason is that <strong>staring at a working final solution does not reveal any insight</strong> on how the solution is derived. For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the above problem. However, looking at the solution itself does not explains how people got there. Sadly often the <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/discuss/247567/JavaC%2B%2BPython-DP">most upvoted solution</a> does not talk about the thinking proces much.</p>
+<p>The remainder of the post presents a <strong>thinking framework</strong> to help you solve DP problems systematically. This same framework is can also be used to evalute other people&rsquo;s DP solutions.</p>
 <h2 id="search-101">Search 101</h2>
 <p>Let us solve a search problem together to demonstrate the <strong>thinking process</strong>.</p>
 <blockquote>
