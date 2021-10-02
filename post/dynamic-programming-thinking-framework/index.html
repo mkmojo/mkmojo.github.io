@@ -50,7 +50,7 @@
 <meta itemprop="description" content="When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a thinking framework to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this thiking framework in real scenarios.">
 <meta itemprop="datePublished" content="2020-05-15T10:31:19-04:00" />
 <meta itemprop="dateModified" content="2020-05-15T10:31:19-04:00" />
-<meta itemprop="wordCount" content="2369">
+<meta itemprop="wordCount" content="2390">
 
 
 
@@ -127,7 +127,7 @@
             <a href="/categories/interview/"> Interview </a>
             <a href="/categories/dp/"> DP </a>
             </div>
-          <span class="more-meta"> 2369 words </span>
+          <span class="more-meta"> 2390 words </span>
           <span class="more-meta"> 12 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
@@ -143,7 +143,7 @@
     <li><a href="#dp-is-a-technique-utilzing-table-to-speed-up-search">DP is a technique utilzing table to speed up search</a></li>
     <li><a href="#the-thinking-framework">The Thinking Framework</a></li>
     <li><a href="#top-down-vs-bottom-up">Top-down vs Bottom-up</a></li>
-    <li><a href="#todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</a></li>
+    <li><a href="#can-this-be-used-to-solve-more-difficult-problems">Can this be used to solve more difficult problems?</a></li>
     <li><a href="#types-of-dynamic-programming-problems">Types of Dynamic Programming Problems</a></li>
   </ul>
 </nav>
@@ -155,8 +155,9 @@
 The first one is the <strong>&ldquo;all or nothing&rdquo;</strong> property of its solutions. Either you found one working state representation and solve the problem fully or you stuck trying. For instance <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/">Minimum Cost to Merge Stones</a> is a difficult problem because its state representation is hard to discover.</p>
 <p>Another reason is that <strong>staring at a working final solution does not reveal any insight</strong> on how the solution is derived. For example both <a href="https://gist.github.com/mtx2d/25dc44cb426418b9ce9ba88435bd9237#file-leetcode-1000-py-L2">solution1</a> and <a href="https://gist.github.com/mtx2d/ad17d8576d8453e09992dcbc1c702404#file-leetcode-1000-1-py-L2">solution2</a> solves the above problem. However, looking at the solution itself does not explains how people got there. Sadly often the <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/discuss/247567/JavaC%2B%2BPython-DP">most upvoted solution</a> does not talk about the thinking proces much.</p>
 <p>The remainder of the post presents a <strong>thinking framework</strong> to help you solve DP problems systematically. This same framework is can also be used to evalute other people&rsquo;s DP solutions.</p>
+<!-- raw HTML omitted -->
 <h2 id="search-101">Search 101</h2>
-<p>Let us solve a search problem together to demonstrate the <strong>thinking process</strong>.</p>
+<p>Let us solve a search problem together to demonstrate the <strong>thinking framework</strong>.</p>
 <blockquote>
 <p><strong>Minimum Cost Jummping Pillars</strong><br>
 Given a list of pillars of different height, player can start at the 0th or 1st position. Everytime the player jump from a pillar, he needs to spend the cost amount equal to the height of the pillar.<br>
@@ -303,16 +304,16 @@ For this particular example, a bottom up version would be:</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<h2 id="todo-can-this-be-used-to-solve-more-difficult-problems">[TODO] Can this be used to solve more difficult problems?</h2>
-<p>Sure, see in depth discussion on:</p>
+<h2 id="can-this-be-used-to-solve-more-difficult-problems">Can this be used to solve more difficult problems?</h2>
+<p>Yes, see in depth discussion on:</p>
 <ul>
 <li>burst balloons</li>
 <li>coin change 1, 2</li>
 <li>backpack problems</li>
 </ul>
 <h2 id="types-of-dynamic-programming-problems">Types of Dynamic Programming Problems</h2>
-<p>The state traversal strategy determines the Dynamic Progamming strategy.
-Based on how to traverse the search state, we can categorize the DP problem into the following categories.</p>
+<p>From the above example we can conlude that how you defined the search state(), and the search strategy(choices you make) is the core to a dynamic programming problem.</p>
+<p>Ther are these common types of dynamic programming problmes. They are different because the state representation and search strategy are different.</p>
 <ul>
 <li>case study for categories of DP problems
 <ul>
