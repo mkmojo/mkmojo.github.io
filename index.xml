@@ -6,8 +6,15 @@
     <description>Recent content on Note</description>
     <generator>Hugo 0.125.2</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Mar 2021 19:53:10 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2024 10:08:44 -0400</lastBuildDate>
     <atom:link href="https://mqiu.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chat App Key Problems</title>
+      <link>https://mqiu.me/post/chat-app-key-problems/</link>
+      <pubDate>Sat, 20 Apr 2024 10:08:44 -0400</pubDate>
+      <guid>https://mqiu.me/post/chat-app-key-problems/</guid>
+      <description>Can the Same Process Serve Both WebSocket + Http Rquest? (why is this an important question to ask)&#xA;When building the chat app, we want to serve socket traffic to tell when a user is online and have the message be send as socket data package.&#xA;The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.</description>
+    </item>
     <item>
       <title>Setup Github Actions for MIT 6.824</title>
       <link>https://mqiu.me/post/setup-github-actions-for-mit-class/</link>
