@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Hexo &#43; Dropbox on Ubuntu VPS - A-ha - Michael&#39;s Personal Blog</title>
+  <title>Hexo &#43; Dropbox on Ubuntu VPS - Note</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -26,7 +26,7 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
 
 
 
-<meta name="generator" content="Hugo 0.73.0 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/" />
@@ -36,35 +36,37 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Hexo &#43; Dropbox on Ubuntu VPS" />
-<meta property="og:description" content="The major reference for this tutorial is 用Hexo&#43;Vps搭建博客并用Dropbox同步自动发布.
+<meta property="og:url" content="http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Hexo &#43; Dropbox on Ubuntu VPS">
+  <meta property="og:description" content="The major reference for this tutorial is 用Hexo&#43;Vps搭建博客并用Dropbox同步自动发布.
 Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.
-After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/" />
-<meta property="article:published_time" content="2014-07-18T23:00:00+00:00" />
-<meta property="article:modified_time" content="2014-07-18T23:00:00+00:00" />
-<meta itemprop="name" content="Hexo &#43; Dropbox on Ubuntu VPS">
-<meta itemprop="description" content="The major reference for this tutorial is 用Hexo&#43;Vps搭建博客并用Dropbox同步自动发布.
+After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2014-07-18T23:00:00+00:00">
+    <meta property="article:modified_time" content="2014-07-18T23:00:00+00:00">
+    <meta property="article:tag" content="Hexo">
+
+  <meta itemprop="name" content="Hexo &#43; Dropbox on Ubuntu VPS">
+  <meta itemprop="description" content="The major reference for this tutorial is 用Hexo&#43;Vps搭建博客并用Dropbox同步自动发布.
 Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.
 After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!">
-<meta itemprop="datePublished" content="2014-07-18T23:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2014-07-18T23:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1543">
-
-
-
-<meta itemprop="keywords" content="Hexo," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hexo &#43; Dropbox on Ubuntu VPS"/>
+  <meta itemprop="datePublished" content="2014-07-18T23:00:00+00:00">
+  <meta itemprop="dateModified" content="2014-07-18T23:00:00+00:00">
+  <meta itemprop="wordCount" content="1441">
+  <meta itemprop="keywords" content="Hexo"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Hexo &#43; Dropbox on Ubuntu VPS">
 <meta name="twitter:description" content="The major reference for this tutorial is 用Hexo&#43;Vps搭建博客并用Dropbox同步自动发布.
 Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.
-After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!"/>
+After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -79,7 +81,7 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">Michael</a>
+    <a href="/" class="logo">/home/mqiu</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -89,9 +91,7 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
+    <a href="/post/">
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">Tags</li>
@@ -105,14 +105,12 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">Michael</a>
+  <a href="/" class="logo">/home/mqiu</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">Tags</a>
@@ -138,9 +136,9 @@ After some trial and fail, I finally figured out how to integrate my Digit Ocean
         <div class="post-category">
             <a href="/categories/tutorial/"> Tutorial </a>
             </div>
-          <span class="more-meta"> 1543 words </span>
-          <span class="more-meta"> 4 mins read </span>
-        
+          <span class="more-meta"> 1441 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
 
@@ -176,256 +174,82 @@ Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain 
 We want to install Nodejs and have it run as a service from after boot.</p>
 <p>To install it, according to my first reference, we need to install epel first. I do not know why we need epel for Nodejs, if you do, please let me know.
 To check if you have epel installed already:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum repolist <span class="p">|</span> grep epel
-</code></pre></td></tr></table>
-</div>
-</div><p>If you seee something like the following, it means you have it installed.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">* epel: mirror.prgmr.com
-epel             Extra Packages <span class="k">for</span> Enterprise Linux <span class="m">6</span> - x86_64           11,022
-</code></pre></td></tr></table>
-</div>
-</div><p>Otherwise you need to install epel.<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum repolist | grep epel
+</span></span></code></pre></div><p>If you seee something like the following, it means you have it installed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>* epel: mirror.prgmr.com
+</span></span><span style="display:flex;"><span>epel             Extra Packages <span style="color:#66d9ef">for</span> Enterprise Linux <span style="color:#ae81ff">6</span> - x86_64           11,022
+</span></span></code></pre></div><p>Otherwise you need to install epel.<br>
 Add epel key:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo rpm --import http://download-i2.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6
-</code></pre></td></tr></table>
-</div>
-</div><p>Install the package<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rpm --import http://download-i2.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6
+</span></span></code></pre></div><p>Install the package<br>
 For 32bit:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo rpm -Uvh http://download-i2.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-</code></pre></td></tr></table>
-</div>
-</div><p>For 64bit:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo rpm -Uvh http://download-i2.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-</code></pre></td></tr></table>
-</div>
-</div><p>Also, we need <code>yum priority</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install yum-priorities
-</code></pre></td></tr></table>
-</div>
-</div><p>Use <code>yum repolist</code> again to make sure you have epel installed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rpm -Uvh http://download-i2.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+</span></span></code></pre></div><p>For 64bit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rpm -Uvh http://download-i2.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+</span></span></code></pre></div><p>Also, we need <code>yum priority</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install yum-priorities
+</span></span></code></pre></div><p>Use <code>yum repolist</code> again to make sure you have epel installed.</p>
 <p>Then wen can start installing nodejs.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install nodejs npm --enablerepo<span class="o">=</span>epel
-</code></pre></td></tr></table>
-</div>
-</div><p>##Setup Dropbox<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install nodejs npm --enablerepo<span style="color:#f92672">=</span>epel
+</span></span></code></pre></div><p>##Setup Dropbox<br>
 We want to have dropbox running on our VPS so that files changed in <a href="Dropbox.com">Dropbox</a> folder will show up on our VPS.</p>
 <p>###Create User
 For safety reasons I chose to create a new user <strong>dbox</strong> in <strong>dbox</strong> group to run <a href="Dropbox.com">Dropbox</a>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">adduser dbox
-passwd dbox
-</code></pre></td></tr></table>
-</div>
-</div><p>###Install Dropbox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adduser dbox
+</span></span><span style="display:flex;"><span>passwd dbox
+</span></span></code></pre></div><p>###Install Dropbox
 For 32bit users:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> wget -O - <span class="s2">&#34;https://www.dropbox.com/download?plat=lnx.x86&#34;</span> <span class="p">|</span> tar xzf -
-</code></pre></td></tr></table>
-</div>
-</div><p>For 64bit users:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> wget -O - <span class="s2">&#34;https://www.dropbox.com/download?plat=lnx.x86_64&#34;</span> <span class="p">|</span> tar xzf -
-</code></pre></td></tr></table>
-</div>
-</div><p>###Verify Installation
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~ <span style="color:#f92672">&amp;&amp;</span> wget -O - <span style="color:#e6db74">&#34;https://www.dropbox.com/download?plat=lnx.x86&#34;</span> | tar xzf -
+</span></span></code></pre></div><p>For 64bit users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~ <span style="color:#f92672">&amp;&amp;</span> wget -O - <span style="color:#e6db74">&#34;https://www.dropbox.com/download?plat=lnx.x86_64&#34;</span> | tar xzf -
+</span></span></code></pre></div><p>###Verify Installation
 After installation you will be given a link to verify your installation. You just need to copy and paste the link to a browser and do as instructed.</p>
 <p>Then you can kill the dropbox using <code>Ctrl + C</code>, we will choose what folder to synchronize using its official managment script.</p>
 <p>###Configure Dropbox
 Download offcial management script from the Internet.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">wget https://linux.dropbox.com/packages/dropbox.py
-</code></pre></td></tr></table>
-</div>
-</div><p>Modify the permission:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x dropbox.py
-</code></pre></td></tr></table>
-</div>
-</div><p>Select folders to synchronize:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">./dropbox.py exclude add ~/Dropbox/Apps/ ~/Dropbox/back/ ~/Dropbox/Mycode/ ...
-</code></pre></td></tr></table>
-</div>
-</div><p>##Start Dropbox Service
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://linux.dropbox.com/packages/dropbox.py
+</span></span></code></pre></div><p>Modify the permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x dropbox.py
+</span></span></code></pre></div><p>Select folders to synchronize:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./dropbox.py exclude add ~/Dropbox/Apps/ ~/Dropbox/back/ ~/Dropbox/Mycode/ ...
+</span></span></code></pre></div><p>##Start Dropbox Service
 Here I mainly used this <a href="http://salogs.com/2010/06/ubuntudropbox-e5-91-bd-e4-bb-a4-e8-a1-8c-e4-b8-8b-e5-ae-89-e8-a3-85-e4-b8-8e-e7-bb-b4-e6-8a-a4/">[Ubuntu]Dropbox命令行下安装与维护</a> as reference.
 In the post, there is a script for Fedora/CentOS users. The 60th line should be changed from</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html">dbpid=<span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>pgrep -u $dbuser dropbox<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>to</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">dbpid</span><span class="o">=</span><span class="sb">`</span>pgrep -u <span class="nv">$dbuser</span> dropbox<span class="sb">`</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Please pay attention to the <strong>backquote(`)</strong>, it is not single quote('). The backquote(`) is the key locates at the left top corner of laptop keyboard, the one next to number key 1; not the one on next to return key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>dbpid=&lt;<span style="color:#f92672">code</span>&gt;pgrep -u $dbuser dropbox&lt;/<span style="color:#f92672">code</span>&gt;
+</span></span></code></pre></div><p>to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dbpid<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>pgrep -u $dbuser dropbox<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><p>Please pay attention to the <strong>backquote(`)</strong>, it is not single quote(&rsquo;). The backquote(`) is the key locates at the left top corner of laptop keyboard, the one next to number key 1; not the one on next to return key.</p>
 <p>Save the script as <code>/etc/init.d/dropbox</code> and create file <code>/etc/sysconfig/dropbox</code>.<br>
 The latter file should be empty before you add the following line:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DROPBOX_USERS</span><span class="o">=</span><span class="s2">&#34;dbox some_other_user&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Change file permission:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">0755</span> /etc/init.d/dropbox
-chmod <span class="m">0644</span> /etc/sysconfig/dropbox
-ls -l /etc/init.d/dropbox /etc/sysconfig/dropbox
-</code></pre></td></tr></table>
-</div>
-</div><p>Set SElinux permission:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chcon system_u:system_r:initr:c_exec_t /etc/init.d/dropbox
-chcon system_u:object_r:etc_t /etc/sysconfig/dropbox
-ls -lZ /etc/init.d/dropbox /etc/sysconfig/dropbox
-</code></pre></td></tr></table>
-</div>
-</div><p>Add Dropboxo to autostart list:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chkconfig dropbox on
-</code></pre></td></tr></table>
-</div>
-</div><p>Use the following command to check if the service is on:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chkconfig --list
-</code></pre></td></tr></table>
-</div>
-</div><p>Later when you need to do service check, here are some sueful commands:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">service dropbox start
-service dropbox stop
-service dropbox restart
-service dropbox status
-</code></pre></td></tr></table>
-</div>
-</div><p>You can check if Dropbox is going to start on boot now. Just reboot your system and run <code>service dropbox status</code>. If your setup is right, you will see somehting like this.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dropboxd <span class="k">for</span> USER dbox: running <span class="o">(</span>pid 904<span class="o">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Let&rsquo;s move on to installing hexo now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DROPBOX_USERS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dbox some_other_user&#34;</span>
+</span></span></code></pre></div><p>Change file permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">0755</span> /etc/init.d/dropbox
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">0644</span> /etc/sysconfig/dropbox
+</span></span><span style="display:flex;"><span>ls -l /etc/init.d/dropbox /etc/sysconfig/dropbox
+</span></span></code></pre></div><p>Set SElinux permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chcon system_u:system_r:initr:c_exec_t /etc/init.d/dropbox
+</span></span><span style="display:flex;"><span>chcon system_u:object_r:etc_t /etc/sysconfig/dropbox
+</span></span><span style="display:flex;"><span>ls -lZ /etc/init.d/dropbox /etc/sysconfig/dropbox
+</span></span></code></pre></div><p>Add Dropboxo to autostart list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chkconfig dropbox on
+</span></span></code></pre></div><p>Use the following command to check if the service is on:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chkconfig --list
+</span></span></code></pre></div><p>Later when you need to do service check, here are some sueful commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service dropbox start
+</span></span><span style="display:flex;"><span>service dropbox stop
+</span></span><span style="display:flex;"><span>service dropbox restart
+</span></span><span style="display:flex;"><span>service dropbox status
+</span></span></code></pre></div><p>You can check if Dropbox is going to start on boot now. Just reboot your system and run <code>service dropbox status</code>. If your setup is right, you will see somehting like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dropboxd <span style="color:#66d9ef">for</span> USER dbox: running <span style="color:#f92672">(</span>pid 904<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Let&rsquo;s move on to installing hexo now.</p>
 <p>##Install Hexo<br>
 This part is very easy, just follow the official tutorial.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">npm install hexo -g  
-hexo init blog  
-<span class="nb">cd</span> blog  
-npm install  
-hexo server  
-</code></pre></td></tr></table>
-</div>
-</div><p>##Publication Automation
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install hexo -g  
+</span></span><span style="display:flex;"><span>hexo init blog  
+</span></span><span style="display:flex;"><span>cd blog  
+</span></span><span style="display:flex;"><span>npm install  
+</span></span><span style="display:flex;"><span>hexo server  
+</span></span></code></pre></div><p>##Publication Automation
 Here is the underlining logic:</p>
 <ol>
 <li>VPS runs a server. nginx for instance and set its root as <code>$hexo_root/blog/public</code></li>
@@ -436,53 +260,7 @@ Here is the underlining logic:</p>
 My choice is to use the <a href="http://lnmp.org/">LNMP</a> package. It sets up Nodejs for me as user <strong>www</strong> in group <strong>www</strong>.<br>
 My default location for nginx configure file is <code>/usr/local/nginx/conf/nginx.conf</code>. <br>
 My conf file for nginx is (only the most important part):</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server
+<pre tabindex="0"><code>server
      {
          listen 80 default;
          #listen [::]:80 default ipv6only=on;
@@ -524,64 +302,22 @@ My conf file for nginx is (only the most important part):</p>
 
          access_log  /home/wwwlogs/access.log  access;
      }
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="setup-the-rule">Setup the Rule</h2>
+</code></pre><h2 id="setup-the-rule">Setup the Rule</h2>
 <p>For the nginx server, what really matters is the folder and files in the folder it is monitoring. Therefore, we need to automatically copy files into it.</p>
 <p>Linux offers a kernel feature to monitor the files changes, it is called inotify. One can choose to use this feature directly like this post <a href="https://baoz.net/monitor-file-change-in-linux-via-inotify/">linux下使用inotify实时监控文件变更，做完整性检查</a>, or we can use a command based on that feature. Incond is one of that command.</p>
 <p>incond is a service works very much like cron. Cron periodically invokes some command( you get to choose what that command is). incond instead invokes command on file change event. For instance if you create, delete, modify files.</p>
 <p>A note for Ubuntu, the hexo comand is by default not installed under <code>/usr/bin</code>, therefore when you run incrond, you will not have <code>hexo</code> command in the search path by default. You need to add something like this in your script <code>PATH=&quot;path/to/your/hexo/executable&quot;</code>.</p>
 <h3 id="install-incrond">Install incrond</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install incrond
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="start-incrond-on-boot">start incrond on boot</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">service incrond start  
-chkconfig incrond on
-</code></pre></td></tr></table>
-</div>
-</div><p>Now we can consider how to write synchronization rules.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install incrond
+</span></span></code></pre></div><h3 id="start-incrond-on-boot">start incrond on boot</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service incrond start  
+</span></span><span style="display:flex;"><span>chkconfig incrond on
+</span></span></code></pre></div><p>Now we can consider how to write synchronization rules.
 For me I need to monitor the Dropbox/hexo folder so the rule will be like this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">/home/dbox/Dropbox/hexo/source/_posts/ IN_MODIFY,IN_ATTRIB,IN_CREATE,IN_DELETE,IN_MOVE /root/runhexo.bash  
-/home/dbox/Dropbox/hexo/themes/ IN_MODIFY,IN_ATTRIB,IN_CREATE,IN_DELETE,IN_MOVE /root/runhexo.bash
-</code></pre></td></tr></table>
-</div>
-</div><p>Things like <code>IN_MODIFY, IN_ATRRIB, ... </code> are for incrond. Other available flags can be found by <code>man 5 incrontab</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">       IN_ACCESS           File was accessed (read) (*)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/home/dbox/Dropbox/hexo/source/_posts/ IN_MODIFY,IN_ATTRIB,IN_CREATE,IN_DELETE,IN_MOVE /root/runhexo.bash  
+</span></span><span style="display:flex;"><span>/home/dbox/Dropbox/hexo/themes/ IN_MODIFY,IN_ATTRIB,IN_CREATE,IN_DELETE,IN_MOVE /root/runhexo.bash
+</span></span></code></pre></div><p>Things like <code>IN_MODIFY, IN_ATRRIB, ... </code> are for incrond. Other available flags can be found by <code>man 5 incrontab</code>:</p>
+<pre tabindex="0"><code>       IN_ACCESS           File was accessed (read) (*)
        IN_ATTRIB           Metadata changed (permissions, timestamps, extended attributes,
        etc.) (*)
        IN_CLOSE_WRITE      File opened for writing was closed (*)
@@ -594,28 +330,13 @@ For me I need to monitor the Dropbox/hexo folder so the rule will be like this:<
        IN_MOVED_FROM       File moved out of watched directory (*)
        IN_MOVED_TO         File moved into watched directory (*)
        IN_OPEN             File was opened (*)    
-</code></pre></td></tr></table>
-</div>
-</div><p>Also the content of the script is :</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
-</span><span class="cp"></span><span class="nb">exec</span> 200&lt;<span class="nv">$0</span>
-flock -n <span class="m">200</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">1</span>
-sleep <span class="m">4</span>
-<span class="nb">cd</span> /home/dbox/Dropbox/hexo <span class="o">&amp;&amp;</span> rm db.json <span class="o">&amp;&amp;</span> hexo generate <span class="o">&amp;&amp;</span> rsync -a --delete /home/dbox/Dropbox/hexo/public/ /home/wwwroot/public/
-
-</code></pre></td></tr></table>
-</div>
-</div><p><code>flock</code> is used to acquire file lock, such that there could be only one bash script run at a time. This lock is used to avoid race condition.<br>
+</code></pre><p>Also the content of the script is :</p>
+<pre tabindex="0"><code>#!/usr/bin/env bash
+exec 200&lt;$0
+flock -n 200 || exit 1
+sleep 4
+cd /home/dbox/Dropbox/hexo &amp;&amp; rm db.json &amp;&amp; hexo generate &amp;&amp; rsync -a --delete /home/dbox/Dropbox/hexo/public/ /home/wwwroot/public/
+</code></pre><p><code>flock</code> is used to acquire file lock, such that there could be only one bash script run at a time. This lock is used to avoid race condition.<br>
 From the answer <a href="http://stackoverflow.com/questions/7057234/bash-flock-exit-if-cant-acquire-lock">from StackOverflow</a> is a good reference to understand the <code>exec 200&lt;$0</code>.<br>
 Also this link talks in general about how to create a library using flock: <a href="http://www.kfirlavi.com/blog/2012/11/06/elegant-locking-of-bash-program/">Elegant Bash Locking</a>.</p>
 <h2 id="reference">Reference</h2>
@@ -656,24 +377,19 @@ Also this link talks in general about how to create a library using flock: <a hr
     </footer>
   </article>
         </div>
-        <div id="disqus_thread"></div>
-    <script type="text/javascript">
-    (function() {
-      
-      
-      if (window.location.hostname === 'localhost') return;
+        
 
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      var disqus_shortname = 'goqqy';
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="mkmojo/mkmojo.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-  
-
-  
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
 
       </div>
     </main>
@@ -694,12 +410,16 @@ Also this link talks in general about how to create a library using flock: <a hr
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
-  
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
 
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2020
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -712,7 +432,7 @@ Also this link talks in general about how to create a library using flock: <a hr
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
@@ -720,9 +440,7 @@ Also this link talks in general about how to create a library using flock: <a hr
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

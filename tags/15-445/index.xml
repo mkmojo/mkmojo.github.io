@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>15-445 on Note</title>
+    <link>http://localhost:1313/tags/15-445/</link>
+    <description>Recent content in 15-445 on Note</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 29 Apr 2021 00:32:04 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/15-445/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buffer Pool Manager</title>
+      <link>http://localhost:1313/post/buffer-pool-manager/</link>
+      <pubDate>Thu, 29 Apr 2021 00:32:04 -0400</pubDate>
+      <guid>http://localhost:1313/post/buffer-pool-manager/</guid>
+      <description>This project asks us to build a buffer pool manager for DBMS. The goal for the DBMS is to manage the RAM.&#xA;The page id is the globally unique id for all the pages. To the client, there is no need to change the work for ids.&#xA;Why do we need a free_list? Because we do not want to return the memory buck to the OS.&#xA;Does page table contain both pinned and unpinned pages?</description>
+    </item>
+  </channel>
+</rss>

@@ -4,147 +4,114 @@
     <title>Tags on Note</title>
     <link>https://mqiu.me/tags/</link>
     <description>Recent content in Tags on Note</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Tue, 14 Jul 2020 03:38:39 -0400</lastBuildDate>
-    
-	<atom:link href="https://mqiu.me/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mqiu.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>API Gateway</title>
       <link>https://mqiu.me/tags/api-gateway/</link>
-      <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/api-gateway/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>APISIX</title>
       <link>https://mqiu.me/tags/apisix/</link>
-      <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/apisix/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>microservices</title>
+      <title>Microservices</title>
       <link>https://mqiu.me/tags/microservices/</link>
-      <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/microservices/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mobile APP</title>
       <link>https://mqiu.me/tags/mobile-app/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/mobile-app/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Oauth</title>
       <link>https://mqiu.me/tags/oauth/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/oauth/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OIDC</title>
       <link>https://mqiu.me/tags/oidc/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/oidc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OpenID</title>
       <link>https://mqiu.me/tags/openid/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/openid/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>前后端分离</title>
       <link>https://mqiu.me/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>interview</title>
+      <title>Interview</title>
       <link>https://mqiu.me/tags/interview/</link>
-      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/interview/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>leetcode</title>
+      <title>Leetcode</title>
       <link>https://mqiu.me/tags/leetcode/</link>
-      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/leetcode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>DP</title>
       <link>https://mqiu.me/tags/dp/</link>
-      <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/dp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>memo</title>
+      <title>Memo</title>
       <link>https://mqiu.me/tags/memo/</link>
-      <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/memo/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>search</title>
+      <title>Search</title>
       <link>https://mqiu.me/tags/search/</link>
-      <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/search/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Python</title>
       <link>https://mqiu.me/tags/python/</link>
-      <pubDate>Sun, 02 Nov 2014 12:08:20 -0500</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>VM</title>
       <link>https://mqiu.me/tags/vm/</link>
-      <pubDate>Sun, 02 Nov 2014 12:08:20 -0500</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/tags/vm/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

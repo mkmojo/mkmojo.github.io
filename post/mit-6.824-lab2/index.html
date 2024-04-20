@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MIT 6.824 Lab2 Notes - Note</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Michael" /><meta name="description" content="Ran into many challenges, documented them here so next time I can solve similar problem better.
+" /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/mit-6.824-lab2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="http://localhost:1313/post/mit-6.824-lab2/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="MIT 6.824 Lab2 Notes">
+  <meta property="og:description" content="Ran into many challenges, documented them here so next time I can solve similar problem better.
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-04-01T19:43:29-04:00">
+    <meta property="article:modified_time" content="2021-04-01T19:43:29-04:00">
+
+  <meta itemprop="name" content="MIT 6.824 Lab2 Notes">
+  <meta itemprop="description" content="Ran into many challenges, documented them here so next time I can solve similar problem better.">
+  <meta itemprop="datePublished" content="2021-04-01T19:43:29-04:00">
+  <meta itemprop="dateModified" content="2021-04-01T19:43:29-04:00">
+  <meta itemprop="wordCount" content="694">
+  <meta itemprop="keywords" content="MIT,Distributed System"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MIT 6.824 Lab2 Notes">
+<meta name="twitter:description" content="Ran into many challenges, documented them here so next time I can solve similar problem better.">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">/home/mqiu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">/home/mqiu</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MIT 6.824 Lab2 Notes</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-04-01 </span>
+        <div class="post-category">
+            <a href="/categories/mit/"> MIT </a>
+            <a href="/categories/distributed-system/"> Distributed System </a>
+            </div>
+          <span class="more-meta"> 694 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#implement-timer-reset">Implement Timer Reset</a></li>
+    <li><a href="#tally-vote-with-the-conditional-variable-pattern">Tally Vote with the Conditional Variable Pattern</a></li>
+    <li><a href="#process-replyterm-with-rfcurrenttermnot-the-argsterm-when-msg-are-sent">Process reply.Term with rf.currentTerm(not the args.Term when msg are sent)</a></li>
+    <li><a href="#pass-1-based-test-cases">Pass 1-based Test Cases</a></li>
+    <li><a href="#nextindex-and-matchindex-usage">nextIndex and matchIndex usage</a></li>
+    <li><a href="#prepare-args-in-in-critical-sections-but-send-message-out-side-of-critical-section">Prepare args in in critical sections, but send message out side of critical section.</a></li>
+    <li><a href="#debug-around-messages">Debug Around Messages</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Ran into many challenges, documented them here so next time I can solve similar problem better.</p>
+<h2 id="implement-timer-reset">Implement Timer Reset</h2>
+<p>I tried two implementations for this.
+Both are using the shared variable appraoch. The shared variable here is used to communicate inforamtion between threads.</p>
+<p>The first one toggles a boolean.
+Most straightforward idea is to have a boolean variable work as the sential value to represent if some action needed to happen.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#75715e">//bad do not do this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Raft</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//... some other fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">timerExpired</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//... some other fields
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For election timer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">timerExpired</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">electionTimeout</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For heartbeat timer
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">timerExpired</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">heartbeatTimeout</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The main draw back of the boolean idea is that whenever timer is reset, we need to set the boolean value as <code>false</code> then wait for which ever loop to. It is very easy to forget to reset the timer.</p>
+<p>A better strategy is &ldquo;I will check continously; since my last check, has anthing happened yet?&rdquo;.
+Or &ldquo;if the system has seen evidence of activity from the legit leader(by receiving heart beat) since my last wakeup, I will not start a new election(because this is enough to convince me that the overall system has the leadership that it needs to operate properly)&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#75715e">// Good, do this.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">rf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Raft</span>) <span style="color:#a6e22e">LeaderElection</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> !<span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">killed</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">startTime</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">electionTimeout</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">500</span> <span style="color:#f92672">+</span> (<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">500</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>(<span style="color:#a6e22e">electionTimeout</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">lastActive</span>.<span style="color:#a6e22e">Before</span>(<span style="color:#a6e22e">startTime</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">Leader</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">KickoffElection</span>()
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">DPrintf</span>(<span style="color:#e6db74">&#34;[%d] killed, stop leader election.&#34;</span>, <span style="color:#a6e22e">rf</span>.<span style="color:#a6e22e">me</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This implementation is better than the boolean toggle approach because the programmer no longer needs to remember to toggle back a boolean. Timestamp here automatically is adavancing. The responsibility of is shifted from the programmer to the system timer.</p>
+<h2 id="tally-vote-with-the-conditional-variable-pattern">Tally Vote with the Conditional Variable Pattern</h2>
+<p>When implementing the leader election mechanism, any node as the Candidate role will first send out vote request in parallel and tally the vote.</p>
+<p>This need of concurrency can be captured by the following pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#a6e22e">count</span>, <span style="color:#a6e22e">finished</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cond</span> = <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">NewCond</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">mu</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">peers</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Spawn many threads to run RPC in parallel; concurrenly do this is key for fault tolerance.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">task</span>(<span style="color:#a6e22e">server_id</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lock</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">voted</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">finished</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cond</span>.<span style="color:#a6e22e">Broadcast</span>() <span style="color:#75715e">// this should be called when count or finished is updated.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">unlock</span>()
+</span></span><span style="display:flex;"><span>  }(<span style="color:#a6e22e">id</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Main thread
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">lock</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> !<span style="color:#a6e22e">some_predicate</span>(<span style="color:#a6e22e">count</span>, <span style="color:#a6e22e">finished</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cond</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Has lock and condition is true, process data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">unlock</span>()
+</span></span></code></pre></div><h2 id="process-replyterm-with-rfcurrenttermnot-the-argsterm-when-msg-are-sent">Process reply.Term with rf.currentTerm(not the args.Term when msg are sent)</h2>
+<p>For raft to be correct, it is important for any node to ignore out dated messages.
+Therefore when RPC came back with reply from either <code>RequestVote</code> or <code>AppendEntries</code>,
+the leader&rsquo;s decision should be based on <code>rf.currentTerm</code> to judge if a reply is worth
+process or should be discarded(because the rf.currentTerm has advanced from when it
+sent the RPC).</p>
+<p>The information brought back by RPC is only useful if global Term has not advanced.</p>
+<h2 id="pass-1-based-test-cases">Pass 1-based Test Cases</h2>
+<p>I used -1 as the special value to represent some index has not been used.</p>
+<h2 id="nextindex-and-matchindex-usage">nextIndex and matchIndex usage</h2>
+<p>Remeber to record nextIndex and matchIndex for leader as well, because leader is
+also counted when decideing how to update commitIndex.</p>
+<h2 id="prepare-args-in-in-critical-sections-but-send-message-out-side-of-critical-section">Prepare args in in critical sections, but send message out side of critical section.</h2>
+<p>Otherwise it will take deadlock.
+Example One: prepare AppendEntries and RequestVote args within lock.
+Then send msg with RPC. Then process the result within lock.</p>
+<h2 id="debug-around-messages">Debug Around Messages</h2>
+<p>For this assignment, all the logic changes that affects raft peer&rsquo;s state are guarded between locks.
+All the message passing are not synchronized, the reason is RPC can be very slow and networking can be unreliable.
+Block and wait for the RPC return will cause deadlock. Because the handler is also guarded by lock.</p>
+<!-- raw HTML omitted -->
+<p>Argument preparation is also done within lock.</p>
+<h1 id="for-lab2c">For Lab2c</h1>
+<ol>
+<li>Bug: <code>-1</code> as the skip term optimization.</li>
+<li>Bug: re-election initializing <code>nextIndex</code> and <code>matchIndex</code> should not override the leader index.</li>
+<li>Bug: deep copy entries to avoid race condition when sending AppendEntried RPC.</li>
+<li>ApplyLoop should be fast enough to catch up.</li>
+</ol>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-04-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/buffer-pool-manager/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Buffer Pool Manager</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/kubernetes-tensorflow-gpu/">
+            <span class="next-text nav-default">Kubernetes Tensorflow GPU</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="mkmojo/mkmojo.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/mkmojo" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2024
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Michael</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
+
+
+
+
+
+
+</body>
+</html>

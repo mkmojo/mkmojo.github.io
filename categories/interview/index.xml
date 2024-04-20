@@ -4,41 +4,30 @@
     <title>Interview on Note</title>
     <link>https://mqiu.me/categories/interview/</link>
     <description>Recent content in Interview on Note</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Jun 2020 12:57:49 -0400</lastBuildDate>
-    
-	<atom:link href="https://mqiu.me/categories/interview/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mqiu.me/categories/interview/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leetcode Weekly Contest 192</title>
       <link>https://mqiu.me/post/leetcode-weekly-contest-192/</link>
       <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/leetcode-weekly-contest-192/</guid>
-      <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
-3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
+      <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.&#xA;3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.&#xA;4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
     </item>
-    
     <item>
       <title>Leetcode Contest 189</title>
       <link>https://mqiu.me/post/leetcode-contest-189/</link>
       <pubDate>Sun, 17 May 2020 20:02:20 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/leetcode-contest-189/</guid>
       <description>&lt;p&gt;Solved three out of four problems. Did not have enough time for the last problem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dynamic Programming is Search with Memo</title>
       <link>https://mqiu.me/post/dynamic-programming-thinking-framework/</link>
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/dynamic-programming-thinking-framework/</guid>
       <description>&lt;p&gt;When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a &lt;strong&gt;thinking framework&lt;/strong&gt; to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this &lt;strong&gt;thiking framework&lt;/strong&gt; in real scenarios.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

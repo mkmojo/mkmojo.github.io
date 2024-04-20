@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hexo on A-ha - Michael&#39;s Personal Blog</title>
+    <title>Hexo on Note</title>
     <link>http://localhost:1313/tags/hexo/</link>
-    <description>Recent content in Hexo on A-ha - Michael&#39;s Personal Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Hexo on Note</description>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Fri, 18 Jul 2014 23:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://localhost:1313/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="http://localhost:1313/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo &#43; Dropbox on Ubuntu VPS</title>
       <link>http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/</link>
       <pubDate>Fri, 18 Jul 2014 23:00:00 +0000</pubDate>
-      
       <guid>http://localhost:1313/post/hexo-&#43;-dropbox-on-ubuntu-vps/</guid>
-      <description>&lt;p&gt;The major reference for this tutorial is &lt;a href=&#34;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&#34;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;.&lt;br&gt;
-Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.&lt;/p&gt;
-&lt;p&gt;After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!&lt;/p&gt;</description>
+      <description>&lt;p&gt;The major reference for this tutorial is &lt;a href=&#34;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&#34;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;.&lt;br&gt;&#xA;Hexo suits all my needs, it is a great tool. Therefore it is worth all the pain to set up.&lt;/p&gt;&#xA;&lt;p&gt;After some trial and fail, I finally figured out how to integrate my Digit Ocean CentOS VPS with Dropbox for Hexo to automate the publication process. With the help of this new setup, the Dropbox folder is the only thing I need to focus on. Whatever operation done there will be monitored by my VPS, publications will be automated by the script running on my server!&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -26,7 +26,7 @@ Set up NFS server Synology NAS" /><meta name="keywords" content="A-ha, personal,
 
 
 
-<meta name="generator" content="Hugo 0.74.1 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="https://mqiu.me/post/nfs-mount-pi-cluster/" />
@@ -38,36 +38,35 @@ Set up NFS server Synology NAS" /><meta name="keywords" content="A-ha, personal,
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="K3S Pi Cluster Dynamic Provision with NFS Server" />
-<meta property="og:description" content="Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
-Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
-The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
-Set up NFS server Synology NAS" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/nfs-mount-pi-cluster/" />
-<meta property="article:published_time" content="2020-07-09T16:58:07-04:00" />
-<meta property="article:modified_time" content="2020-07-09T16:58:07-04:00" />
-<meta itemprop="name" content="K3S Pi Cluster Dynamic Provision with NFS Server">
-<meta itemprop="description" content="Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
+<meta property="og:url" content="https://mqiu.me/post/nfs-mount-pi-cluster/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="K3S Pi Cluster Dynamic Provision with NFS Server">
+  <meta property="og:description" content="Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
 Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
 The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
 Set up NFS server Synology NAS">
-<meta itemprop="datePublished" content="2020-07-09T16:58:07-04:00" />
-<meta itemprop="dateModified" content="2020-07-09T16:58:07-04:00" />
-<meta itemprop="wordCount" content="541">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-07-09T16:58:07-04:00">
+    <meta property="article:modified_time" content="2020-07-09T16:58:07-04:00">
 
-
-
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="K3S Pi Cluster Dynamic Provision with NFS Server"/>
+  <meta itemprop="name" content="K3S Pi Cluster Dynamic Provision with NFS Server">
+  <meta itemprop="description" content="Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
+Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
+The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
+Set up NFS server Synology NAS">
+  <meta itemprop="datePublished" content="2020-07-09T16:58:07-04:00">
+  <meta itemprop="dateModified" content="2020-07-09T16:58:07-04:00">
+  <meta itemprop="wordCount" content="541"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="K3S Pi Cluster Dynamic Provision with NFS Server">
 <meta name="twitter:description" content="Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
 Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
 The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
-Set up NFS server Synology NAS"/>
+Set up NFS server Synology NAS">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -179,21 +178,21 @@ The high level strategy is to use Synology as NFS server and have my pi cluster 
 </li>
 </ul>
 <h3 id="check-that-nfs-server-is-working">Check that NFS server is working</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make sure the permission on worker node is correct</span>
-mkdir /opt/nfs
-sudo chown pirate:pirate /opt/nfs
-sudo chmod <span style="color:#ae81ff">755</span> /opt/nfs
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Update worker node to load this on startup</span>
-sudo vi /etc/fstab
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Add the following entry</span>
-mqiu-nas:volume1/nfs /opt/nfs defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><p><img src="/file/pi-cluster-nfs/fstab.png" alt="/etc/fstab"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># make sure the permission on worker node is correct</span>
+</span></span><span style="display:flex;"><span>mkdir /opt/nfs
+</span></span><span style="display:flex;"><span>sudo chown pirate:pirate /opt/nfs
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">755</span> /opt/nfs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Update worker node to load this on startup</span>
+</span></span><span style="display:flex;"><span>sudo vi /etc/fstab
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add the following entry</span>
+</span></span><span style="display:flex;"><span>mqiu-nas:volume1/nfs /opt/nfs defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p><img src="/file/pi-cluster-nfs/fstab.png" alt="/etc/fstab"></p>
 <p>Save the above file and use the following command to verify the you can mount successfully.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mount /opt/nfs
-</code></pre></div><h3 id="remember-to-umount-disk">Remember to <code>umount</code> disk</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount /opt/nfs
+</span></span></code></pre></div><h3 id="remember-to-umount-disk">Remember to <code>umount</code> disk</h3>
 <p>Now that we have verified the NFS mounting is working as expected.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo umount /opt/nfs
-</code></pre></div><p>After umounting we are ready to have NFS client provisioner running for us.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount /opt/nfs
+</span></span></code></pre></div><p>After umounting we are ready to have NFS client provisioner running for us.</p>
 <h2 id="deploy-nfs-licent-provisioner">Deploy nfs-licent-provisioner</h2>
 <p>The overall architecture is described by this following diagram:
 <img src="/file/pi-cluster-nfs/architecture.svg" alt="nfs client provisioner architecture"></p>
@@ -202,54 +201,54 @@ mqiu-nas:volume1/nfs /opt/nfs defaults <span style="color:#ae81ff">0</span> <spa
 <p>If we think of k8s as an OS for a cluster of machines.<br>
 Helm is a package management tool for k8s cluster just as Pip is a package management tool for Python.</p>
 <p>For nfs client, we can direcly install it from <a href="https://github.com/helm/charts/tree/master/stable/nfs-client-provisioner">helm stable repo</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create namespace for the nfs client deployment</span>
-kubectl create ns storage
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install nfs client via helm</span>
-$ helm install nfs-client-provisioner stable/nfs-client-provisioner   <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--namespace storage --set nfs.server<span style="color:#f92672">=</span>mqiu-nas --set nfs.path<span style="color:#f92672">=</span>/volume1/nfs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--set image.repository<span style="color:#f92672">=</span>quay.io/external_storage/nfs-client-provisioner-arm
-
-NAME: nfs-client-provisioner
-LAST DEPLOYED: Fri Jul <span style="color:#ae81ff">10</span> 18:34:23 <span style="color:#ae81ff">2020</span>
-NAMESPACE: storage
-STATUS: deployed
-REVISION: <span style="color:#ae81ff">1</span>
-TEST SUITE: None
-</code></pre></div><p>I installed this deployment to a <code>storage</code> namespace.<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># create namespace for the nfs client deployment</span>
+</span></span><span style="display:flex;"><span>kubectl create ns storage
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># install nfs client via helm</span>
+</span></span><span style="display:flex;"><span>$ helm install nfs-client-provisioner stable/nfs-client-provisioner   <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--namespace storage --set nfs.server<span style="color:#f92672">=</span>mqiu-nas --set nfs.path<span style="color:#f92672">=</span>/volume1/nfs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--set image.repository<span style="color:#f92672">=</span>quay.io/external_storage/nfs-client-provisioner-arm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME: nfs-client-provisioner
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Fri Jul <span style="color:#ae81ff">10</span> 18:34:23 <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: storage
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>TEST SUITE: None
+</span></span></code></pre></div><p>I installed this deployment to a <code>storage</code> namespace.<br>
 Because we are on an <code>ARM</code> based cluster, we need to set the <code>-arm</code> suffix to <code>image.repository</code> to include arm based docker image.<br>
 Since my Synology based NAS is at <code>mqiu-nas:/volume1/nfs</code>, I will set the <code>nfs.server=mqiu-nas</code> and <code>nfs.path=/vluem1/nfs</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kc get all -n storage
-NAME                                         READY   STATUS    RESTARTS   AGE
-pod/nfs-client-provisioner-f4d9d5cdf-xxfzc   1/1     Running   <span style="color:#ae81ff">0</span>          117m
-
-NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/nfs-client-provisioner   1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           117m
-
-NAME                                               DESIRED   CURRENT   READY   AGE
-replicaset.apps/nfs-client-provisioner-f4d9d5cdf   <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>       117m
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm list -n storage
-NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                            APP VERSION
-nfs-client-provisioner  storage         <span style="color:#ae81ff">1</span>               2020-07-10 22:20:31.6635529 -0400 EDT   deployed        nfs-client-provisioner-1.2.8     3.1.0
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Check role based access control is created</span>
-$ kc get clusterrole,clusterrolebinding | grep nfs
-clusterrole.rbac.authorization.k8s.io/my-nfs-client-provisioner-runner          28m
-clusterrolebinding.rbac.authorization.k8s.io/run-my-nfs-client-provisioner      28m
-</code></pre></div><p>Create a PersistentVolumeClaim like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#pvc-nfs.yaml</span>
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-        name: pvc-1
-spec:
-        storageClassName: nfs-client // &lt;-- this is important; triggers dynamic provisioning
-        resources:
-                requests:
-                        storage: 100Mi
-        accessModes:
-        - ReadWriteMany
-</code></pre></div><p>In the future if we want to remove this installation:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm delete my-nfs-client-provisioner -n storage
-</code></pre></div><h3 id="install-manually">Install Manually</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kc get all -n storage
+</span></span><span style="display:flex;"><span>NAME                                         READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>pod/nfs-client-provisioner-f4d9d5cdf-xxfzc   1/1     Running   <span style="color:#ae81ff">0</span>          117m
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span style="display:flex;"><span>deployment.apps/nfs-client-provisioner   1/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           117m
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME                                               DESIRED   CURRENT   READY   AGE
+</span></span><span style="display:flex;"><span>replicaset.apps/nfs-client-provisioner-f4d9d5cdf   <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>         <span style="color:#ae81ff">1</span>       117m
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm list -n storage
+</span></span><span style="display:flex;"><span>NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                            APP VERSION
+</span></span><span style="display:flex;"><span>nfs-client-provisioner  storage         <span style="color:#ae81ff">1</span>               2020-07-10 22:20:31.6635529 -0400 EDT   deployed        nfs-client-provisioner-1.2.8     3.1.0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check role based access control is created</span>
+</span></span><span style="display:flex;"><span>$ kc get clusterrole,clusterrolebinding | grep nfs
+</span></span><span style="display:flex;"><span>clusterrole.rbac.authorization.k8s.io/my-nfs-client-provisioner-runner          28m
+</span></span><span style="display:flex;"><span>clusterrolebinding.rbac.authorization.k8s.io/run-my-nfs-client-provisioner      28m
+</span></span></code></pre></div><p>Create a PersistentVolumeClaim like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#pvc-nfs.yaml</span>
+</span></span><span style="display:flex;"><span>apiVersion: v1
+</span></span><span style="display:flex;"><span>kind: PersistentVolumeClaim
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>        name: pvc-1
+</span></span><span style="display:flex;"><span>spec:
+</span></span><span style="display:flex;"><span>        storageClassName: nfs-client // &lt;-- this is important; triggers dynamic provisioning
+</span></span><span style="display:flex;"><span>        resources:
+</span></span><span style="display:flex;"><span>                requests:
+</span></span><span style="display:flex;"><span>                        storage: 100Mi
+</span></span><span style="display:flex;"><span>        accessModes:
+</span></span><span style="display:flex;"><span>        - ReadWriteMany
+</span></span></code></pre></div><p>In the future if we want to remove this installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>helm delete my-nfs-client-provisioner -n storage
+</span></span></code></pre></div><h3 id="install-manually">Install Manually</h3>
 <p>Solution is adapted from this <a href="https://www.youtube.com/watch?v=AavnQzWDTEk&amp;feature=youtu.be">Youtube Tutorial by Venkat</a>.
 This tutorial breaks down the <code>nfs-client-provisioner</code> helm chart into small parts and apply them one by one to achieve the same goal.</p>
 <h2 id="reference">Reference</h2>
@@ -334,7 +333,7 @@ This tutorial breaks down the <code>nfs-client-provisioner</code> helm chart int
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2021
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -355,9 +354,7 @@ This tutorial breaks down the <code>nfs-client-provisioner</code> helm chart int
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

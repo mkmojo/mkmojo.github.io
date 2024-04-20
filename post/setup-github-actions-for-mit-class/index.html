@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.74.1 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="https://mqiu.me/post/setup-github-actions-for-mit-class/" />
@@ -36,27 +36,27 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Setup Github Actions for MIT 6.824" />
-<meta property="og:description" content="I am working on the MIT Distributed System class Spring 2020 6.824." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/setup-github-actions-for-mit-class/" />
-<meta property="article:published_time" content="2021-03-22T19:53:10-04:00" />
-<meta property="article:modified_time" content="2021-03-22T19:53:10-04:00" />
-<meta itemprop="name" content="Setup Github Actions for MIT 6.824">
-<meta itemprop="description" content="I am working on the MIT Distributed System class Spring 2020 6.824.">
-<meta itemprop="datePublished" content="2021-03-22T19:53:10-04:00" />
-<meta itemprop="dateModified" content="2021-03-22T19:53:10-04:00" />
-<meta itemprop="wordCount" content="124">
+<meta property="og:url" content="https://mqiu.me/post/setup-github-actions-for-mit-class/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Setup Github Actions for MIT 6.824">
+  <meta property="og:description" content="I am working on the MIT Distributed System class Spring 2020 6.824.
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-03-22T19:53:10-04:00">
+    <meta property="article:modified_time" content="2021-03-22T19:53:10-04:00">
 
-
-
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Setup Github Actions for MIT 6.824"/>
-<meta name="twitter:description" content="I am working on the MIT Distributed System class Spring 2020 6.824."/>
+  <meta itemprop="name" content="Setup Github Actions for MIT 6.824">
+  <meta itemprop="description" content="I am working on the MIT Distributed System class Spring 2020 6.824.">
+  <meta itemprop="datePublished" content="2021-03-22T19:53:10-04:00">
+  <meta itemprop="dateModified" content="2021-03-22T19:53:10-04:00">
+  <meta itemprop="wordCount" content="124"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Setup Github Actions for MIT 6.824">
+<meta name="twitter:description" content="I am working on the MIT Distributed System class Spring 2020 6.824.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,7 +146,7 @@
       <p>I am working on the MIT Distributed System class <a href="https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB">Spring 2020 6.824</a>.</p>
 <p>Building a distributed system is hard, CI can help to prevent the regression which allows me to mange complexity. I have decided to use github actions to achieve this.</p>
 <h2 id="the-script">The Script</h2>
-<pre><code># https://github.com/mvdan/github-actions-golang
+<pre tabindex="0"><code># https://github.com/mvdan/github-actions-golang
 name: Unittest
 on: [push, pull_request]
 
@@ -154,7 +154,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [&quot;1.13.8&quot;]
+        go-version: [&#34;1.13.8&#34;]
         os: [ubuntu-latest, macos-latest, windows-latest] 
     runs-on: ${{matrix.os}}
 
@@ -249,7 +249,7 @@ jobs:
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2021
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -270,9 +270,7 @@ jobs:
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

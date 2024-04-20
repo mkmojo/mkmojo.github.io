@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.74.1 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="https://mqiu.me/post/leetcode-weekly-contest-192/" />
@@ -37,33 +37,35 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Leetcode Weekly Contest 192" />
-<meta property="og:description" content="Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
-3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/leetcode-weekly-contest-192/" />
-<meta property="article:published_time" content="2020-06-07T12:57:49-04:00" />
-<meta property="article:modified_time" content="2020-06-07T12:57:49-04:00" />
-<meta itemprop="name" content="Leetcode Weekly Contest 192">
-<meta itemprop="description" content="Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
+<meta property="og:url" content="https://mqiu.me/post/leetcode-weekly-contest-192/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Leetcode Weekly Contest 192">
+  <meta property="og:description" content="Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
 3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
 4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.">
-<meta itemprop="datePublished" content="2020-06-07T12:57:49-04:00" />
-<meta itemprop="dateModified" content="2020-06-07T12:57:49-04:00" />
-<meta itemprop="wordCount" content="245">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-06-07T12:57:49-04:00">
+    <meta property="article:modified_time" content="2020-06-07T12:57:49-04:00">
+    <meta property="article:tag" content="Leetcode">
+    <meta property="article:tag" content="Interview">
 
-
-
-<meta itemprop="keywords" content="leetcode,interview," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Leetcode Weekly Contest 192"/>
+  <meta itemprop="name" content="Leetcode Weekly Contest 192">
+  <meta itemprop="description" content="Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
+3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
+4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.">
+  <meta itemprop="datePublished" content="2020-06-07T12:57:49-04:00">
+  <meta itemprop="dateModified" content="2020-06-07T12:57:49-04:00">
+  <meta itemprop="wordCount" content="245">
+  <meta itemprop="keywords" content="Leetcode,Interview"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Leetcode Weekly Contest 192">
 <meta name="twitter:description" content="Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
 3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case."/>
+4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -159,37 +161,37 @@
 <p>I found out the state definition early enough(about 5 minutes in). However got stuck for a long time
 on how to handle the house is already patined case. As result I was not able to reduce the problem all the way to base case. Eventually failed to solve this problem in time.</p>
 <p>Here is a version after the contest:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 6/7/2020</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">minCost</span>(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) <span style="color:#f92672">-&gt;</span> int:
-        
-        <span style="color:#75715e"># Paint ith house in color j, resulting in k groups.</span>
-        <span style="color:#a6e22e">@functools.lru_cache</span>(None)
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>(i, j, k):
-            
-            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> k <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-            
-            <span style="color:#66d9ef">if</span> k <span style="color:#f92672">&gt;</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
-                <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>inf
-        
-            <span style="color:#66d9ef">if</span> houses[i] <span style="color:#f92672">and</span> j <span style="color:#f92672">!=</span> houses[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>: <span style="color:#75715e"># color starts from 1</span>
-                <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>inf
-            
-            prev_cost <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>inf
-            <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> range(n):
-                <span style="color:#66d9ef">if</span> c <span style="color:#f92672">==</span> j:
-                    prev_cost <span style="color:#f92672">=</span> min(prev_cost, search(i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j, k))
-                <span style="color:#66d9ef">else</span>:
-                    prev_cost <span style="color:#f92672">=</span> min(prev_cost, search(i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, c, k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
-            
-            paint_cost <span style="color:#f92672">=</span> cost[i][j] <span style="color:#f92672">*</span> (<span style="color:#f92672">not</span> houses[i])
-            
-            <span style="color:#66d9ef">return</span> paint_cost <span style="color:#f92672">+</span> prev_cost
-        
-        res <span style="color:#f92672">=</span> min(search(m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, c, target) <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> range(n))
-        <span style="color:#66d9ef">return</span> res <span style="color:#66d9ef">if</span> res <span style="color:#f92672">&lt;</span> math<span style="color:#f92672">.</span>inf <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 6/7/2020</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">minCost</span>(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Paint ith house in color j, resulting in k groups.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@functools.lru_cache</span>(<span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>(i, j, k):
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> k <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> k <span style="color:#f92672">&gt;</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>inf
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> houses[i] <span style="color:#f92672">and</span> j <span style="color:#f92672">!=</span> houses[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>: <span style="color:#75715e"># color starts from 1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>inf
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            prev_cost <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>inf
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> c <span style="color:#f92672">==</span> j:
+</span></span><span style="display:flex;"><span>                    prev_cost <span style="color:#f92672">=</span> min(prev_cost, search(i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j, k))
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                    prev_cost <span style="color:#f92672">=</span> min(prev_cost, search(i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, c, k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            paint_cost <span style="color:#f92672">=</span> cost[i][j] <span style="color:#f92672">*</span> (<span style="color:#f92672">not</span> houses[i])
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> paint_cost <span style="color:#f92672">+</span> prev_cost
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> min(search(m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, c, target) <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> range(n))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res <span style="color:#66d9ef">if</span> res <span style="color:#f92672">&lt;</span> math<span style="color:#f92672">.</span>inf <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div>
     </div>
 
     <div class="post-copyright">
@@ -269,7 +271,7 @@ on how to handle the house is already patined case. As result I was not able to 
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2021
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -290,9 +292,7 @@ on how to handle the house is already patined case. As result I was not able to 
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

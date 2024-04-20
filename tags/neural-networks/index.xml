@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Neural Networks on A-ha - Michael&#39;s Personal Blog</title>
+    <title>Neural Networks on Note</title>
     <link>http://localhost:1313/tags/neural-networks/</link>
-    <description>Recent content in Neural Networks on A-ha - Michael&#39;s Personal Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Neural Networks on Note</description>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Wed, 09 Jan 2019 22:07:23 -0500</lastBuildDate>
-    
-	<atom:link href="http://localhost:1313/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="http://localhost:1313/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Neural Networks</title>
       <link>http://localhost:1313/post/neural-networks/</link>
       <pubDate>Wed, 09 Jan 2019 22:07:23 -0500</pubDate>
-      
       <guid>http://localhost:1313/post/neural-networks/</guid>
       <description>Hacker&amp;rsquo;s guide to Neural Networks : A tutorial using circuit to explain how neural network works. CS231n: Convolutional Neural Networks for Visual Recognition：The actual course for above link. 机器学习基石（上）: Coursera course on ML.</description>
     </item>
-    
   </channel>
 </rss>

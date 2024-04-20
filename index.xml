@@ -4,148 +4,100 @@
     <title>Note</title>
     <link>https://mqiu.me/</link>
     <description>Recent content on Note</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Mon, 22 Mar 2021 19:53:10 -0400</lastBuildDate>
-    
-	<atom:link href="https://mqiu.me/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mqiu.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup Github Actions for MIT 6.824</title>
       <link>https://mqiu.me/post/setup-github-actions-for-mit-class/</link>
       <pubDate>Mon, 22 Mar 2021 19:53:10 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/setup-github-actions-for-mit-class/</guid>
       <description>&lt;p&gt;I am working on the MIT Distributed System class &lt;a href=&#34;https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB&#34;&gt;Spring 2020 6.824&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Python Module Reload for Class Static Fields</title>
       <link>https://mqiu.me/post/python-module-reload-for-class-static-fields/</link>
       <pubDate>Wed, 29 Jul 2020 17:03:27 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/python-module-reload-for-class-static-fields/</guid>
-      <description>Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
-It was a simple task on the surface, but I ran into problems when structuring my unittest.
-The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.</description>
+      <description>Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.&#xA;It was a simple task on the surface, but I ran into problems when structuring my unittest.&#xA;The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.</description>
     </item>
-    
     <item>
       <title>Apisix Test Setup</title>
       <link>https://mqiu.me/post/apisix-test-setup/</link>
       <pubDate>Tue, 14 Jul 2020 03:38:39 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/apisix-test-setup/</guid>
-      <description>I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
-The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp;amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .</description>
+      <description>I run into some challenges setting up the APISIX test. Documenting it here for my furture self.&#xA;The overall step looks like this,&#xA;# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp;amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .</description>
     </item>
-    
     <item>
       <title>K3S Pi Cluster Dynamic Provision with NFS Server</title>
       <link>https://mqiu.me/post/nfs-mount-pi-cluster/</link>
       <pubDate>Thu, 09 Jul 2020 16:58:07 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/nfs-mount-pi-cluster/</guid>
-      <description>Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
-Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
-The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
-Set up NFS server Synology NAS</description>
+      <description>Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.&#xA;Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.&#xA;The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.&#xA;Set up NFS server Synology NAS</description>
     </item>
-    
     <item>
       <title>Synology Home Assistant</title>
       <link>https://mqiu.me/post/synology-home-assistant/</link>
       <pubDate>Tue, 07 Jul 2020 16:49:23 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/synology-home-assistant/</guid>
-      <description>&lt;p&gt;I recently bought the Synology home server to manage my personal data.
-This is the tutorial I followed to set it up.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I recently bought the Synology home server to manage my personal data.&#xA;This is the tutorial I followed to set it up.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Mobile App OAuth and OpenID Connect</title>
       <link>https://mqiu.me/post/mobile-app-oauth-and-oidc/</link>
       <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/mobile-app-oauth-and-oidc/</guid>
       <description>Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates</description>
     </item>
-    
     <item>
       <title>Leetcode Weekly Contest 192</title>
       <link>https://mqiu.me/post/leetcode-weekly-contest-192/</link>
       <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/leetcode-weekly-contest-192/</guid>
-      <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
-3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
+      <description>Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.&#xA;3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.&#xA;4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.</description>
     </item>
-    
     <item>
       <title>Leetcode Contest 190</title>
       <link>https://mqiu.me/post/leetcode-contest-190/</link>
       <pubDate>Sun, 24 May 2020 18:39:37 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/leetcode-contest-190/</guid>
-      <description>What went well: I solved first three problems relatively quickly and have working intuition on the last problem.
-What did not go well:
-  problem 2 is a two pointer problem, I spent time implmenting the O(N^2) approach. This can be improlved by reason through the input size and do not settle for a inefficient solution.
-  problem 3 is a problem on trees. The algorithm I settled on computing all possible paths shows duplication paths.</description>
+      <description>What went well: I solved first three problems relatively quickly and have working intuition on the last problem.&#xA;What did not go well:&#xA;problem 2 is a two pointer problem, I spent time implmenting the O(N^2) approach. This can be improlved by reason through the input size and do not settle for a inefficient solution.&#xA;problem 3 is a problem on trees. The algorithm I settled on computing all possible paths shows duplication paths.</description>
     </item>
-    
     <item>
       <title>Leetcode Contest 189</title>
       <link>https://mqiu.me/post/leetcode-contest-189/</link>
       <pubDate>Sun, 17 May 2020 20:02:20 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/leetcode-contest-189/</guid>
       <description>&lt;p&gt;Solved three out of four problems. Did not have enough time for the last problem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Dynamic Programming is Search with Memo</title>
       <link>https://mqiu.me/post/dynamic-programming-thinking-framework/</link>
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/dynamic-programming-thinking-framework/</guid>
       <description>&lt;p&gt;When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a &lt;strong&gt;thinking framework&lt;/strong&gt; to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this &lt;strong&gt;thiking framework&lt;/strong&gt; in real scenarios.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hugo for Personal Website</title>
       <link>https://mqiu.me/post/hugo_personal_blog/</link>
       <pubDate>Wed, 09 Jan 2019 16:50:46 -0500</pubDate>
-      
       <guid>https://mqiu.me/post/hugo_personal_blog/</guid>
       <description>&lt;p&gt;I plan to write more in 2019. As the result I have resurrected my personal site.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://mqiu.me/about/</link>
       <pubDate>Wed, 09 Jan 2019 13:56:04 -0500</pubDate>
-      
       <guid>https://mqiu.me/about/</guid>
       <description>I like taking things apart and peek inside to see how they work.</description>
     </item>
-    
     <item>
       <title>A Tutorial on Python Function Calls</title>
       <link>https://mqiu.me/post/five-minute-tutorial-for-python-functions/</link>
       <pubDate>Sun, 02 Nov 2014 12:08:20 -0500</pubDate>
-      
       <guid>https://mqiu.me/post/five-minute-tutorial-for-python-functions/</guid>
-      <description>&lt;p&gt;This tutorial gives you a quick overview of how Python handles function calls.&lt;/p&gt;
-&lt;p&gt;The Python program we are going to examine is:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(x, y):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt; add(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>&lt;p&gt;This tutorial gives you a quick overview of how Python handles function calls.&lt;/p&gt;&#xA;&lt;p&gt;The Python program we are going to examine is:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(x, y):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print add(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

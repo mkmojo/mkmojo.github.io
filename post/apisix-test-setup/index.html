@@ -25,7 +25,7 @@ The overall step looks like this,
 
 
 
-<meta name="generator" content="Hugo 0.74.1 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="https://mqiu.me/post/apisix-test-setup/" />
@@ -37,33 +37,36 @@ The overall step looks like this,
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Apisix Test Setup" />
-<meta property="og:description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
+<meta property="og:url" content="https://mqiu.me/post/apisix-test-setup/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Apisix Test Setup">
+  <meta property="og:description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/apisix-test-setup/" />
-<meta property="article:published_time" content="2020-07-14T03:38:39-04:00" />
-<meta property="article:modified_time" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="name" content="Apisix Test Setup">
-<meta itemprop="description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp;amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-07-14T03:38:39-04:00">
+    <meta property="article:modified_time" content="2020-07-14T03:38:39-04:00">
+    <meta property="article:tag" content="APISIX">
+    <meta property="article:tag" content="API Gateway">
+    <meta property="article:tag" content="Microservices">
+
+  <meta itemprop="name" content="Apisix Test Setup">
+  <meta itemprop="description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
 # get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
-<meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00" />
-<meta itemprop="wordCount" content="572">
-
-
-
-<meta itemprop="keywords" content="APISIX,API Gateway,microservices," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Apisix Test Setup"/>
+  <meta itemprop="datePublished" content="2020-07-14T03:38:39-04:00">
+  <meta itemprop="dateModified" content="2020-07-14T03:38:39-04:00">
+  <meta itemprop="wordCount" content="572">
+  <meta itemprop="keywords" content="APISIX,API Gateway,Microservices"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Apisix Test Setup">
 <meta name="twitter:description" content="I run into some challenges setting up the APISIX test. Documenting it here for my furture self.
 The overall step looks like this,
-# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git ."/>
+# get source $ git clone git@github.com:apache/incubator-apisix.git $ cd incubator-apisix # prepare runtime and start apisix process $ etcd --enable-v2=true &amp; $ make init # create config files $ make deps $ make run # install required test-nginx repo to sibling file path $ git clone https://github.com/openresty/test-nginx.git .">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -153,22 +156,22 @@ The overall step looks like this,
       <p>I run into some challenges setting up the APISIX test.
 Documenting it here for my furture self.</p>
 <p>The overall step looks like this,</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># get source</span>
-$ git clone git@github.com:apache/incubator-apisix.git
-$ cd incubator-apisix
-
-<span style="color:#75715e"># prepare runtime and start apisix process</span>
-$ etcd --enable-v2<span style="color:#f92672">=</span>true &amp;
-$ make init <span style="color:#75715e"># create config files</span>
-$ make deps
-$ make run
-
-<span style="color:#75715e"># install required test-nginx repo to sibling file path</span>
-$ git clone https://github.com/openresty/test-nginx.git ../test-nginx
-<span style="color:#75715e"># invoke the test in incurbator-apisix using `prove`</span>
-$ TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>prove  -I./ -I../test-nginx/lib -I../test-nginx/inc -r ./t 
-</code></pre></div><p>Read further if you want more detais.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># get source</span>
+</span></span><span style="display:flex;"><span>$ git clone git@github.com:apache/incubator-apisix.git
+</span></span><span style="display:flex;"><span>$ cd incubator-apisix
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># prepare runtime and start apisix process</span>
+</span></span><span style="display:flex;"><span>$ etcd --enable-v2<span style="color:#f92672">=</span>true &amp;
+</span></span><span style="display:flex;"><span>$ make init <span style="color:#75715e"># create config files</span>
+</span></span><span style="display:flex;"><span>$ make deps
+</span></span><span style="display:flex;"><span>$ make run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install required test-nginx repo to sibling file path</span>
+</span></span><span style="display:flex;"><span>$ git clone https://github.com/openresty/test-nginx.git ../test-nginx
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># invoke the test in incurbator-apisix using `prove`</span>
+</span></span><span style="display:flex;"><span>$ TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>prove  -I./ -I../test-nginx/lib -I../test-nginx/inc -r ./t 
+</span></span></code></pre></div><p>Read further if you want more detais.</p>
 <p>Some confusion comes from the <strong>test toolchian</strong>.<br>
 The project is a <code>lua</code> project, but the testing framework is written in a different language: <code>perl</code>.<br>
 The perl test framework is called <code>prove</code>. I have no idea how to use it.<br>
@@ -192,14 +195,14 @@ My workflow is to run <code>make test</code> and read through both <a href="http
   
 
 <div class="admonition example">
-  <pre><code># Perl version
+  <pre tabindex="0"><code># Perl version
 $ perl --version  
 This is perl 5, version 32, subversion 0 (v5.32.0)
-</code></pre><pre><code># OS version
+</code></pre><pre tabindex="0"><code># OS version
 $ uname -a
 Linux 2d-pc 5.3.0-62-generic #56~18.04.1-Ubuntu SMP \
 Wed Jun 24 16:17:03 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
-</code></pre><pre><code># Perl package manager version
+</code></pre><pre tabindex="0"><code># Perl package manager version
 $ cpan -v
 Loading internal logger. Log::Log4perl recommended for better logging
 &gt;(info): /home/linuxbrew/.linuxbrew/bin/cpan script version 1.675, CPAN.pm version 2.27
@@ -208,34 +211,33 @@ Loading internal logger. Log::Log4perl recommended for better logging
 
 </details>
 <h2 id="prelude-start-the-subject-being-tested">Prelude: start the subject being tested</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># start the etcd db in compatible mode</span>
-$ etcd --enable-v2<span style="color:#f92672">=</span>true &amp; <span style="color:#75715e"># !NOTE1</span>
-
-<span style="color:#75715e"># init local nginx.conf and other things</span>
-$ make init
-<span style="color:#75715e"># start apisix process</span>
-$ make run 
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># start the etcd db in compatible mode</span>
+</span></span><span style="display:flex;"><span>$ etcd --enable-v2<span style="color:#f92672">=</span>true &amp; <span style="color:#75715e"># !NOTE1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># init local nginx.conf and other things</span>
+</span></span><span style="display:flex;"><span>$ make init
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># start apisix process</span>
+</span></span><span style="display:flex;"><span>$ make run 
+</span></span></code></pre></div><blockquote>
 <p>NOTE1: Using v2(not v3) is documented at <a href="https://github.com/apache/incubator-apisix/blob/master/doc/install-dependencies.md#note">install deps</a>. Which is very easy to overlook.
 Also remember to always start this first because init needs to talk to etcd!</p>
 </blockquote>
 <p>Up to this point, we should have the subject up and running. Let us check that this is indeed the case.</p>
 <p>First, curl a request to the process,</p>
-<pre><code>curl &quot;http://127.0.0.1:9080/apisix/admin/services/&quot; \
-    -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' | jq
+<pre tabindex="0"><code>curl &#34;http://127.0.0.1:9080/apisix/admin/services/&#34; \
+    -H &#39;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#39; | jq
 </code></pre><p>We will get this as the response:
 <img src="/apisix-test-setup/test-apisix-is-running.png" alt="apisix-running"></p>
 <p>TODO: access dashboard UI needs to clone <code>incubator-apisix-dashboard</code> repo and will need additional setup.</p>
 <h2 id="run-test">Run Test</h2>
 <p>Since we have verified that the apisix process is running, we can run test against it by</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make test <span style="color:#75715e">#!NOTE2</span>
-
-TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    prove -I../test-nginx/lib -I../test-nginx/inc -I./ -r -s t/
-
-... very long text output on test results...
-
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ make test <span style="color:#75715e">#!NOTE2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which openresty<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    prove -I../test-nginx/lib -I../test-nginx/inc -I./ -r -s t/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... very long text output on test results...
+</span></span></code></pre></div><blockquote>
 <p>NOTE2: need to add -I../test-nginx/inc to the make script otherwise would run into missing Test::Base error.</p>
 </blockquote>
 <!-- raw HTML omitted -->
@@ -321,7 +323,7 @@ TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74"
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2021
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -342,9 +344,7 @@ TEST_NGINX_BINARY<span style="color:#f92672">=</span><span style="color:#e6db74"
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

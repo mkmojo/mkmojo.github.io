@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>The Raft Consensus Protocol - Note</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Michael" /><meta name="description" content="Context Imagine we want to build a stateful service like a KV store. A KV store is useful because it can persist user preference across stateless HTTP sessions. Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.
+Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/the-raft-consensus-protocol/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="http://localhost:1313/post/the-raft-consensus-protocol/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="The Raft Consensus Protocol">
+  <meta property="og:description" content="Context Imagine we want to build a stateful service like a KV store. A KV store is useful because it can persist user preference across stateless HTTP sessions. Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.
+Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-05-17T19:29:39-04:00">
+    <meta property="article:modified_time" content="2021-05-17T19:29:39-04:00">
+    <meta property="article:tag" content="Raft">
+    <meta property="article:tag" content="Distributed System">
+
+  <meta itemprop="name" content="The Raft Consensus Protocol">
+  <meta itemprop="description" content="Context Imagine we want to build a stateful service like a KV store. A KV store is useful because it can persist user preference across stateless HTTP sessions. Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.
+Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node.">
+  <meta itemprop="datePublished" content="2021-05-17T19:29:39-04:00">
+  <meta itemprop="dateModified" content="2021-05-17T19:29:39-04:00">
+  <meta itemprop="wordCount" content="379">
+  <meta itemprop="keywords" content="Raft,Distributed System"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="The Raft Consensus Protocol">
+<meta name="twitter:description" content="Context Imagine we want to build a stateful service like a KV store. A KV store is useful because it can persist user preference across stateless HTTP sessions. Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.
+Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node.">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">/home/mqiu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">/home/mqiu</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">The Raft Consensus Protocol</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-17 </span>
+        <div class="post-category">
+            <a href="/categories/raft/"> raft </a>
+            </div>
+          <span class="more-meta"> 379 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#replicate-state-machine">Replicate State Machine</a></li>
+    <li><a href="#consensus-protocol">Consensus Protocol</a></li>
+    <li><a href="#the-raft-consensus-protocol">The Raft Consensus Protocol</a>
+      <ul>
+        <li><a href="#leader-election">Leader Election</a></li>
+        <li><a href="#log-replication">Log replication</a></li>
+        <li><a href="#safetyvoting-preference">Safety(Voting Preference)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="context">Context</h2>
+<p>Imagine we want to build a stateful service like a KV store.
+A KV store is useful because it can persist user preference across stateless HTTP sessions.
+Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.</p>
+<p>Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node.</p>
+<p>However, there are some downsides to this one node simple approach. The service cannot tolerate the node failure. If we have to restart the node for security update, or if there is a power outage, the service would be down. During the service downtime, clients will not have any service. If we want to offer a highly available service, we would have to do better.</p>
+<p>One common tool used to achieve high availability is replication. Common replication architecture is to have one master and two slave nodes. All the write request goes through the master node and read requsts are served by any node. The master replicates all the data asynchronously to the slaves.</p>
+<h2 id="replicate-state-machine">Replicate State Machine</h2>
+<p>Replicate state machine is a tool to organize many unreliable hosts into a reliable(fault tolerant and highly available) service.</p>
+<p>It relies on a distribute consensus log as the input to Applicatoin state machine.</p>
+<h2 id="consensus-protocol">Consensus Protocol</h2>
+<p>Consensus protocol ensures each machine have a copy of the same log. It makes sure the logs agree with each other. Ensure log consistency is a distributed consensus problem(having multiple agents agree to the same value despite network delay and broken machine).</p>
+<p>This is a hard problem. Solving this problme wins Leslie Lamport a Turing Award.
+He solves this problem with a protocol called Paxo(1989). However Paxo is presented in a not so easy to understand way. Many efforts are made to explain it[TODO: add citations]</p>
+<p>Raft is a differnet approach to the same problem with understandibility as one of the design goal. It offers the same linerizabilty promise as Paxo but is much simpler to explain.</p>
+<h2 id="the-raft-consensus-protocol">The Raft Consensus Protocol</h2>
+<h3 id="leader-election">Leader Election</h3>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="log-replication">Log replication</h3>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="safetyvoting-preference">Safety(Voting Preference)</h3>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-05-17
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/raft/">raft</a>
+          <a href="/tags/distributed-system/">distributed system</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/job-scheduler/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Job Scheduler</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/buffer-pool-manager/">
+            <span class="next-text nav-default">Buffer Pool Manager</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="mkmojo/mkmojo.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/mkmojo" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2024
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Michael</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
+
+
+
+
+
+
+</body>
+</html>

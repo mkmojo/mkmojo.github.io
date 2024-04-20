@@ -25,7 +25,7 @@ The challange was realted to how Python handles class static variables. Python C
 
 
 
-<meta name="generator" content="Hugo 0.74.1 with theme even" />
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
 <link rel="canonical" href="https://mqiu.me/post/python-module-reload-for-class-static-fields/" />
@@ -37,33 +37,32 @@ The challange was realted to how Python handles class static variables. Python C
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Python Module Reload for Class Static Fields" />
-<meta property="og:description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
-It was a simple task on the surface, but I ran into problems when structuring my unittest.
-The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mqiu.me/post/python-module-reload-for-class-static-fields/" />
-<meta property="article:published_time" content="2020-07-29T17:03:27-04:00" />
-<meta property="article:modified_time" content="2020-07-29T17:03:27-04:00" />
-<meta itemprop="name" content="Python Module Reload for Class Static Fields">
-<meta itemprop="description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+<meta property="og:url" content="https://mqiu.me/post/python-module-reload-for-class-static-fields/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Python Module Reload for Class Static Fields">
+  <meta property="og:description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
 The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
-<meta itemprop="datePublished" content="2020-07-29T17:03:27-04:00" />
-<meta itemprop="dateModified" content="2020-07-29T17:03:27-04:00" />
-<meta itemprop="wordCount" content="275">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-07-29T17:03:27-04:00">
+    <meta property="article:modified_time" content="2020-07-29T17:03:27-04:00">
 
-
-
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python Module Reload for Class Static Fields"/>
+  <meta itemprop="name" content="Python Module Reload for Class Static Fields">
+  <meta itemprop="description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
+It was a simple task on the surface, but I ran into problems when structuring my unittest.
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
+  <meta itemprop="datePublished" content="2020-07-29T17:03:27-04:00">
+  <meta itemprop="dateModified" content="2020-07-29T17:03:27-04:00">
+  <meta itemprop="wordCount" content="275"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Python Module Reload for Class Static Fields">
 <meta name="twitter:description" content="Challenge I was doing a little refactor for a codebase I worked in. The idea is to collect all free form environment variables into one class to have a centralized place to manage them all to simplify maintanence work.
 It was a simple task on the surface, but I ran into problems when structuring my unittest.
-The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached."/>
+The challange was realted to how Python handles class static variables. Python Class executes once when it is first loaded and then cached.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -161,31 +160,31 @@ The idea is to collect all free form environment variables into one class to hav
 The challange was realted to how Python handles class static variables.
 Python Class executes once when it is first loaded and then cached. Consecutive calls uses the cashed value to avoid duplicate work.</p>
 <p>For example if we have the following code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project_root/config.py</span>
-Class MyDemoClass:
-    NAMESPACE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;NAMESPACE)</span>
-    DEV_ENV <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;DEV_ENV&#34;</span>)
-</code></pre></div><p>The <code>MyDemoClass.NAMESPACE</code> and <code>MyDemoClass.DEV_ENV</code> are class static fields that all instances of MyDemoClass shares.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project_root/config.py</span>
+</span></span><span style="display:flex;"><span>Class MyDemoClass:
+</span></span><span style="display:flex;"><span>    NAMESPACE <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;NAMESPACE)</span>
+</span></span><span style="display:flex;"><span>    DEV_ENV <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;DEV_ENV&#34;</span>)
+</span></span></code></pre></div><p>The <code>MyDemoClass.NAMESPACE</code> and <code>MyDemoClass.DEV_ENV</code> are class static fields that all instances of MyDemoClass shares.</p>
 <h2 id="solution">Solution</h2>
 <p>To write proper unittest, I need to have the power to <strong>force reload static fields for a class</strong>.
 Before my test run, I supplied mocked <code>os.environ</code>. However because Python runtime handles when the <code>MyDemoClass</code> is loaded, by the time I supplied the mock in my unittest, the class may have already be loaded and invoked all the <code>os.getenv</code> too early.
 So the workaround I found is to force reload the <code>MyDemoClass</code> module <strong>after</strong> I have mocked out the <code>os.environ</code> sys varaible.</p>
 <p>Like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project_root/tests/test_mydemoclass.py</span>
-<span style="color:#f92672">import</span> unittest
-<span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
-<span style="color:#f92672">import</span> config
-<span style="color:#f92672">from</span> importlib <span style="color:#f92672">import</span> reload 
-
-Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
-    <span style="color:#75715e"># https://stackoverflow.com/questions/437589/how-do-i-unload-reload-a-python-module</span>
-
-    <span style="color:#a6e22e">@pathc.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;NAMESPACE&#39;</span> : <span style="color:#e6db74">&#39;my_test_namespace&#39;</span>, <span style="color:#e6db74">&#39;DEV_ENV&#39;</span> : <span style="color:#e6db74">&#39;my_test_dev_env&#39;</span>})
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_load_env</span>(self):
-        reload(config)
-        <span style="color:#f92672">from</span> config <span style="color:#f92672">import</span> MyDemoClass
-        self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#34;my_test_namespace&#34;</span>, MyDemoClass<span style="color:#f92672">.</span>NAMESPACE)
-</code></pre></div><p>Note that <code>reload</code> is the tool I used to force reload a module (so that the <code>os.getenv</code> uses the mock value), and the <code>from config import MyDemoClass</code> allows me to use the just freshly reloaded <code>MyDemoClass</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project_root/tests/test_mydemoclass.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> unittest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> config
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> importlib <span style="color:#f92672">import</span> reload 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># https://stackoverflow.com/questions/437589/how-do-i-unload-reload-a-python-module</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@pathc.dict</span>(<span style="color:#e6db74">&#39;os.environ&#39;</span>, {<span style="color:#e6db74">&#39;NAMESPACE&#39;</span> : <span style="color:#e6db74">&#39;my_test_namespace&#39;</span>, <span style="color:#e6db74">&#39;DEV_ENV&#39;</span> : <span style="color:#e6db74">&#39;my_test_dev_env&#39;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_load_env</span>(self):
+</span></span><span style="display:flex;"><span>        reload(config)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">from</span> config <span style="color:#f92672">import</span> MyDemoClass
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>assertEqual(<span style="color:#e6db74">&#34;my_test_namespace&#34;</span>, MyDemoClass<span style="color:#f92672">.</span>NAMESPACE)
+</span></span></code></pre></div><p>Note that <code>reload</code> is the tool I used to force reload a module (so that the <code>os.getenv</code> uses the mock value), and the <code>from config import MyDemoClass</code> allows me to use the just freshly reloaded <code>MyDemoClass</code>.</p>
 
     </div>
 
@@ -263,7 +262,7 @@ Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2021
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -284,9 +283,7 @@ Class TestMyDemoClass(unittest<span style="color:#f92672">.</span>Testcase):
 
 
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
-
-
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
 
 
 

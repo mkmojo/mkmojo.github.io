@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>System Design on Note</title>
+    <link>http://localhost:1313/categories/system-design/</link>
+    <description>Recent content in System Design on Note</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 Oct 2021 21:11:15 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/system-design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Job Scheduler</title>
+      <link>http://localhost:1313/post/job-scheduler/</link>
+      <pubDate>Thu, 14 Oct 2021 21:11:15 -0400</pubDate>
+      <guid>http://localhost:1313/post/job-scheduler/</guid>
+      <description>Let us design a job scheduler system.&#xA;What are some functional requirements?&#xA;User can submit job to the system (ad hoc tasks) Job can be triggered by event time (scheduled tasks) </description>
+    </item>
+    <item>
+      <title>Microservice Architecture</title>
+      <link>http://localhost:1313/post/microservice-architecture/</link>
+      <pubDate>Wed, 15 Jul 2020 04:05:55 -0400</pubDate>
+      <guid>http://localhost:1313/post/microservice-architecture/</guid>
+      <description>This article discusses how monolith architecture progresses into microservice architecture for a web app. Auth services is discussed in detail as an example.&#xA;Typically web application starts out in a monolithic form util it hits a scaling point.&#xA;At that point the monolith is broken down into a collection of individual(micro) services collaborting with each other to perform the same functionality.&#xA;We will take authentication servcie as an example to demonstrate this transformation step by step, because user state management is the core of every single web application.</description>
+    </item>
+  </channel>
+</rss>

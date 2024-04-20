@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CD on A-ha - Michael&#39;s Personal Blog</title>
+    <title>CD on Note</title>
     <link>http://localhost:1313/tags/cd/</link>
-    <description>Recent content in CD on A-ha - Michael&#39;s Personal Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in CD on Note</description>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Sun, 14 Jul 2019 20:59:12 -0400</lastBuildDate>
-    
-	<atom:link href="http://localhost:1313/tags/cd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="http://localhost:1313/tags/cd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up CI for Github</title>
       <link>http://localhost:1313/post/setting_up_ci_for_github/</link>
       <pubDate>Sun, 14 Jul 2019 20:59:12 -0400</pubDate>
-      
       <guid>http://localhost:1313/post/setting_up_ci_for_github/</guid>
-      <description>Target platform is Python binary for Windows. Source repo is GitHub.
-Workflow:
- code commit automated tests build binary if tests pass upload binary to specific directory / online storage  Potential tools:
- Kubernetes Podman, Buildah, and Skopeo  </description>
+      <description>Target platform is Python binary for Windows. Source repo is GitHub.&#xA;Workflow:&#xA;code commit automated tests build binary if tests pass upload binary to specific directory / online storage Potential tools:&#xA;Kubernetes Podman, Buildah, and Skopeo </description>
     </item>
-    
   </channel>
 </rss>

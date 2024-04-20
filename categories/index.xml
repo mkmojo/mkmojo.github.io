@@ -4,75 +4,58 @@
     <title>Categories on Note</title>
     <link>https://mqiu.me/categories/</link>
     <description>Recent content in Categories on Note</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Jun 2020 13:39:38 -0400</lastBuildDate>
-    
-	<atom:link href="https://mqiu.me/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mqiu.me/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Authentication</title>
       <link>https://mqiu.me/categories/authentication/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/authentication/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Authorization</title>
       <link>https://mqiu.me/categories/authorization/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/authorization/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>User</title>
       <link>https://mqiu.me/categories/user/</link>
-      <pubDate>Sun, 07 Jun 2020 13:39:38 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/user/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Interview</title>
       <link>https://mqiu.me/categories/interview/</link>
-      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/interview/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>leetcode</title>
+      <title>Leetcode</title>
       <link>https://mqiu.me/categories/leetcode/</link>
-      <pubDate>Sun, 07 Jun 2020 12:57:49 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/leetcode/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>DP</title>
       <link>https://mqiu.me/categories/dp/</link>
-      <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/dp/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Tutorial</title>
       <link>https://mqiu.me/categories/tutorial/</link>
-      <pubDate>Sun, 02 Nov 2014 12:08:20 -0500</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://mqiu.me/categories/tutorial/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

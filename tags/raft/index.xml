@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raft on Note</title>
+    <link>http://localhost:1313/tags/raft/</link>
+    <description>Recent content in Raft on Note</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 May 2021 19:29:39 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/raft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Raft Consensus Protocol</title>
+      <link>http://localhost:1313/post/the-raft-consensus-protocol/</link>
+      <pubDate>Mon, 17 May 2021 19:29:39 -0400</pubDate>
+      <guid>http://localhost:1313/post/the-raft-consensus-protocol/</guid>
+      <description>Context Imagine we want to build a stateful service like a KV store. A KV store is useful because it can persist user preference across stateless HTTP sessions. Once a user has specified his/her preferences, the website do not have to ask again next time the same user visits the website.&#xA;Buidling the KV store with only one node is relatively simple because the node cannot disagree with itself. The client can ask the service to save a value, when it asks the server for the value back, the service only needs to fetch the value from the only node.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>search on Note</title>
+    <title>Search on Note</title>
     <link>https://mqiu.me/tags/search/</link>
-    <description>Recent content in search on Note</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Search on Note</description>
+    <generator>Hugo 0.125.2</generator>
     <language>en</language>
     <lastBuildDate>Fri, 15 May 2020 10:31:19 -0400</lastBuildDate>
-    
-	<atom:link href="https://mqiu.me/tags/search/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mqiu.me/tags/search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamic Programming is Search with Memo</title>
       <link>https://mqiu.me/post/dynamic-programming-thinking-framework/</link>
       <pubDate>Fri, 15 May 2020 10:31:19 -0400</pubDate>
-      
       <guid>https://mqiu.me/post/dynamic-programming-thinking-framework/</guid>
       <description>&lt;p&gt;When preparing for tech interviews, Dynamic Programming(DP) problems are of the most challenging type, in this article we discussed a &lt;strong&gt;thinking framework&lt;/strong&gt; to help solve this type of problem. We also attached a list of actual interview problems with annotated solution as the case study to show how to apply this &lt;strong&gt;thiking framework&lt;/strong&gt; in real scenarios.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
