@@ -59,7 +59,7 @@ When building the chat app, we want to serve socket traffic to tell when a user 
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
   <meta itemprop="datePublished" content="2024-04-20T10:08:44-04:00">
   <meta itemprop="dateModified" content="2024-04-20T10:08:44-04:00">
-  <meta itemprop="wordCount" content="228"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
+  <meta itemprop="wordCount" content="308"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
 <meta name="twitter:description" content="Can the Same Process Serve Both WebSocket &#43; Http Rquest? (why is this an important question to ask)
 When building the chat app, we want to serve socket traffic to tell when a user is online and have the message be send as socket data package.
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
@@ -130,7 +130,7 @@ The application also have some other functionality such as login/logout. Those a
       <div class="post-meta">
         <span class="post-time"> 2024-04-20 </span>
         
-          <span class="more-meta"> 228 words </span>
+          <span class="more-meta"> 308 words </span>
           <span class="more-meta"> 2 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
@@ -161,6 +161,15 @@ The application also have some other functionality such as login/logout. Those a
 If so, we should have SocketServer and Http Server be two separate backend services.</p>
 <h1 id="how-should-the-http-traffic-from-the-websockets-be-routed">How Should the Http Traffic from the WebSockets be routed?</h1>
 <p>Should these triffic go through the API gateway again(as if they these internal traffics are from external)?</p>
+<h1 id="what-is-websocket">What is WebSocket?</h1>
+<p><code>WebSocket</code> is a protocol allow bi-directional communication between the server and the client.</p>
+<p>Server was not able to talk to client when relying on HTTP only.</p>
+<p>how to implement websocket client.<br>
+how to implement websocket server.</p>
+<p>See this link for moe details: <a href="https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy">https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy</a></p>
+<h1 id="how-does-inter-backends-communication-work">How Does Inter-Backends Communication Work?</h1>
+<p>We do not really need this for the chat app backend because wo have already introduced a message broker.</p>
+<p>Each socket server can dynamically subscribe to topics(keyed by threadid).</p>
 
     </div>
 
