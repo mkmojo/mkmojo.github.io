@@ -59,7 +59,7 @@ When building the chat app, we want to serve socket traffic to tell when a user 
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
   <meta itemprop="datePublished" content="2024-04-20T10:08:44-04:00">
   <meta itemprop="dateModified" content="2024-04-20T10:08:44-04:00">
-  <meta itemprop="wordCount" content="552"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
+  <meta itemprop="wordCount" content="801"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
 <meta name="twitter:description" content="Can the Same Process Serve Both WebSocket &#43; Http Rquest? (why is this an important question to ask)
 When building the chat app, we want to serve socket traffic to tell when a user is online and have the message be send as socket data package.
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
@@ -130,8 +130,8 @@ The application also have some other functionality such as login/logout. Those a
       <div class="post-meta">
         <span class="post-time"> 2024-04-20 </span>
         
-          <span class="more-meta"> 552 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 801 words </span>
+          <span class="more-meta"> 4 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -167,9 +167,14 @@ If so, we should have SocketServer and Http Server be two separate backend servi
 <p>how to implement websocket client.<br>
 how to implement websocket server.</p>
 <p>See this link for moe details: <a href="https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy">https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy</a></p>
+<h1 id="key-problem-which-machine-is-a-specific-client-connect-to">Key problem: Which machine is a specific client connect to?</h1>
+<p>Solve this problem either with a message broker or with a session storage.</p>
 <h1 id="how-does-inter-backends-communication-work">How Does Inter-Backends Communication Work?</h1>
 <p>We do not really need this for the chat app backend because wo have already introduced a message broker.</p>
-<p>Each socket server can dynamically subscribe to topics(keyed by threadid).</p>
+<p>Each socket server can dynamically subscribe to topics(keyed by threadid).
+&ndash;&gt; this turns out to be trickly because the gunicorn worker is ephemeral, when it does it brings the subscription thread away with its death.</p>
+<p>We should use the presence service as the look up table to find who is online and who is offline.
+Once find out which host name to talk to from the presence service, we can issue http call directly to the host machine(which will have a flask server listening to a port and answer the HTTP request to send message to a specific connected socket).</p>
 <h1 id="what-does-the-desired-architecture-look-like-why-does-this-version-need-to-have-a-presence-service">What does the desired architecture look like? Why does this version need to have a presence service?</h1>
 <p>Load balancer connects clients to socket server. Round robin is enough. No need for sticky session. Because inter-backend server communication is facilitated by a message bus. Therefore we need a presence service(canbe hanled by the session state redis cluster). (Alternative architecture need to have each wbsocket server know about other&rsquo;s exits and perform consistent hashing which no longer needs a dedicated message broker)</p>
 <p>Using session to manager user&rsquo;s auth state. The session state is stored in a redis cluster.
@@ -184,7 +189,17 @@ The actual credentials are stored in a users table(relational db).</p>
 The thread queue worker needs to look up all the members in the thread(full picture) and check the session service(sometimes called the presence server) to find out who in the threads are offline.<br>
 For those people offline, this worker need to make an entry in the database. When user getsback online the next time, it will create a task to ask for past message from the thread.</p>
 </li>
+<li>
+<p>the presence service is actually a session storage in Redis</p>
+</li>
 </ol>
+<h1 id="evolution-of-architecture">Evolution of Architecture</h1>
+<p>First phase, user login. Session Management, presence service, and thread(chat room) creation.</p>
+<p>Second phase, the sender websocket server breaks down thread and use the presence server to findout hosts names and performa message delivery.</p>
+<p>Third phase, decouple the sender websocket server. We do this because in the second phase, the performance of the sender web socket is the bottleneck.
+To fix this perf bottleneck, we will move work form the sender websocket server to dedicated worker groups(working off of a queue).
+More specifically, we are going to have workers process the message send request. When processing a mesasge, consult the presence table.
+Invoke http calls to the host machine the receipent connects to, waits for the ack back, handles the failed message redelivery.</p>
 
     </div>
 
