@@ -59,7 +59,7 @@ When building the chat app, we want to serve socket traffic to tell when a user 
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
   <meta itemprop="datePublished" content="2024-04-20T10:08:44-04:00">
   <meta itemprop="dateModified" content="2024-04-20T10:08:44-04:00">
-  <meta itemprop="wordCount" content="801"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
+  <meta itemprop="wordCount" content="972"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Chat App Key Problems">
 <meta name="twitter:description" content="Can the Same Process Serve Both WebSocket &#43; Http Rquest? (why is this an important question to ask)
 When building the chat app, we want to serve socket traffic to tell when a user is online and have the message be send as socket data package.
 The application also have some other functionality such as login/logout. Those are typically served by http protocols. This is because the server has no need to push to client for these features.">
@@ -130,8 +130,8 @@ The application also have some other functionality such as login/logout. Those a
       <div class="post-meta">
         <span class="post-time"> 2024-04-20 </span>
         
-          <span class="more-meta"> 801 words </span>
-          <span class="more-meta"> 4 mins read </span>
+          <span class="more-meta"> 972 words </span>
+          <span class="more-meta"> 5 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -200,6 +200,43 @@ For those people offline, this worker need to make an entry in the database. Whe
 To fix this perf bottleneck, we will move work form the sender websocket server to dedicated worker groups(working off of a queue).
 More specifically, we are going to have workers process the message send request. When processing a mesasge, consult the presence table.
 Invoke http calls to the host machine the receipent connects to, waits for the ack back, handles the failed message redelivery.</p>
+<h1 id="how-to-debug-the-sessions-in-the-redis">How to debug the sessions in the redis?</h1>
+<p>From the redis-cli we can MONITOR the commands executed to the redis instance.
+One example log can be:</p>
+<pre tabindex="0"><code>1717880997.096565 [0 172.18.0.6:43518] &#34;GET&#34; &#34;session:b22caead-b761-4510-adda-aaf81b62ba28&#34;
+1717880997.104562 [0 172.18.0.6:43518] &#34;SETEX&#34; &#34;session:b22caead-b761-4510-adda-aaf81b62ba28&#34; &#34;2678400&#34; &#34;\x80\x04\x95\x12\x00\x00\x00\x00\x00\x00\x00}\x94\x8c\n_permanent\x94\x88s.&#34;
+1717881006.467428 [0 172.18.0.6:43518] &#34;GET&#34; &#34;session:b22caead-b761-4510-adda-aaf81b62ba28&#34;
+1717881006.980050 [0 172.18.0.6:43518] &#34;SETEX&#34; &#34;session:b22caead-b761-4510-adda-aaf81b62ba28&#34; &#34;2678400&#34; &#34;\x80\x04\x95\xd4\x00\x00\x00\x00\x00\x00\x00}\x94(\x8c\n_permanent\x94\x88\x8c\b_user_id\x94\x8c f358d1bbfa85471eab08f0519c69b1bb\x94\x8c\x06_fresh\x94\x88\x8c\x03_id\x94\x8c\x80f3b83a9ff7b60c0599837692d04b534449ec633441e03444ad419c1cbc39cd4f19864aee29c97c6b9375937b28767455fea1ddc5704c7fa0e44e9e08dca789e4\x94u.&#34;
+</code></pre><p>Notice that the hex encoded string, that is pickle. We can use the folloiwng Python script to decode it:</p>
+<pre tabindex="0"><code>➜  redis-debug git:(qqiu.presence) ✗ cat decode_pickle.py
+import pickle
+import argparse
+import binascii
+
+def main():
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description=&#39;Deserialize pickle data from command line.&#39;)
+    parser.add_argument(&#39;pickle_data&#39;, type=str, help=&#39;The pickle serialized data string.&#39;)
+
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Convert the hexadecimal string representation of the pickle data to bytes
+    pickle_data = bytes(args.pickle_data, &#39;utf-8&#39;).decode(&#39;unicode_escape&#39;).encode(&#39;latin1&#39;)
+
+    # Deserialize the pickle data
+    deserialized_data = pickle.loads(pickle_data)
+
+    # Print the deserialized data
+    print(deserialized_data)
+
+if __name__ == &#39;__main__&#39;:
+    main()
+</code></pre><p>The important bit is the  <code>pickle_data = bytes(args.pickle_data, 'utf-8').decode('unicode_escape').encode('latin1')</code> because taking strings from the argument needs to be:</p>
+<ol>
+<li>treated as bytes</li>
+<li>escape the &lsquo;\x&rsquo; parts.</li>
+</ol>
 
     </div>
 
