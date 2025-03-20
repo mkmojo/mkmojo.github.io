@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Note</description>
     <generator>Hugo 0.125.2</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Apr 2024 10:08:44 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 19 Mar 2025 21:43:13 -0700</lastBuildDate>
     <atom:link href="https://mqiu.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wechat Miniprogram Is a Warded Garden</title>
+      <link>https://mqiu.me/post/wechat-miniprogram-is-a-warded-garden/</link>
+      <pubDate>Wed, 19 Mar 2025 21:43:13 -0700</pubDate>
+      <guid>https://mqiu.me/post/wechat-miniprogram-is-a-warded-garden/</guid>
+      <description>Motivating Story Sitting in my room in the nice Winter. Getting a notification from the group message. &amp;ldquo;Passensers needed, March 16, day trip, Palisades&amp;rdquo;.&#xA;The Problem Can I write a software to automate this? This way people don&amp;rsquo;t have to fumble through all groups they are in and match based on their luck.&#xA;There are two parties, the one that offers rides, the other looks for a ride. I can create a marcket place for users to publish, subscribe to and arrange the trip.</description>
+    </item>
     <item>
       <title>Chat App Key Problems</title>
       <link>https://mqiu.me/post/chat-app-key-problems/</link>

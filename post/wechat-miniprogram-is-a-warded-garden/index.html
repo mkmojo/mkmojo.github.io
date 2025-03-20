@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Setup Github Actions for MIT 6.824 - Note</title>
+  <title>Wechat Miniprogram Is a Warded Garden - Note</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Michael" /><meta name="description" content="I am working on the MIT Distributed System class Spring 2020 6.824.
-" /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+<meta name="author" content="Michael" /><meta name="description" content="Motivating Story Sitting in my room in the nice Winter. Getting a notification from the group message. &amp;ldquo;Passensers needed, March 16, day trip, Palisades&amp;rdquo;.
+The Problem Can I write a software to automate this? This way people don&amp;rsquo;t have to fumble through all groups they are in and match based on their luck.
+There are two parties, the one that offers rides, the other looks for a ride. I can create a marcket place for users to publish, subscribe to and arrange the trip." /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
 
 
 
@@ -27,7 +28,7 @@
 <meta name="generator" content="Hugo 0.125.2 with theme even" />
 
 
-<link rel="canonical" href="https://mqiu.me/post/setup-github-actions-for-mit-class/" />
+<link rel="canonical" href="https://mqiu.me/post/wechat-miniprogram-is-a-warded-garden/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,23 +41,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:url" content="https://mqiu.me/post/setup-github-actions-for-mit-class/">
+<meta property="og:url" content="https://mqiu.me/post/wechat-miniprogram-is-a-warded-garden/">
   <meta property="og:site_name" content="Note">
-  <meta property="og:title" content="Setup Github Actions for MIT 6.824">
-  <meta property="og:description" content="I am working on the MIT Distributed System class Spring 2020 6.824.
-">
+  <meta property="og:title" content="Wechat Miniprogram Is a Warded Garden">
+  <meta property="og:description" content="Motivating Story Sitting in my room in the nice Winter. Getting a notification from the group message. &amp;ldquo;Passensers needed, March 16, day trip, Palisades&amp;rdquo;.
+The Problem Can I write a software to automate this? This way people don&amp;rsquo;t have to fumble through all groups they are in and match based on their luck.
+There are two parties, the one that offers rides, the other looks for a ride. I can create a marcket place for users to publish, subscribe to and arrange the trip.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
   <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2021-03-22T19:53:10-04:00">
-    <meta property="article:modified_time" content="2021-03-22T19:53:10-04:00">
+    <meta property="article:published_time" content="2025-03-19T21:43:13-07:00">
+    <meta property="article:modified_time" content="2025-03-19T21:43:13-07:00">
 
-  <meta itemprop="name" content="Setup Github Actions for MIT 6.824">
-  <meta itemprop="description" content="I am working on the MIT Distributed System class Spring 2020 6.824.">
-  <meta itemprop="datePublished" content="2021-03-22T19:53:10-04:00">
-  <meta itemprop="dateModified" content="2021-03-22T19:53:10-04:00">
-  <meta itemprop="wordCount" content="124"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Setup Github Actions for MIT 6.824">
-<meta name="twitter:description" content="I am working on the MIT Distributed System class Spring 2020 6.824.">
+  <meta itemprop="name" content="Wechat Miniprogram Is a Warded Garden">
+  <meta itemprop="description" content="Motivating Story Sitting in my room in the nice Winter. Getting a notification from the group message. &ldquo;Passensers needed, March 16, day trip, Palisades&rdquo;.
+The Problem Can I write a software to automate this? This way people don&rsquo;t have to fumble through all groups they are in and match based on their luck.
+There are two parties, the one that offers rides, the other looks for a ride. I can create a marcket place for users to publish, subscribe to and arrange the trip.">
+  <meta itemprop="datePublished" content="2025-03-19T21:43:13-07:00">
+  <meta itemprop="dateModified" content="2025-03-19T21:43:13-07:00">
+  <meta itemprop="wordCount" content="325"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Wechat Miniprogram Is a Warded Garden">
+<meta name="twitter:description" content="Motivating Story Sitting in my room in the nice Winter. Getting a notification from the group message. &ldquo;Passensers needed, March 16, day trip, Palisades&rdquo;.
+The Problem Can I write a software to automate this? This way people don&rsquo;t have to fumble through all groups they are in and match based on their luck.
+There are two parties, the one that offers rides, the other looks for a ride. I can create a marcket place for users to publish, subscribe to and arrange the trip.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -119,13 +125,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Setup Github Actions for MIT 6.824</h1>
+      <h1 class="post-title">Wechat Miniprogram Is a Warded Garden</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2021-03-22 </span>
+        <span class="post-time"> 2025-03-19 </span>
         
-          <span class="more-meta"> 124 words </span>
-          <span class="more-meta"> 1 min read </span>
+          <span class="more-meta"> 325 words </span>
+          <span class="more-meta"> 2 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -135,48 +141,51 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-script">The Script</a></li>
-    <li><a href="#end-result">End Result</a></li>
-    <li><a href="#notes">Notes</a></li>
+    <li><a href="#motivating-story">Motivating Story</a></li>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#the-solution">The Solution</a></li>
+    <li><a href="#the-engineering-challenges">The Engineering Challenges</a></li>
+    <li><a href="#the-app-release-blocker">The App Release Blocker</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>I am working on the MIT Distributed System class <a href="https://www.youtube.com/playlist?list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB">Spring 2020 6.824</a>.</p>
-<p>Building a distributed system is hard, CI can help to prevent the regression which allows me to mange complexity. I have decided to use github actions to achieve this.</p>
-<h2 id="the-script">The Script</h2>
-<pre tabindex="0"><code># https://github.com/mvdan/github-actions-golang
-name: Unittest
-on: [push, pull_request]
+      <!-- raw HTML omitted -->
+<h2 id="motivating-story">Motivating Story</h2>
+<p>Sitting in my room in the nice Winter. Getting a notification from the group message.
+&ldquo;Passensers needed, March 16, day trip, Palisades&rdquo;.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Can I write a software to automate this?
+This way people don&rsquo;t have to fumble through all groups they are in and match based on their luck.</p>
+<p>There are two parties, the one that offers rides, the other looks for a ride.
+I can create a marcket place for users to publish, subscribe to and arrange the trip.
+Both parties can add to this public list, the match is made own users own terms.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>Since all the activity happens in WeChat, I have decided to use the WeChat MiniProgram framework to build this solution.</p>
+<p>There are several benefis to validate the idea quickly:</p>
+<ol>
+<li>Auths/Authz is handled by the framework, this is a hard problem I don&rsquo;t have to solve.</li>
+<li>The software reach is as larch as the WeChat ecosystem, that can cover almost all the Chinese users in the U.S.</li>
+<li>There is an integrated IDE I can use to develop the program, iteration speed is very fast.</li>
+<li>There is build in cloud function and cloud database, scalablity is not an issue.</li>
+</ol>
+<p>The cost are minimum:</p>
+<ol>
+<li>Learning the MiniProgram framework. It is similar to React Native, not too much new concept.</li>
+<li>$30 CNY verificaiton fee to validate the App.</li>
+<li>Later I learned that there is a huge cost I did not know when I finish all the software engineering work.</li>
+</ol>
+<h2 id="the-engineering-challenges">The Engineering Challenges</h2>
+<ol>
+<li>OpenId permission problems</li>
+<li>The Floating edit button problem</li>
+</ol>
+<h2 id="the-app-release-blocker">The App Release Blocker</h2>
+<p>Since the app is offering a place for people to carpool, this is regulated, the platform rejects the program.
+All the work I have put in is all in vain.</p>
+<p>Since this is a very large hurdle I am not able to overcome, I might need to circumvent this by rebuilding and distributing this software on to App Store and Androind Store directly.</p>
 
-jobs:
-  test:
-    strategy:
-      matrix:
-        go-version: [&#34;1.13.8&#34;]
-        os: [ubuntu-latest, macos-latest, windows-latest] 
-    runs-on: ${{matrix.os}}
-
-    steps: 
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{matrix.go-version}}
-      
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Test2A
-        run: go test -run 2A -race
-        working-directory: src/raft
-</code></pre><h2 id="end-result">End Result</h2>
-<p>With the change, unittest will run for every PR.
-<img src="/img/github-actions.jpeg" alt="image"></p>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>Place the above <code>unittest.yaml</code> file in the root <code>.github/workflow</code> directory.</li>
-<li><code>working-directory</code> is used to specify the working directory the test script runs from.</li>
-</ul>
     </div>
 
     <div class="post-copyright">
@@ -187,7 +196,7 @@ jobs:
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2021-03-22
+        2025-03-19
         
     </span>
   </p>
@@ -197,13 +206,9 @@ jobs:
 <footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/post/chat-app-key-problems/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Chat App Key Problems</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/python-module-reload-for-class-static-fields/">
-            <span class="next-text nav-default">Python Module Reload for Class Static Fields</span>
+        
+        <a class="next" href="/post/chat-app-key-problems/">
+            <span class="next-text nav-default">Chat App Key Problems</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

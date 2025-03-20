@@ -50,7 +50,7 @@
 
   <meta itemprop="name" content="Note">
   <meta itemprop="description" content="Thoughts on Distributed Systems, Game as Learning Media, and Data-Intensive Applications">
-  <meta itemprop="dateModified" content="2024-04-26T09:21:29-07:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Note">
+  <meta itemprop="dateModified" content="2025-03-19T21:43:13-07:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Note">
 <meta name="twitter:description" content="Thoughts on Distributed Systems, Game as Learning Media, and Data-Intensive Applications">
 
 <!--[if lte IE 9]>
@@ -112,6 +112,30 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/nfs-mount-pi-cluster/">K3S Pi Cluster Dynamic Provision with NFS Server</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-09 </span>
+      
+        <span class="more-meta"> 541 words </span>
+        <span class="more-meta"> 3 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Cloud provider like AWS, Azure, and GCP alredy have dyncamic provisioner setup. So when their user create resources like PersistentVolumeClaim, the resources gets automatically provisioned.
+Homelab cluster does not have a dynamic provisioner set up already, we are going to create one.
+The high level strategy is to use Synology as NFS server and have my pi cluster to deploy a NFS client as the provisioner.
+Set up NFS server Synology NAS
+    </div>
+    <div class="read-more">
+      <a href="/post/nfs-mount-pi-cluster/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/synology-home-assistant/">Synology Home Assistant</a></h1>
@@ -209,30 +233,6 @@ problem 3 is a problem on trees. The algorithm I settled on computing all possib
   </div>
 </article>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-contest-189/">Leetcode Contest 189</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-17 </span>
-      <div class="post-category">
-          <a href="/categories/leetcode/"> leetcode </a>
-          <a href="/categories/interview/"> interview </a>
-          </div>
-        <span class="more-meta"> 1309 words </span>
-        <span class="more-meta"> 7 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>Solved three out of four problems. Did not have enough time for the last problem.</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/leetcode-contest-189/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
     </section>
   
   <nav class="pagination">
@@ -276,7 +276,7 @@ problem 3 is a problem on trees. The algorithm I settled on computing all possib
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024
+    2025
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
