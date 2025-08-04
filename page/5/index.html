@@ -50,7 +50,7 @@
 
   <meta itemprop="name" content="Note">
   <meta itemprop="description" content="Thoughts on Distributed Systems, Game as Learning Media, and Data-Intensive Applications">
-  <meta itemprop="dateModified" content="2024-04-20T10:08:44-04:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Note">
+  <meta itemprop="dateModified" content="2025-03-20T11:16:59-07:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Note">
 <meta name="twitter:description" content="Thoughts on Distributed Systems, Game as Learning Media, and Data-Intensive Applications">
 
 <!--[if lte IE 9]>
@@ -114,122 +114,116 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-weekly-contest-194/">Leetcode Weekly Contest 194</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/k8s-in-action-chapter-6-notes/">k8s in Action Chapter 6 Notes</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-06-22 </span>
+      <span class="post-time"> 2020-07-08 </span>
       
-        <span class="more-meta"> 117 words </span>
-        <span class="more-meta"> 1 min read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      I got stuck on problem 3 so throughout the whole game, I only solved one problem.
-3. Avoid Flood in the City Observed that I need to save up dry days(when arr is 0) and look into the future to decide which lake to dry. What went wrong for me was I did not realize that I need to keep track of closest future for each lake.
-As result, my implementation to keep a total count for un used dry day is not enough.
-    </div>
-    <div class="read-more">
-      <a href="/post/leetcode-weekly-contest-194/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mobile-app-oauth-and-oidc/">Mobile App OAuth and OpenID Connect</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-07 </span>
-      <div class="post-category">
-          <a href="/categories/user/"> User </a>
-          <a href="/categories/authentication/"> Authentication </a>
-          <a href="/categories/authorization/"> Authorization </a>
-          </div>
-        <span class="more-meta"> 1169 words </span>
-        <span class="more-meta"> 3 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Social signin is easy and secure to use except hard to implement correctly from scratch. I did not find exactly what I need so I am writing this down for my future self. I am building an online forum application with the following requirements: has mobile and web frontend. shared backend for RESTFUL API(GraphQL upcoming). supports third party login(Google/Apple). Application Architecture We organize backend services by their responsibilitys. Services communicates
-    </div>
-    <div class="read-more">
-      <a href="/post/mobile-app-oauth-and-oidc/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-weekly-contest-192/">Leetcode Weekly Contest 192</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-07 </span>
-      <div class="post-category">
-          <a href="/categories/leetcode/"> leetcode </a>
-          <a href="/categories/interview/"> interview </a>
-          </div>
-        <span class="more-meta"> 245 words </span>
+        <span class="more-meta"> 378 words </span>
         <span class="more-meta"> 2 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Did well on the first two problems; spent multiple iterations on the third problem; got stuck for the last one.
-3. Design Browser History This is a problem simulating browse history behavior. I spent too many iterations on debugging the offset computation. To improve, focus on the distinction between length and index.
-4. Paint House III I found out the state definition early enough(about 5 minutes in). However got stuck for a long time on how to handle the house is already patined case.
+      Containers on the samee pod shares CPU and RAM resources but has their own storage, because the file system comes from the contaier&rsquo;s image. If container restarts, disk content offsets to original state.
+How can pod acess external disk storage and/or share storage between them.
+There are cases where we want to keep the data, k8s offers a tool called volumes to satisfy this demand. They are part of pods, and lives and dies with pods(pod is logical machine).
     </div>
     <div class="read-more">
-      <a href="/post/leetcode-weekly-contest-192/" class="read-more-link">Read more...</a>
+      <a href="/post/k8s-in-action-chapter-6-notes/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-contest-190/">Leetcode Contest 190</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/synology-home-assistant/">Synology Home Assistant</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-24 </span>
+      <span class="post-time"> 2020-07-07 </span>
       
-        <span class="more-meta"> 654 words </span>
-        <span class="more-meta"> 4 mins read </span>
+        <span class="more-meta"> 239 words </span>
+        <span class="more-meta"> 2 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      What went well: I solved first three problems relatively quickly and have working intuition on the last problem.
-What did not go well:
-problem 2 is a two pointer problem, I spent time implmenting the O(N^2) approach. This can be improlved by reason through the input size and do not settle for a inefficient solution.
-problem 3 is a problem on trees. The algorithm I settled on computing all possible paths shows duplication paths.
+      <p>I recently bought the Synology home server to manage my personal data.
+This is the tutorial I followed to set it up.</p>
     </div>
     <div class="read-more">
-      <a href="/post/leetcode-contest-190/" class="read-more-link">Read more...</a>
+      <a href="/post/synology-home-assistant/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/leetcode-contest-189/">Leetcode Contest 189</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/pi-cluster-01/">Pi Cluster 01</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-17 </span>
-      <div class="post-category">
-          <a href="/categories/leetcode/"> leetcode </a>
-          <a href="/categories/interview/"> interview </a>
-          </div>
-        <span class="more-meta"> 1309 words </span>
-        <span class="more-meta"> 7 mins read </span>
+      <span class="post-time"> 2020-07-06 </span>
+      
+        <span class="more-meta"> 139 words </span>
+        <span class="more-meta"> 1 min read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>Solved three out of four problems. Did not have enough time for the last problem.</p>
+      Using k3s-ansible to set up raspberry pi. Youtue link: https://www.youtube.com/watch?v=N4bfNefjBSw
+Problem 01: ssh key ssh key setup to login with ssh key directly. - ssh-keygen - copy sshkey to all pi nodes
+Problem 02: overlapping hostnames Adding node to cluster manually but ran into this error: https://github.com/rancher/k3s/issues/746. The cause is due to pi hostname clashing.
+solution: - using approach in this link - update the hostname to mutual exclusive ones. - make sure the hostname persist across reboots.
     </div>
     <div class="read-more">
-      <a href="/post/leetcode-contest-189/" class="read-more-link">Read more...</a>
+      <a href="/post/pi-cluster-01/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/deploy-flask-app-to-k8s/">Deploy Flask App to k8s</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-04 </span>
+      
+        <span class="more-meta"> 124 words </span>
+        <span class="more-meta"> 1 min read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Creting k8s config files is enough to skip enginx. Can start with Docker swarm and migrate to k8s.
+I have decided to start with k8s directly, because I have the following list of refs:
+Ultimate Setup for Your Next Python Project directory strucutre config files makefile for automation Automating Every Aspect of Your Python Project Debuggable Docker Container for Development Single Command for Everything CI/CD with GitHub Actions Deploy Any Python Project to Kubernetes Deployment Manifests Deploy Application Makefile for automation I plan to figure out the best set up for golang as well, and I can reference:
+    </div>
+    <div class="read-more">
+      <a href="/post/deploy-flask-app-to-k8s/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/openid-connect-case-study/">OpenID Connect Case Study</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-02 </span>
+      
+        <span class="more-meta"> 51 words </span>
+        <span class="more-meta"> 1 min read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Micro Service Architecture on k8s cluster with docker containers. Optionally a privately hosted docker hub.
+Frontend: Flutter, React Native Backend: Flask API
+Support Sign-in with Google for Android users and Sign-in with Apple for iOS users. Optionally support sign up and login with username and passowrd.
+manage session with Redis cluster.
+    </div>
+    <div class="read-more">
+      <a href="/post/openid-connect-case-study/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -277,7 +271,7 @@ problem 3 is a problem on trees. The algorithm I settled on computing all possib
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024
+    2025
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

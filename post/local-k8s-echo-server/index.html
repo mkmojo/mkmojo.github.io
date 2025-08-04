@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Local K8s Echo Server - Note</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Michael" /><meta name="description" content="Goal Produce k8s code for a barebone WebSocket application.
+API gateway supports WebSocket connecton. It can accept HTTP and then upgrade to WebSocket. Containerize my application. Find the k8s way to work with Image registry. (Stretch) https and wss connection. Preparation Enable the DockerDesktop&amp;rsquo;s kubernetes cluster feature
+Remember to go from the setting -&amp;gt; Kubernetes
+Locally, use minikube to experiment with applications.
+Create Echo Socket Application Write a simple websockets server" /><meta name="keywords" content="A-ha, personal, thoughts, leetcode, lintcode, algorithm, interview" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.125.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/local-k8s-echo-server/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.24752eee7d244519907709610f39db5d85a57e527ff033fcae4457858307d262.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="http://localhost:1313/post/local-k8s-echo-server/">
+  <meta property="og:site_name" content="Note">
+  <meta property="og:title" content="Local K8s Echo Server">
+  <meta property="og:description" content="Goal Produce k8s code for a barebone WebSocket application.
+API gateway supports WebSocket connecton. It can accept HTTP and then upgrade to WebSocket. Containerize my application. Find the k8s way to work with Image registry. (Stretch) https and wss connection. Preparation Enable the DockerDesktop&amp;rsquo;s kubernetes cluster feature
+Remember to go from the setting -&amp;gt; Kubernetes
+Locally, use minikube to experiment with applications.
+Create Echo Socket Application Write a simple websockets server">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-28T10:41:41-07:00">
+    <meta property="article:modified_time" content="2024-07-28T10:41:41-07:00">
+
+  <meta itemprop="name" content="Local K8s Echo Server">
+  <meta itemprop="description" content="Goal Produce k8s code for a barebone WebSocket application.
+API gateway supports WebSocket connecton. It can accept HTTP and then upgrade to WebSocket. Containerize my application. Find the k8s way to work with Image registry. (Stretch) https and wss connection. Preparation Enable the DockerDesktop&rsquo;s kubernetes cluster feature
+Remember to go from the setting -&gt; Kubernetes
+Locally, use minikube to experiment with applications.
+Create Echo Socket Application Write a simple websockets server">
+  <meta itemprop="datePublished" content="2024-07-28T10:41:41-07:00">
+  <meta itemprop="dateModified" content="2024-07-28T10:41:41-07:00">
+  <meta itemprop="wordCount" content="1373"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Local K8s Echo Server">
+<meta name="twitter:description" content="Goal Produce k8s code for a barebone WebSocket application.
+API gateway supports WebSocket connecton. It can accept HTTP and then upgrade to WebSocket. Containerize my application. Find the k8s way to work with Image registry. (Stretch) https and wss connection. Preparation Enable the DockerDesktop&rsquo;s kubernetes cluster feature
+Remember to go from the setting -&gt; Kubernetes
+Locally, use minikube to experiment with applications.
+Create Echo Socket Application Write a simple websockets server">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">/home/mqiu</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">/home/mqiu</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Local K8s Echo Server</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2024-07-28 </span>
+        
+          <span class="more-meta"> 1373 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#goal">Goal</a>
+      <ul>
+        <li><a href="#preparation">Preparation</a></li>
+        <li><a href="#create-echo-socket-application">Create Echo Socket Application</a></li>
+        <li><a href="#create-k8s-resources">Create k8s resources</a></li>
+        <li><a href="#minikube-ingress-addon">minikube ingress addon</a></li>
+        <li><a href="#challenge-1-cannot-connect-to-service-via-ingress-ip">Challenge 1: cannot connect to service via ingress IP</a></li>
+        <li><a href="#overall-setup-is-like-this-diagram">Overall setup is like this diagram</a></li>
+      </ul>
+    </li>
+    <li><a href="#lets-do-experiments-to-check-if-the-recommended-minikube-way-to-connect-to-k8s-on-mac">Let&rsquo;s do experiments to check if the recommended <code>minikube</code> way to connect to k8s on Mac.</a>
+      <ul>
+        <li><a href="#using-minikube-tunnel">Using Minikube Tunnel</a></li>
+        <li><a href="#driverqemu-networkvm_socket">driver=qemu network=vm_socket</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="goal">Goal</h2>
+<p>Produce k8s code for a barebone WebSocket application.</p>
+<ol>
+<li>API gateway supports WebSocket connecton. It can accept HTTP and then upgrade to WebSocket.</li>
+<li>Containerize my application. Find the k8s way to work with Image registry.</li>
+<li>(Stretch) https and wss connection.</li>
+</ol>
+<h3 id="preparation">Preparation</h3>
+<p>Enable the DockerDesktop&rsquo;s kubernetes cluster feature</p>
+<p><img src="/static/local-k8s-echo-server/image.png" alt="alt text">
+Remember to go from the setting -&gt; Kubernetes</p>
+<p>Locally, use <code>minikube</code> to experiment with applications.</p>
+<h3 id="create-echo-socket-application">Create Echo Socket Application</h3>
+<p>Write a simple websockets server</p>
+<pre tabindex="0"><code>import asyncio
+import websockets
+
+async def echo(websocket, path):
+    async for message in websocket:
+        await websocket.send(message)
+
+start_server = websockets.serve(echo, &#34;0.0.0.0&#34;, 8765)
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+</code></pre><h3 id="create-k8s-resources">Create k8s resources</h3>
+<ol>
+<li>add deployment</li>
+<li>add service</li>
+<li>add ingress rules</li>
+</ol>
+<h3 id="minikube-ingress-addon">minikube ingress addon</h3>
+<p>ingress provices external access to the k8s cluster. It has its own ip address.
+Within the cluster, directly use service name to route to process.
+External to the cluster, use the IP address to route to the application.</p>
+<p>How to enable the addon:</p>
+<pre tabindex="0"><code>minikube addons enable ingress
+</code></pre><p>How to verify: Check with the following command</p>
+<pre tabindex="0"><code>kubectl get pods -n ingress-nginx
+</code></pre><p>You should see something like this:</p>
+<pre tabindex="0"><code>NAME                                        READY   STATUS      RESTARTS   AGE
+ingress-nginx-admission-create-s6qh6        0/1     Completed   0          5h54m
+ingress-nginx-admission-patch-m4vpb         0/1     Completed   0          5h54m
+ingress-nginx-controller-6f69fd5d4b-n4gg9   1/1     Running     0          5h54m
+</code></pre><p>How to disable the addon:</p>
+<pre tabindex="0"><code>minikube addons disable ingress
+</code></pre><p>You should see something like this when disabled:</p>
+<pre tabindex="0"><code>➜  livechat kubectl get pods -n ingress-nginx
+No resources found in ingress-nginx namespace.
+</code></pre><p>Ingress addon will create a <code>nginx-ingress-controller</code> deployment.</p>
+<p>see: <a href="https://www.reddit.com/r/kubernetes/comments/ggn0pl/minikube_ingress_addon_question/">https://www.reddit.com/r/kubernetes/comments/ggn0pl/minikube_ingress_addon_question/</a></p>
+<h3 id="challenge-1-cannot-connect-to-service-via-ingress-ip">Challenge 1: cannot connect to service via ingress IP</h3>
+<p>The ingress ip is:  <code>192.168.49.2</code>. I got this IP address from <code>minikube ip</code>.</p>
+<p>I expect <code>wscat</code> succeed when connect to the echo server via <code>wscat -c ws://192.168.49.2</code>.
+However, the connection never succeed.</p>
+<p>Tried <code>ping 192.168.49.2</code> and failed with the following:</p>
+<pre tabindex="0"><code>➜  k8s git:(main) ✗ ping 192.168.49.2
+PING 192.168.49.2 (192.168.49.2): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+</code></pre><p>Tried going to the address directly,</p>
+<h3 id="overall-setup-is-like-this-diagram">Overall setup is like this diagram</h3>
+<p><img src="/static/local-k8s-echo-server/minikube-ws-setup-diagram.png" alt="ws architecture diagram"></p>
+<p>My machine cannot communicate with the minikube ingress IP with the external IP address.</p>
+<p>Maybe I suffer from the same problem as this post: <a href="https://stackoverflow.com/questions/60710171/minikube-ip-is-not-reachable">https://stackoverflow.com/questions/60710171/minikube-ip-is-not-reachable</a></p>
+<ul>
+<li>do I need to specify vm-driver none option when starting the minikube cluster</li>
+<li>minikube is a one node k8s cluster.</li>
+</ul>
+<p>It is known that minikube does not work well with M1 mac, because lack of VM driver.
+see: <a href="https://github.com/kubernetes/minikube/issues/11193">https://github.com/kubernetes/minikube/issues/11193</a></p>
+<h2 id="lets-do-experiments-to-check-if-the-recommended-minikube-way-to-connect-to-k8s-on-mac">Let&rsquo;s do experiments to check if the recommended <code>minikube</code> way to connect to k8s on Mac.</h2>
+<p>We will follow this Github issue: <a href="https://github.com/kubernetes/minikube/issues/11193">https://github.com/kubernetes/minikube/issues/11193</a></p>
+<p>Docker Version</p>
+<pre tabindex="0"><code>➜  ~ docker --version
+Docker version 27.0.3, build 7d4bcd8
+</code></pre><p>Minikube Version</p>
+<pre tabindex="0"><code>➜  ~ minikube version
+minikube version: v1.33.1
+commit: 5883c09216182566a63dff4c326a6fc9ed2982ff
+</code></pre><p>Docker Desktop Version</p>
+<pre tabindex="0"><code>Docker Desktop 4.32.0 (157355)
+</code></pre><p><img src="/static/local-k8s-echo-server/docker-desktop-version.png" alt="alt text"></p>
+<p>kubectl version</p>
+<pre tabindex="0"><code>➜  ~ kubectl version
+Client Version: v1.30.2
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+Server Version: v1.29.2
+</code></pre><p>System Version: macOS Ventura 13.5.1</p>
+<h3 id="using-minikube-tunnel">Using Minikube Tunnel</h3>
+<ol>
+<li>What is a tunnel? Is this tunnel the same as ssh tunnel? What is ssh tunnel?</li>
+<li>Why does <code>https://github.com/afbjorklund</code> say <code>https://norouter.io/docs/</code> is a good alternative to tunnel?
+From norouter&rsquo;s homepage(<code>https://norouter.io/docs/</code>), it is intrigging that it can be used to serve self-hosted lab to run all kinds of workloads.</li>
+<li>What does this command do? <code>docker port minikube</code>?</li>
+</ol>
+<h3 id="driverqemu-networkvm_socket">driver=qemu network=vm_socket</h3>
+<pre tabindex="0"><code>➜  k8s git:(main) ✗ brew install socket_vmnet
+==&gt; Auto-updating Homebrew...
+Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
+HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==&gt; Auto-updated Homebrew!
+==&gt; Updated Homebrew from 4.3.10 (807a934574) to 4.3.11 (1b0fdae219).
+Updated 3 taps (homebrew/services, homebrew/core and homebrew/cask).
+==&gt; New Formulae
+epoll-shim                                                                   uvw
+==&gt; New Casks
+dataflare                                          quickwhisper                                       x32-edit
+
+You have 23 outdated formulae installed.
+
+
+The 4.3.11 changelog can be found at:
+  https://github.com/Homebrew/brew/releases/tag/4.3.11
+==&gt; Downloading https://ghcr.io/v2/homebrew/core/socket_vmnet/manifests/1.1.4
+################################################################################################################################################## 100.0%
+==&gt; Fetching socket_vmnet
+==&gt; Downloading https://ghcr.io/v2/homebrew/core/socket_vmnet/blobs/sha256:f8597587e961d4482d83739489badf3cb8c6a75402692d613c045229203c8392
+################################################################################################################################################## 100.0%
+==&gt; Pouring socket_vmnet--1.1.4.arm64_ventura.bottle.tar.gz
+==&gt; Caveats
+socket_vmnet requires root privileges so you will need to run
+  `sudo /opt/homebrew/opt/socket_vmnet/socket_vmnet` or `sudo brew services start socket_vmnet`.
+You should be certain that you trust any software you grant root privileges.
+
+socket_vmnet is keg-only, which means it was not symlinked into /opt/homebrew,
+because Homebrew&#39;s bin directory is often writable by a non-admin user.
+
+If you need to have socket_vmnet first in your PATH, run:
+  echo &#39;export PATH=&#34;/opt/homebrew/opt/socket_vmnet/bin:$PATH&#34;&#39; &gt;&gt; ~/.zshrc
+
+To start socket_vmnet now and restart at startup:
+  sudo brew services start socket_vmnet
+Or, if you don&#39;t want/need a background service you can just run:
+  /opt/homebrew/opt/socket_vmnet/bin/socket_vmnet --vmnet-gateway\=192.168.105.1 /opt/homebrew/var/run/socket_vmnet
+==&gt; Summary
+🍺  /opt/homebrew/Cellar/socket_vmnet/1.1.4: 15 files, 125.8KB
+==&gt; Running `brew cleanup socket_vmnet`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+➜  k8s git:(main) ✗ brew tap homebrew/services
+➜  k8s git:(main) ✗ sudo brew services start socket_vmnet
+Password:
+Warning: Taking root:admin ownership of some socket_vmnet paths:
+  /opt/homebrew/Cellar/socket_vmnet/1.1.4/bin
+  /opt/homebrew/Cellar/socket_vmnet/1.1.4/bin/socket_vmnet
+  /opt/homebrew/opt/socket_vmnet
+  /opt/homebrew/opt/socket_vmnet/bin
+This will require manual removal of these paths using `sudo rm` on
+brew upgrade/reinstall/uninstall.
+==&gt; Successfully started `socket_vmnet` (label: homebrew.mxcl.socket_vmnet)
+</code></pre><p>Enable the ingress</p>
+<pre tabindex="0"><code>➜  k8s git:(main) ✗ minikube start --driver qemu --network socket_vmnet
+😄  minikube v1.33.1 on Darwin 13.5.1 (arm64)
+✨  Using the qemu2 driver based on user configuration
+💿  Downloading VM boot image ...
+    &gt; minikube-v1.33.1-arm64.iso....:  65 B / 65 B [---------] 100.00% ? p/s 0s
+    &gt; minikube-v1.33.1-arm64.iso:  361.99 MiB / 361.99 MiB  100.00% 101.37 MiB
+👍  Starting &#34;minikube&#34; primary control-plane node in &#34;minikube&#34; cluster
+🔥  Creating qemu2 VM (CPUs=2, Memory=6000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.30.0 on Docker 26.0.2 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use &#34;minikube&#34; cluster and &#34;default&#34; namespace by default
+➜  k8s git:(main) ✗ minikube ip
+192.168.105.2
+➜  k8s git:(main) ✗ minikube addons enable ingress
+💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.1
+    ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.10.1
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.1
+🔎  Verifying ingress addon...
+🌟  The &#39;ingress&#39; addon is enabled
+➜  k8s git:(main) ✗ kubectl get pods --all-namespaces
+NAMESPACE       NAME                                        READY   STATUS      RESTARTS      AGE
+ingress-nginx   ingress-nginx-admission-create-2kk6b        0/1     Completed   0             25s
+ingress-nginx   ingress-nginx-admission-patch-scskp         0/1     Completed   0             25s
+ingress-nginx   ingress-nginx-controller-768f948f8f-6cp9m   0/1     Running     0             25s
+kube-system     coredns-7db6d8ff4d-5b6xs                    1/1     Running     0             43s
+kube-system     etcd-minikube                               1/1     Running     0             57s
+kube-system     kube-apiserver-minikube                     1/1     Running     0             57s
+kube-system     kube-controller-manager-minikube            1/1     Running     0             57s
+kube-system     kube-proxy-d2twh                            1/1     Running     0             43s
+kube-system     kube-scheduler-minikube                     1/1     Running     0             57s
+kube-system     storage-provisioner                         1/1     Running     1 (13s ago)   56s
+</code></pre><pre tabindex="0"><code>➜  k8s git:(main) ✗ kubectl apply -f ingress.yaml
+Warning: annotation &#34;kubernetes.io/ingress.class&#34; is deprecated, please use &#39;spec.ingressClassName&#39; instead
+ingress.networking.k8s.io/echo-server-ingress created
+➜  k8s git:(main) ✗ kubectl get pods --all-namespaces
+NAMESPACE       NAME                                        READY   STATUS      RESTARTS      AGE
+ingress-nginx   ingress-nginx-admission-create-2kk6b        0/1     Completed   0             105s
+ingress-nginx   ingress-nginx-admission-patch-scskp         0/1     Completed   0             105s
+ingress-nginx   ingress-nginx-controller-768f948f8f-6cp9m   1/1     Running     0             105s
+kube-system     coredns-7db6d8ff4d-5b6xs                    1/1     Running     0             2m3s
+kube-system     etcd-minikube                               1/1     Running     0             2m17s
+kube-system     kube-apiserver-minikube                     1/1     Running     0             2m17s
+kube-system     kube-controller-manager-minikube            1/1     Running     0             2m17s
+kube-system     kube-proxy-d2twh                            1/1     Running     0             2m3s
+kube-system     kube-scheduler-minikube                     1/1     Running     0             2m17s
+kube-system     storage-provisioner                         1/1     Running     1 (93s ago)   2m16s
+➜  k8s git:(main) ✗ kubectl get ing
+NAME                  CLASS    HOSTS                ADDRESS         PORTS   AGE
+echo-server-ingress   &lt;none&gt;   api.livechat.local   192.168.105.2   80      54s
+➜  k8s git:(main) ✗ sudo vim /etc/hosts
+➜  k8s git:(main) ✗ sudo vim /etc/hosts
+➜  k8s git:(main) ✗ ping 192.168.105.2
+PING 192.168.105.2 (192.168.105.2): 56 data bytes
+64 bytes from 192.168.105.2: icmp_seq=0 ttl=64 time=0.633 ms
+64 bytes from 192.168.105.2: icmp_seq=1 ttl=64 time=0.593 ms
+64 bytes from 192.168.105.2: icmp_seq=2 ttl=64 time=0.619 ms
+64 bytes from 192.168.105.2: icmp_seq=3 ttl=64 time=0.929 ms
+^C
+--- 192.168.105.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.593/0.694/0.929/0.137 ms
+</code></pre><pre tabindex="0"><code>➜  k8s git:(main) ✗ kubectl get svc
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)           AGE
+echo-server   ClusterIP   10.105.248.171   &lt;none&gt;        80/TCP,8080/TCP   20s
+kubernetes    ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP           4m43s
+➜  k8s git:(main) ✗ wscat -c &#34;ws://api.livechat.local/ws/&#34;
+Connected (press CTRL+C to quit)
+&gt; echo
+&lt; echo
+&gt; a
+&lt; a
+&gt; b
+&lt; b
+&gt; %                                                                                                                                                      ➜  k8s git:(main) ✗
+</code></pre><p><strong>Update /etc/hosts file</strong></p>
+<pre tabindex="0"><code># Added by mqiu for livechat
+192.168.105.2    api.livechat.local
+</code></pre><p>Otherwise does not work(but why?).</p>
+<pre tabindex="0"><code>➜  k8s git:(main) ✗ wscat -c &#34;ws://192.168.105.2/ws/&#34;
+error: Unexpected server response: 404
+&gt; %
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Use <code>qemu</code> as the driver.
+Can this solution work for device on Windows?</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://github.com/kubernetes/minikube/issues/7332#issuecomment-890110258">https://github.com/kubernetes/minikube/issues/7332#issuecomment-890110258</a></li>
+</ol>
+<ul>
+<li>The author <code>zhan9san</code> has deep knowledge in minikube</li>
+<li>The issue itself is a good description on how to reproduce the Mac Error</li>
+</ul>
+<ol start="2">
+<li></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Michael</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2024-07-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/wechat-miniprogram-is-a-warded-garden/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Wechat Miniprogram Is a Warded Garden</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/react-native-livechat-app-unit-test/">
+            <span class="next-text nav-default">React Native Livechat App Unit Test</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="mkmojo/mkmojo.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/mkmojo" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2025
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Michael</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script>window.sequenceDiagramsOptions = {theme: 'simple'};</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.1c70606d1b733282f06230615f5561b5894924b6f9930ba2ab99cf1254f75a1a.js"></script>
+
+
+
+
+
+
+</body>
+</html>
